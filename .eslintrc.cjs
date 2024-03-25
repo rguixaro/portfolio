@@ -23,7 +23,7 @@ module.exports = {
 		'eol-last': 'off',
 		'jsx-quotes': ['warn', 'prefer-double'],
 		quotes: ['warn', 'single'],
-		semi: ['warn', 'never'],
+		semi: false,
 		'@stylistic/js/no-tabs': 'off',
 		'@stylistic/ts/indent': 'off',
 		'no-constant-binary-expression': 'warn',
