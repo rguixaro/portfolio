@@ -7,7 +7,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Atkinson', ...defaultTheme.fontFamily.sans],
+				sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
 			},
 			typography: {
 				DEFAULT: {
@@ -15,6 +15,10 @@ export default {
 						maxWidth: 'full',
 					},
 				},
+			},
+			colors: {
+				primary: 'rgb(32, 85, 80)',
+				gold: '#FFD700',
 			},
 		},
 	},

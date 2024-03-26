@@ -1,21 +1,26 @@
 function generateParticles(n) {
-	let value = `${getRandom(2000)}px ${getRandom(2000)}px red`
+	let value = `${getRandom(2000)}px ${getRandom(2000)}px black`
 	for (let i = 2; i <= n; i++) {
-		value += `, ${getRandom(2000)}px ${getRandom(2000)}px red`
+		value += `, ${getRandom(2000)}px ${getRandom(2000)}px black`
 	}
 	return value
 }
 
 function generateStars(n) {
-	let value = `${getRandom(2000)}px ${getRandom(2000)}px #fff`
+	let value = `${getRandom(2000)}px ${getRandom(2000)}px ${getTheme()}`
 	for (let i = 2; i <= n; i++) {
-		value += `, ${getRandom(2000)}px ${getRandom(2000)}px #fff`
+		value += `, ${getRandom(2000)}px ${getRandom(2000)}px ${getTheme()}`
 	}
 	return value
 }
 
 function getRandom(max) {
 	return Math.floor(Math.random() * max)
+}
+
+function getTheme() {
+	const rand = getRandom(1000)
+	return rand < 100 ? 'gold' : 'white'
 }
 
 function initBG() {
