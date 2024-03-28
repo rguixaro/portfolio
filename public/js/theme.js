@@ -17,11 +17,8 @@ function changeTheme() {
 	)
 	document.head.appendChild(css)
 
-	if (theme === 'dark') {
-		element.classList.add('dark')
-	} else {
-		element.classList.remove('dark')
-	}
+	if (theme === 'dark') element.classList.add('dark')
+	else element.classList.remove('dark')
 
 	window.getComputedStyle(css).opacity
 	document.head.removeChild(css)
@@ -32,22 +29,17 @@ function preloadTheme() {
 	const theme = (() => {
 		const userTheme = localStorage.theme
 
-		if (userTheme === 'light' || userTheme === 'dark') {
-			return userTheme
-		} else {
+		if (userTheme === 'light' || userTheme === 'dark') return userTheme
+		else
 			return window.matchMedia('(prefers-color-scheme: dark)').matches
 				? 'dark'
 				: 'light'
-		}
 	})()
 
 	const element = document.documentElement
 
-	if (theme === 'dark') {
-		element.classList.add('dark')
-	} else {
-		element.classList.remove('dark')
-	}
+	if (theme === 'dark') element.classList.add('dark')
+	else element.classList.remove('dark')
 
 	localStorage.theme = theme
 }

@@ -34,22 +34,17 @@ export const SEARCH: Page = {
 
 // Links
 export const LINKS: Links = [
-	{
-		TEXT: 'Home',
-		HREF: '/',
-	},
-	{
-		TEXT: 'Work',
-		HREF: '/work',
-	},
-	{
-		TEXT: 'Blog',
-		HREF: '/blog',
-	},
-	{
-		TEXT: 'Projects',
-		HREF: '/projects',
-	},
+	{ TEXT: 'Home', HREF: '/' },
+	{ TEXT: 'Work', HREF: '/work' },
+	{ TEXT: 'Blog', HREF: '/blog' },
+	{ TEXT: 'Projects', HREF: '/projects' },
+]
+
+// Langs
+export const LANGS = [
+	{ NAME: 'English', CODE: 'en' },
+	{ NAME: 'Català', CODE: 'ca' },
+	{ NAME: 'Español', CODE: 'es' },
 ]
 
 // Socials

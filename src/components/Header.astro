@@ -1,15 +1,17 @@
 ---
-import { SITE, LINKS } from '@/consts'
+import { SITE, LINKS, LANGS } from '@/consts'
 import { cn } from '@/lib/utils'
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
 import Container from '@/components/Container.astro'
+
+const DEFAULT_LANG = 'ca'
 ---
 
 <header id='header' class='fixed top-0 w-full h-16 z-50'>
 	<Container size='md'>
 		<div class='relative h-full w-full'>
-			<div
+			<!-- 	<div
 				class='absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold'
 			>
 				<a
@@ -23,9 +25,9 @@ import Container from '@/components/Container.astro'
 						{SITE.TITLE}
 					</div>
 				</a>
-			</div>
+			</div> -->
 
-			<div class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+			<div class='absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2'>
 				<nav
 					class='hidden md:flex items-center justify-center text-sm gap-5'
 				>
@@ -52,6 +54,27 @@ import Container from '@/components/Container.astro'
 			<div
 				class='buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1'
 			>
+				<div
+					id='header-lang-button'
+					aria-label={`Change language`}
+					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-white bg-opacity-0 dark:hover:bg-white/10 hover:bg-opacity-5 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all hover:w-52'
+				>
+					{
+						LANGS.map(({ CODE }) => (
+							<button
+								id={`header-lang-button-${CODE}`}
+								aria-label={`Change language`}
+								class={cn(
+									'items-center justify-center bg-transparent',
+									DEFAULT_LANG === CODE ? 'flex' : 'hidden'
+								)}>
+								<span class='font-medium hover:font-bold light:text-black hover:text-white transition-colors'>
+									{CODE}
+								</span>
+							</button>
+						))
+					}
+				</div>
 				<button
 					id='header-theme-button'
 					aria-label={`Toggle light and dark theme`}
@@ -64,18 +87,10 @@ import Container from '@/components/Container.astro'
 						<use href='/ui.svg#moon'></use>
 					</svg>
 				</button>
-
 				<button
 					id='header-drawer-button'
 					aria-label={`Toggle drawer open and closed`}
-					class={cn(
-						'flex md:hidden',
-						'size-9 rounded-full p-2 items-center justify-center',
-						'bg-transparent hover:bg-black/5 dark:hover:bg-white/20',
-						'stroke-current hover:stroke-black hover:dark:stroke-white',
-						'border border-black/10 dark:border-white/25',
-						'transition-colors duration-300 ease-in-out'
-					)}
+					class={'flex md:hidden size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out'}
 				>
 					<svg id='drawer-open' class='size-full'>
 						<use href='/ui.svg#menu'></use>
@@ -107,7 +122,11 @@ import Container from '@/components/Container.astro'
 	}
 </style>
 
+<!-- is:inline -->
 <script is:inline>
+	const LANGS = ['ca', 'en', 'es']
+	const DEFAULT_LANG = 'ca'
+
 	function toggleDrawer() {
 		const drawer = document.getElementById('drawer')
 		const drawerButton = document.getElementById('header-drawer-button')
@@ -120,6 +139,36 @@ import Container from '@/components/Container.astro'
 		drawerButton?.addEventListener('click', toggleDrawer)
 	}
 
+	function toggleLangs() {
+		const elems = LANGS.filter(({ CODE }) => CODE !== DEFAULT_LANG).map(
+			({ CODE }) => document.getElementById(`header-lang-button-${CODE}`)
+		)
+		elems.forEach((elem) => {
+			if (elem?.classList.contains('hidden')) {
+				elem?.classList.replace('hidden', 'flex')
+				elem?.classList.add('mx-3')
+			} else {
+				elem?.classList.replace('flex', 'hidden')
+				elem?.classList.remove('mx-3')
+			}
+		})
+	}
+
+	function initializeLanguageButton() {
+		const langsButton = document.getElementById('header-lang-button')
+		const defaultLangButton = document.getElementById(
+			`header-lang-button-${DEFAULT_LANG}`
+		)
+		defaultLangButton?.classList.replace('hidden', 'flex')
+		langsButton?.addEventListener('mouseenter', () =>
+			setTimeout(() => toggleLangs(), 100)
+		)
+		langsButton?.addEventListener('mouseleave', () =>
+			setTimeout(() => toggleLangs(), 100)
+		)
+	}
+
 	document.addEventListener('astro:after-swap', initializeDrawerButton)
 	initializeDrawerButton()
+	initializeLanguageButton()
 </script>
