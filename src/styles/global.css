@@ -10,11 +10,24 @@
 		font-style: normal;
 		font-display: swap;
 	}
-
 	@font-face {
 		font-family: 'Montserrat';
 		src: url('/fonts/montserrat-bold.ttf');
 		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/fonts/montserrat-semibold.ttf');
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/fonts/montserrat-medium.ttf');
+		font-weight: 500;
 		font-style: normal;
 		font-display: swap;
 	}
