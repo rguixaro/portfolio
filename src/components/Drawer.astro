@@ -1,5 +1,5 @@
 ---
-import { SITE, LINKS } from '@/consts'
+import { SITE, LINKS, LANGS } from '@/consts'
 import { cn } from '@/lib/utils'
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
@@ -30,13 +30,23 @@ const subpath = pathname.match(/[^/]+/g)
 	</nav>
 
 	<div class='flex gap-1 mt-5'>
-		<button
-			id='drawer-theme-button'
+		<div
+			id='drawer-lang-button'
 			aria-label={`Change language`}
-			class='size-9 rounded-full mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out'
+			class='size-9 w-32 flex flex-col rounded-full p-2 mx-2 items-center justify-evenly bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-all duration-300 ease-in-out delay-200'
 		>
-			<span>{'ca'}</span>
-		</button>
+			{
+				LANGS.map(({ CODE, NAME }) => (
+					<button
+						id={`drawer-lang-button-${CODE}`}
+						class='hidden opacity-0 px-2 items-center justify-center bg-transparent transition-opacity duration-300'>
+						<span class='text-md font-medium light:text-black'>
+							{NAME}
+						</span>
+					</button>
+				))
+			}
+		</div>
 		<button
 			id='drawer-theme-button'
 			aria-label={`Toggle light and dark theme`}
@@ -57,3 +67,82 @@ const subpath = pathname.match(/[^/]+/g)
 		@apply h-full;
 	}
 </style>
+
+<script>
+	const LANGS = [
+		{ NAME: 'Català', CODE: 'ca' },
+		{ NAME: 'English', CODE: 'en' },
+		{ NAME: 'Español', CODE: 'es' },
+		{ NAME: 'Norsk', CODE: 'no' },
+	]
+
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	const LANG = urlParams.get('lang') || 'ca'
+
+	function toggleLangs() {
+		const langsButton = document.getElementById('drawer-lang-button')
+		if (!langsButton) return
+
+		const isOpen = langsButton.classList.contains('h-52')
+		langsButton.classList.toggle('h-52')
+		LANGS.forEach(({ CODE }) => {
+			const isDefault = CODE === LANG
+			const btn = document.getElementById(`drawer-lang-button-${CODE}`)
+			if (!btn) return
+
+			if (isDefault && isOpen) {
+				btn.classList.remove('opacity-100')
+				btn.classList.add('opacity-0')
+				setTimeout(() => {
+					btn.classList.remove('opacity-0')
+					btn.classList.add('opacity-100')
+				}, 300)
+			} else if (!isDefault && isOpen) {
+				btn.classList.add('opacity-0')
+				btn.classList.remove('opacity-100')
+				setTimeout(() => btn.classList.add('hidden'), 300)
+			} else if (!isDefault) {
+				setTimeout(() => {
+					btn.classList.remove('hidden')
+
+					btn.classList.remove('opacity-0')
+					btn.classList.add('opacity-100')
+				}, 300)
+			}
+		})
+	}
+
+	function changeLang(e: any) {
+		const langsButton = document.getElementById('drawer-lang-button')
+		const isOpen = langsButton?.classList.contains('h-52')
+		if (!isOpen) return
+
+		const lang = e.target.innerText
+		const code = LANGS.find(({ NAME }) => NAME === lang)?.CODE
+		if (!code) return
+		const url = new URL(window.location.href)
+		url.searchParams.set('lang', code)
+		window.location.href = url.toString()
+	}
+
+	function initLangs() {
+		const langsButton = document.getElementById('drawer-lang-button')
+		langsButton?.addEventListener('click', toggleLangs)
+
+		LANGS.forEach(({ CODE }) => {
+			const btn = document.getElementById(`drawer-lang-button-${CODE}`)
+			if (!btn) return
+
+			btn.addEventListener('click', changeLang)
+			const { classList } = btn
+
+			if (CODE === LANG) {
+				classList.remove('hidden')
+				btn.classList.add('opacity-100')
+			}
+		})
+	}
+
+	initLangs()
+</script>

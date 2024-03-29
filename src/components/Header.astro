@@ -117,7 +117,7 @@ import Container from '@/components/Container.astro'
 	}
 </style>
 
-<!--  -->
+<!-- is:inline -->
 <script>
 	const LANGS = [
 		{ NAME: 'Català', CODE: 'ca' },
@@ -135,6 +135,37 @@ import Container from '@/components/Container.astro'
 		const drawerButton = document.getElementById('header-drawer-button')
 		drawer?.classList.toggle('open')
 		drawerButton?.classList.toggle('open')
+	}
+
+	function changeLang(e: any) {
+		const lang = e.target.innerText
+		const code = LANGS.find(({ NAME }) => NAME === lang)?.CODE
+		if (!code) return
+		const url = new URL(window.location.href)
+		url.searchParams.set('lang', code)
+		window.location.href = url.toString()
+	}
+
+	function initLangs() {
+		const langsButton = document.getElementById('header-lang-button')
+
+		langsButton?.addEventListener('mouseenter', () =>
+			setTimeout(() => toggleLangs(), 100)
+		)
+		langsButton?.addEventListener('mouseleave', () =>
+			setTimeout(() => toggleLangs(false), 100)
+		)
+
+		LANGS.forEach(({ CODE }) => {
+			const btn = document.getElementById(`header-lang-button-${CODE}`)
+			if (!btn) return
+
+			btn.addEventListener('click', changeLang)
+			if (CODE === LANG) {
+				btn.classList.replace('opacity-0', 'opacity-75')
+				btn.classList.replace('hidden', 'flex')
+			}
+		})
 	}
 
 	function initDrawer() {
@@ -169,34 +200,6 @@ import Container from '@/components/Container.astro'
 				}
 			}, 200)
 		})
-	}
-
-	function initLangs() {
-		const langsButton = document.getElementById('header-lang-button')
-		const defaultLangElem = document.getElementById(`header-lang-button-${LANG}`)
-		defaultLangElem?.classList.replace('opacity-0', 'opacity-75')
-		defaultLangElem?.classList.replace('hidden', 'flex')
-
-		langsButton?.addEventListener('mouseenter', () =>
-			setTimeout(() => toggleLangs(), 100)
-		)
-		langsButton?.addEventListener('mouseleave', () =>
-			setTimeout(() => toggleLangs(false), 100)
-		)
-
-		LANGS.forEach(({ CODE }) => {
-			const btn = document.getElementById(`header-lang-button-${CODE}`)
-			btn?.addEventListener('click', changeLang)
-		})
-	}
-
-	function changeLang(e: any) {
-		const lang = e.target.innerText
-		const code = LANGS.find(({ NAME }) => NAME === lang)?.CODE
-		if (!code) return
-		const url = new URL(window.location.href)
-		url.searchParams.set('lang', code)
-		window.location.href = url.toString()
 	}
 
 	document.addEventListener('astro:after-swap', initDrawer)
