@@ -4,8 +4,6 @@ import { cn } from '@/lib/utils'
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
 import Container from '@/components/Container.astro'
-
-const DEFAULT_LANG = 'ca'
 ---
 
 <header id='header' class='fixed top-0 w-full h-16 z-50'>
@@ -42,7 +40,7 @@ const DEFAULT_LANG = 'ca'
 									pathname === LINK.HREF ||
 										'/' + subpath?.[0] === LINK.HREF
 										? 'bg-primary dark:bg-primary text-white dark:text-white font-bold'
-										: 'hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white hover:translate-y-1 transition'
+										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition hover:font-semibold'
 								)}>
 								{LINK.TEXT}
 							</a>
@@ -57,18 +55,15 @@ const DEFAULT_LANG = 'ca'
 				<div
 					id='header-lang-button'
 					aria-label={`Change language`}
-					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-white bg-opacity-0 dark:hover:bg-white/10 hover:bg-opacity-5 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all hover:w-52'
+					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all hover:w-64 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm delay-200'
 				>
 					{
 						LANGS.map(({ CODE }) => (
 							<button
 								id={`header-lang-button-${CODE}`}
 								aria-label={`Change language`}
-								class={cn(
-									'items-center justify-center bg-transparent',
-									DEFAULT_LANG === CODE ? 'flex' : 'hidden'
-								)}>
-								<span class='font-medium hover:font-bold light:text-black hover:text-white transition-colors'>
+								class='hidden px-2 opacity-0 items-center justify-center bg-transparent transition-opacity duration-200'>
+								<span class='text-md font-medium hover:font-bold light:text-black'>
 									{CODE}
 								</span>
 							</button>
@@ -78,7 +73,7 @@ const DEFAULT_LANG = 'ca'
 				<button
 					id='header-theme-button'
 					aria-label={`Toggle light and dark theme`}
-					class={'hidden md:flex size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out hover:scale-105 transition hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'}
+					class={'hidden md:flex size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out hover:scale-105 transition hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'}
 				>
 					<svg class='size-full block dark:hidden'>
 						<use href='/ui.svg#sun'></use>
@@ -122,10 +117,18 @@ const DEFAULT_LANG = 'ca'
 	}
 </style>
 
-<!-- is:inline -->
-<script is:inline>
-	const LANGS = ['ca', 'en', 'es']
-	const DEFAULT_LANG = 'ca'
+<!--  -->
+<script>
+	const LANGS = [
+		{ NAME: 'Català', CODE: 'ca' },
+		{ NAME: 'English', CODE: 'en' },
+		{ NAME: 'Español', CODE: 'es' },
+		{ NAME: 'Norsk', CODE: 'no' },
+	]
+
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	const LANG = urlParams.get('lang') || 'ca'
 
 	function toggleDrawer() {
 		const drawer = document.getElementById('drawer')
@@ -134,41 +137,69 @@ const DEFAULT_LANG = 'ca'
 		drawerButton?.classList.toggle('open')
 	}
 
-	function initializeDrawerButton() {
+	function initDrawer() {
 		const drawerButton = document.getElementById('header-drawer-button')
 		drawerButton?.addEventListener('click', toggleDrawer)
 	}
 
-	function toggleLangs() {
-		const elems = LANGS.filter(({ CODE }) => CODE !== DEFAULT_LANG).map(
-			({ CODE }) => document.getElementById(`header-lang-button-${CODE}`)
-		)
-		elems.forEach((elem) => {
-			if (elem?.classList.contains('hidden')) {
-				elem?.classList.replace('hidden', 'flex')
-				elem?.classList.add('mx-3')
-			} else {
-				elem?.classList.replace('flex', 'hidden')
-				elem?.classList.remove('mx-3')
-			}
+	function toggleLangs(open = true) {
+		LANGS.forEach(({ CODE, NAME }) => {
+			const elem = document.getElementById(`header-lang-button-${CODE}`)
+			if (!elem) return
+
+			const { classList, children } = elem
+			if (classList.contains('opacity-0')) classList.replace('hidden', 'flex')
+			else if (CODE !== LANG) classList.replace('flex', 'hidden')
+
+			classList.replace('opacity-75', 'opacity-0')
+			if (open && CODE === LANG) classList.replace('flex', 'hidden')
+
+			setTimeout(() => {
+				if (open) {
+					children[0].innerHTML = NAME
+					children[0].classList.replace('text-md', 'text-sm')
+					classList.replace('opacity-0', 'opacity-75')
+				} else {
+					children[0].innerHTML = CODE
+					children[0].classList.replace('text-sm', 'text-md')
+					if (CODE === LANG) {
+						classList.replace('opacity-0', 'opacity-75')
+						classList.replace('hidden', 'flex')
+					}
+				}
+			}, 200)
 		})
 	}
 
-	function initializeLanguageButton() {
+	function initLangs() {
 		const langsButton = document.getElementById('header-lang-button')
-		const defaultLangButton = document.getElementById(
-			`header-lang-button-${DEFAULT_LANG}`
-		)
-		defaultLangButton?.classList.replace('hidden', 'flex')
+		const defaultLangElem = document.getElementById(`header-lang-button-${LANG}`)
+		defaultLangElem?.classList.replace('opacity-0', 'opacity-75')
+		defaultLangElem?.classList.replace('hidden', 'flex')
+
 		langsButton?.addEventListener('mouseenter', () =>
 			setTimeout(() => toggleLangs(), 100)
 		)
 		langsButton?.addEventListener('mouseleave', () =>
-			setTimeout(() => toggleLangs(), 100)
+			setTimeout(() => toggleLangs(false), 100)
 		)
+
+		LANGS.forEach(({ CODE }) => {
+			const btn = document.getElementById(`header-lang-button-${CODE}`)
+			btn?.addEventListener('click', changeLang)
+		})
 	}
 
-	document.addEventListener('astro:after-swap', initializeDrawerButton)
-	initializeDrawerButton()
-	initializeLanguageButton()
+	function changeLang(e: any) {
+		const lang = e.target.innerText
+		const code = LANGS.find(({ NAME }) => NAME === lang)?.CODE
+		if (!code) return
+		const url = new URL(window.location.href)
+		url.searchParams.set('lang', code)
+		window.location.href = url.toString()
+	}
+
+	document.addEventListener('astro:after-swap', initDrawer)
+	initDrawer()
+	initLangs()
 </script>

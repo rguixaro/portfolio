@@ -42,9 +42,10 @@ export const LINKS: Links = [
 
 // Langs
 export const LANGS = [
-	{ NAME: 'English', CODE: 'en' },
 	{ NAME: 'Català', CODE: 'ca' },
+	{ NAME: 'English', CODE: 'en' },
 	{ NAME: 'Español', CODE: 'es' },
+	{ NAME: 'Norsk', CODE: 'no' },
 ]
 
 // Socials
