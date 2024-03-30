@@ -1,30 +1,27 @@
 ---
-import { SITE, LINKS, LANGS } from '@/consts'
+import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
-const { pathname } = Astro.url
-const subpath = pathname.match(/[^/]+/g)
 import Container from '@/components/Container.astro'
+const { pathname } = Astro.url
+
+import {
+	getRouteFromUrl,
+	getLangFromUrl,
+	useTranslatedPath,
+	useTranslations,
+} from '@/i18n/utils'
+import { languages } from '@/i18n/ui'
+
+const lang = getLangFromUrl(Astro.url)
+const route = getRouteFromUrl(Astro.url)
+const routeWithoutLang = pathname?.toString()?.replace(`/${lang}`, '')
+const translatePath = useTranslatedPath(lang)
+const t = useTranslations(lang)
 ---
 
 <header id='header' class='fixed top-0 w-full h-16 z-50'>
 	<Container size='md'>
 		<div class='relative h-full w-full'>
-			<!-- 	<div
-				class='absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold'
-			>
-				<a
-					href='/'
-					class='flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out'
-				>
-					<svg class='size-6 fill-current'>
-						<use href='/brand.svg#brand'></use>
-					</svg>
-					<div>
-						{SITE.TITLE}
-					</div>
-				</a>
-			</div> -->
-
 			<div class='absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2'>
 				<nav
 					class='hidden md:flex items-center justify-center text-sm gap-5'
@@ -37,12 +34,12 @@ import Container from '@/components/Container.astro'
 									'h-8 rounded-full px-3 text-current',
 									'flex items-center justify-center',
 									'transition-colors duration-300 ease-in-out',
-									pathname === LINK.HREF ||
-										'/' + subpath?.[0] === LINK.HREF
+									routeWithoutLang === LINK.HREF
 										? 'bg-primary dark:bg-primary text-white dark:text-white font-bold'
 										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition hover:font-semibold'
 								)}>
-								{LINK.TEXT}
+								{/*@ts-ignore */}
+								{t(`nav.${LINK.ID}`)}
 							</a>
 						))
 					}
@@ -58,15 +55,16 @@ import Container from '@/components/Container.astro'
 					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all hover:w-64 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm delay-200'
 				>
 					{
-						LANGS.map(({ CODE }) => (
-							<button
+						languages.map(({ CODE }) => (
+							<a
+								href={translatePath(`/${route ? route : ''}`, CODE)}
 								id={`header-lang-button-${CODE}`}
 								aria-label={`Change language`}
 								class='hidden px-2 opacity-0 items-center justify-center bg-transparent transition-opacity duration-200'>
 								<span class='text-md font-medium hover:font-bold light:text-black'>
 									{CODE}
 								</span>
-							</button>
+							</a>
 						))
 					}
 				</div>
@@ -117,19 +115,7 @@ import Container from '@/components/Container.astro'
 	}
 </style>
 
-<!-- is:inline -->
-<script>
-	const LANGS = [
-		{ NAME: 'Català', CODE: 'ca' },
-		{ NAME: 'English', CODE: 'en' },
-		{ NAME: 'Español', CODE: 'es' },
-		{ NAME: 'Norsk', CODE: 'no' },
-	]
-
-	const queryString = window.location.search
-	const urlParams = new URLSearchParams(queryString)
-	const LANG = urlParams.get('lang') || 'ca'
-
+<script is:inline>
 	function toggleDrawer() {
 		const drawer = document.getElementById('drawer')
 		const drawerButton = document.getElementById('header-drawer-button')
@@ -137,15 +123,17 @@ import Container from '@/components/Container.astro'
 		drawerButton?.classList.toggle('open')
 	}
 
-	function changeLang(e: any) {
-		const lang = e.target.innerText
-		const code = LANGS.find(({ NAME }) => NAME === lang)?.CODE
-		if (!code) return
-		const url = new URL(window.location.href)
-		url.searchParams.set('lang', code)
-		window.location.href = url.toString()
+	function initDrawer() {
+		const drawerButton = document.getElementById('header-drawer-button')
+		drawerButton?.addEventListener('click', toggleDrawer)
 	}
 
+	document.addEventListener('astro:after-swap', initDrawer)
+	initDrawer()
+</script>
+
+<!--  -->
+<script is:inline define:vars={{ lang, languages }}>
 	function initLangs() {
 		const langsButton = document.getElementById('header-lang-button')
 
@@ -156,34 +144,28 @@ import Container from '@/components/Container.astro'
 			setTimeout(() => toggleLangs(false), 100)
 		)
 
-		LANGS.forEach(({ CODE }) => {
+		languages.forEach(({ CODE }) => {
 			const btn = document.getElementById(`header-lang-button-${CODE}`)
 			if (!btn) return
 
-			btn.addEventListener('click', changeLang)
-			if (CODE === LANG) {
+			if (CODE === lang) {
 				btn.classList.replace('opacity-0', 'opacity-75')
 				btn.classList.replace('hidden', 'flex')
 			}
 		})
 	}
 
-	function initDrawer() {
-		const drawerButton = document.getElementById('header-drawer-button')
-		drawerButton?.addEventListener('click', toggleDrawer)
-	}
-
 	function toggleLangs(open = true) {
-		LANGS.forEach(({ CODE, NAME }) => {
+		languages.forEach(({ CODE, NAME }) => {
 			const elem = document.getElementById(`header-lang-button-${CODE}`)
 			if (!elem) return
 
 			const { classList, children } = elem
 			if (classList.contains('opacity-0')) classList.replace('hidden', 'flex')
-			else if (CODE !== LANG) classList.replace('flex', 'hidden')
+			else if (CODE !== lang) classList.replace('flex', 'hidden')
 
 			classList.replace('opacity-75', 'opacity-0')
-			if (open && CODE === LANG) classList.replace('flex', 'hidden')
+			if (open && CODE === lang) classList.replace('flex', 'hidden')
 
 			setTimeout(() => {
 				if (open) {
@@ -193,7 +175,7 @@ import Container from '@/components/Container.astro'
 				} else {
 					children[0].innerHTML = CODE
 					children[0].classList.replace('text-sm', 'text-md')
-					if (CODE === LANG) {
+					if (CODE === lang) {
 						classList.replace('opacity-0', 'opacity-75')
 						classList.replace('hidden', 'flex')
 					}
@@ -202,7 +184,5 @@ import Container from '@/components/Container.astro'
 		})
 	}
 
-	document.addEventListener('astro:after-swap', initDrawer)
-	initDrawer()
 	initLangs()
 </script>
