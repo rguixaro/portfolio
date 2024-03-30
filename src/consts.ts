@@ -14,38 +14,17 @@ export const WORK: Page = {
 	DESCRIPTION: 'Places I have worked.',
 }
 
-// Blog Page
-export const BLOG: Page = {
-	TITLE: 'Blog',
-	DESCRIPTION: 'Writing on topics I am passionate about.',
-}
-
 // Projects Page
 export const PROJECTS: Page = {
 	TITLE: 'Projects',
 	DESCRIPTION: 'Recent projects I have worked on.',
 }
 
-// Search Page
-export const SEARCH: Page = {
-	TITLE: 'Search',
-	DESCRIPTION: 'Search all posts and projects by keyword.',
-}
-
 // Links
 export const LINKS: Links = [
-	{ TEXT: 'Home', HREF: '/' },
-	{ TEXT: 'Work', HREF: '/work' },
-	{ TEXT: 'Blog', HREF: '/blog' },
-	{ TEXT: 'Projects', HREF: '/projects' },
-]
-
-// Langs
-export const LANGS = [
-	{ NAME: 'Català', CODE: 'ca' },
-	{ NAME: 'English', CODE: 'en' },
-	{ NAME: 'Español', CODE: 'es' },
-	{ NAME: 'Norsk', CODE: 'no' },
+	{ ID: 'home', HREF: '/' },
+	{ ID: 'work', HREF: '/work' },
+	{ ID: 'projects', HREF: '/projects' },
 ]
 
 // Socials

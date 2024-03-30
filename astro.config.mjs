@@ -7,4 +7,17 @@ import sitemap from '@astrojs/sitemap'
 export default defineConfig({
 	site: 'https://example.com',
 	integrations: [mdx(), sitemap(), tailwind({ applyBaseStyles: false })],
+	i18n: {
+		defaultLocale: 'ca',
+		locales: ['ca', 'en', 'es', 'no'],
+		routing: {
+			prefixDefaultLocale: false,
+		},
+		fallback: {
+			ca: 'es',
+			es: 'en',
+			no: 'en',
+			en: 'es',
+		},
+	},
 })
