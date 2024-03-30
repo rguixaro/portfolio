@@ -4,7 +4,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import PageLayout from '@/layouts/PageLayout.astro'
 import StackCard from '@/components/StackCard.astro'
 import { SITE, SOCIALS } from '@/consts'
-import { getLangFromUrl, useTranslatedPath, useTranslations } from '@/i18n/utils'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -33,7 +33,6 @@ const stack = [
 ]
 ---
 
-<!-- <meta http-equiv='refresh' content='0;url=/ca/' /> -->
 <PageLayout title='Home' description={SITE.DESCRIPTION}>
 	<!-- Light Mode: Particles -->
 	<div class='absolute inset-0 block dark:hidden'>
@@ -154,7 +153,7 @@ const stack = [
 					<div class='flex justify-between'>
 						<a
 							href={getRelativeLocaleUrl(
-								'ca',
+								lang,
 								t('nav.projects').toLowerCase()
 							)}
 							class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'
