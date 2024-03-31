@@ -10,14 +10,7 @@ export default defineConfig({
 	i18n: {
 		defaultLocale: 'ca',
 		locales: ['ca', 'en', 'es', 'no'],
-		routing: {
-			prefixDefaultLocale: false,
-		},
-		fallback: {
-			ca: 'es',
-			es: 'en',
-			no: 'en',
-			en: 'es',
-		},
+		routing: { prefixDefaultLocale: false },
+		fallback: { es: 'en', no: 'en', en: 'es' },
 	},
 })
