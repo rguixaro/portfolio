@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 import Container from '@/components/Container.astro'
@@ -27,19 +29,23 @@ const t = useTranslations(lang)
 					class='hidden md:flex items-center justify-center text-sm gap-5'
 				>
 					{
-						LINKS.map((LINK) => (
+						LINKS.map(({ ID, HREF }) => (
 							<a
-								href={LINK.HREF}
+								href={getRelativeLocaleUrl(
+									lang,
+									/** @ts-ignore */
+									t(`nav.${ID}`).toLowerCase()
+								)}
 								class={cn(
 									'h-8 rounded-full px-3 text-current',
 									'flex items-center justify-center',
 									'transition-colors duration-300 ease-in-out',
-									routeWithoutLang === LINK.HREF
+									routeWithoutLang === HREF
 										? 'bg-primary dark:bg-primary text-white dark:text-white font-bold'
-										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition hover:font-semibold'
+										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition'
 								)}>
 								{/*@ts-ignore */}
-								{t(`nav.${LINK.ID}`)}
+								{t(`nav.${ID}`)}
 							</a>
 						))
 					}
@@ -60,7 +66,7 @@ const t = useTranslations(lang)
 								href={translatePath(`/${route ? route : ''}`, CODE)}
 								id={`header-lang-button-${CODE}`}
 								aria-label={`Change language`}
-								class='hidden px-2 opacity-0 items-center justify-center bg-transparent transition-opacity duration-200'>
+								class='hidden px-2 opacity-0 items-center justify-center bg-transparent transition-opacity duration-200 delay-100'>
 								<span class='text-md font-medium hover:font-bold light:text-black'>
 									{CODE}
 								</span>
@@ -137,12 +143,12 @@ const t = useTranslations(lang)
 	function initLangs() {
 		const langsButton = document.getElementById('header-lang-button')
 
-		langsButton?.addEventListener('mouseenter', () =>
+		langsButton?.addEventListener('mouseenter', () => {
 			setTimeout(() => toggleLangs(), 100)
-		)
-		langsButton?.addEventListener('mouseleave', () =>
+		})
+		langsButton?.addEventListener('mouseleave', () => {
 			setTimeout(() => toggleLangs(false), 100)
-		)
+		})
 
 		languages.forEach(({ CODE }) => {
 			const btn = document.getElementById(`header-lang-button-${CODE}`)
@@ -182,6 +188,10 @@ const t = useTranslations(lang)
 				}
 			}, 200)
 		})
+		if (!open)
+			document
+				.getElementById('header-lang-button')
+				?.classList.langsButton.classList.toggle('pointer-events-none')
 	}
 
 	initLangs()

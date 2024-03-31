@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 const { pathname } = Astro.url
@@ -24,20 +26,24 @@ const t = useTranslations(lang)
 >
 	<nav class='flex flex-col items-center space-y-2'>
 		{
-			LINKS.map((LINK) => (
+			LINKS.map(({ ID, HREF }) => (
 				<a
-					href={LINK.HREF}
+					href={getRelativeLocaleUrl(
+						lang,
+						/** @ts-ignore */
+						t(`nav.${ID}`).toLowerCase()
+					)}
 					class={cn(
 						'flex items-center justify-center px-3 py-1 rounded-full',
 						'text-current hover:text-black dark:hover:text-white',
 						'hover:bg-black/5 dark:hover:bg-white/20',
 						'transition-colors duration-300 ease-in-out',
-						routeWithoutLang === LINK.HREF
+						routeWithoutLang === HREF
 							? 'pointer-events-none bg-black dark:bg-white text-white dark:text-black'
 							: ''
 					)}>
 					{/*@ts-ignore */}
-					{t(`nav.${LINK.ID}`)}
+					{t(`nav.${ID}`)}
 				</a>
 			))
 		}
