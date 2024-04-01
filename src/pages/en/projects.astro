@@ -1,120 +1,83 @@
 ---
 import { getCollection } from 'astro:content'
 
-import BaseHead from '@/components/BaseHead.astro'
-import Header from '@/components/Header.astro'
-import Footer from '@/components/Footer.astro'
-import FormattedDate from '@/components/FormattedDate.astro'
+import PageLayout from '@/layouts/PageLayout.astro'
+import Card from '@/components/Card.astro'
+import { useTranslations } from '@/i18n/utils'
 
-import { SITE } from '@/consts'
-
-const { TITLE, DESCRIPTION } = SITE
-
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-)
+const t = useTranslations('en')
+const projects = await getCollection('project')
 ---
 
-<!doctype html>
-<html lang='en'>
-	<head>
-		<BaseHead title={TITLE} description={DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img
-										width={720}
-										height={360}
-										src={post.data.heroImage}
-										alt=''
-									/>
-									<h4 class='title'>{post.data.title}</h4>
-									<p class='date'>
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<PageLayout title={t('projects.title')} description={t('projects.description')}>
+	<div class='absolute inset-0 block dark:hidden'>
+		<div id='particles1' class='fixed inset-0'></div>
+		<div id='particles2' class='fixed inset-0'></div>
+		<div id='particles3' class='fixed inset-0'></div>
+	</div>
+
+	<!-- Dark Theme: Stars -->
+	<div class='absolute inset-0 bg-black hidden dark:block'>
+		<div id='stars1' class='fixed inset-0'></div>
+		<div id='stars2' class='fixed inset-0'></div>
+		<div id='stars3' class='fixed inset-0'></div>
+	</div>
+
+	<script is:inline src='/js/bg.js'></script>
+
+	<!-- Sphere -->
+	<section class='relative h-[50vh] w-full'>
+		<div
+			id='sphere-wrapper'
+			class='animate absolute inset-0 top-2/4 overflow-hidden'
+		>
+			<div
+				id='sphere-inner'
+				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-white/25 from-0% to-5%'
+			>
+				<div
+					id='sphere-content'
+					class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'
+				>
+					<div
+						id='sphere-blur'
+						class='w-full h-20 rounded-full bg-neutral-900/15 dark:bg-white/5 blur-2xl'
+					>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class='animate absolute h-[75vh] w-full flex items-center justify-center'
+		>
+			<div
+				class='relative flex-col w-full h-full flex items-center justify-center'
+			>
+				<div class='p-5 text-center'>
+					<p
+						class='animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75'
+					>
+						{t('projects.title')}
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class='relative w-[50vw] self-center'>
+		{
+			projects.map(({ data }) => {
+				return (
+					<Card
+						title={data.title}
+						timeframe={data.date}
+						description={data.description}
+						tags={data.tags}
+						url={data.url}
+						url_name={data.url_name}
+						location={data.location}
+					/>
+				)
+			})
+		}
+	</section>
+</PageLayout>
