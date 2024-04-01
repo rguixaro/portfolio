@@ -1,11 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components'
+import FormattedDate from './FormattedDate.astro';
+
 
 const { timeframe, title, description, url, tags, url_name, location } =
   Astro.props;
 ---
 
-<div class="border border-primary w-full hover:shadow-lg transition-all duration-200 my-4 rounded-3xl p-5 shadow-md">
+<div class="border border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md">
   <div class="card-body">
     <div class="grid grid-cols-3 gap-4 mb-2">
       <div class="self-start col-span-2 justify-self-start text-left">
@@ -19,8 +21,8 @@ const { timeframe, title, description, url, tags, url_name, location } =
 
       <div class="self-center justify-self-end">
         {timeframe && (
-          <div class="w-max h-max text-center inline-block align-middle shadow-md border border-black/55 rounded-xl p-1">
-            {timeframe}
+          <div class="w-max h-max text-center text-sm inline-block align-middle shadow-md border border-primary/15 dark:border-white/20 rounded p-1.5">
+            {typeof timeframe === 'string' ? timeframe : <FormattedDate date={timeframe} /> }
           </div>
         )}
       </div>
@@ -34,7 +36,7 @@ const { timeframe, title, description, url, tags, url_name, location } =
         {Array.isArray(tags) && (
           <div class="flex flex-wrap content-around gap-2 my-4">
             {tags.map((item) => (
-              <span class="text-center inline-block align-middle w-max h-max text-sm shadow-md mb-1 border border-black/55 rounded-xl p-1" :key={item}>{item}</span>
+              <span class="text-center inline-block align-middle w-max h-max text-sm shadow-md mb-1 border border-primary/15 dark:border-white/20 rounded p-1.5" :key={item}>{item}</span>
             ))}
           </div>
         )}
