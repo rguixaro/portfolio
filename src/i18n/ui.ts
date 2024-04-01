@@ -16,6 +16,7 @@ export const ui = {
 		'nav.projects': 'Projectes',
 		'home.title': 'Hola, sóc Ricard',
 		'home.role': 'Desenvolupador de Software',
+		'experience.title': 'Experiència',
 	},
 	en: {
 		'nav.home': 'Home',
@@ -24,6 +25,7 @@ export const ui = {
 		'nav.projects': 'Projects',
 		'home.title': 'Hello, I am Ricard',
 		'home.role': 'Software Developer',
+		'experience.title': 'Experience',
 	},
 	es: {
 		'nav.home': 'Inicio',
@@ -32,6 +34,7 @@ export const ui = {
 		'nav.projects': 'Proyectos',
 		'home.title': 'Hola, soy Ricard',
 		'home.role': 'Desarrollador de Software',
+		'experience.title': 'Experiencia',
 	},
 	no: {
 		'nav.home': 'Hjem',
@@ -40,6 +43,7 @@ export const ui = {
 		'nav.projects': 'Prosjekter',
 		'home.title': 'Hei, jeg er Ricard',
 		'home.role': 'Programvareutvikler',
+		'experience.title': 'Erfaring',
 	},
 } as const
 

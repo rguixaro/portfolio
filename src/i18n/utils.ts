@@ -66,5 +66,6 @@ export function getRoute(key: string, lang: string = defaultLang): string {
 	// @ts-expect-error
 	let route = (t(`nav.${key}`) as string)?.toLowerCase()
 	route = route?.normalize('NFD').replace(/[\u0300-\u036F]/g, '')
+	if (route === 'home') route = ''
 	return getRelativeLocaleUrl(lang, route)
 }
