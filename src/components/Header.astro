@@ -58,12 +58,19 @@ const t = useTranslations(lang)
 				<div
 					id='header-lang-button'
 					aria-label={`Change language`}
-					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all hover:w-64 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm delay-200'
+					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent stroke-current border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all delay-200'
 				>
 					{
 						languages.map(({ CODE }) => (
 							<a
-								href={translatePath(`/${route ? route : ''}`, CODE)}
+								href={
+									lang !== CODE
+										? translatePath(
+												`/${route ? route : ''}`,
+												CODE
+											)
+										: null
+								}
 								id={`header-lang-button-${CODE}`}
 								aria-label={`Change language`}
 								class='hidden px-2 opacity-0 items-center justify-center bg-transparent transition-opacity duration-200 delay-100'>
@@ -140,14 +147,28 @@ const t = useTranslations(lang)
 
 <!--  -->
 <script is:inline define:vars={{ lang, languages }}>
+	const effects = [
+		'bg-black/5',
+		'dark:bg-white/15',
+		'stroke-black',
+		'dark:stroke-white',
+		'w-64',
+		'shadow-primary',
+		'dark:shadow-white',
+		'shadow-sm',
+	]
+	let lastClick = 0
+
 	function initLangs() {
 		const langsButton = document.getElementById('header-lang-button')
 
-		langsButton?.addEventListener('mouseenter', () => {
+		langsButton?.addEventListener('click', (event) => {
+			if (!event.target.id.includes('header-lang-button')) return
 			setTimeout(() => toggleLangs(), 100)
 		})
+
 		langsButton?.addEventListener('mouseleave', () => {
-			setTimeout(() => toggleLangs(false), 100)
+			setTimeout(() => toggleLangs(true), 100)
 		})
 
 		languages.forEach(({ CODE }) => {
@@ -157,11 +178,26 @@ const t = useTranslations(lang)
 			if (CODE === lang) {
 				btn.classList.replace('opacity-0', 'opacity-75')
 				btn.classList.replace('hidden', 'flex')
+				btn.children[0].classList.toggle('hover:font-bold')
+				btn.children[0].classList.toggle('cursor-pointer')
 			}
+			btn.addEventListener('click', () => {
+				if (lang === CODE) toggleLangs()
+				else langsButton.classList.remove(...effects)
+			})
 		})
 	}
 
-	function toggleLangs(open = true) {
+	function toggleLangs(close = false) {
+		const langsButton = document.getElementById('header-lang-button')
+		const isOpen = langsButton.classList.contains('w-64')
+
+		if (close & !isOpen || Date.now() - lastClick < 200) return
+		else if (!close) lastClick = Date.now()
+
+		if (!isOpen) langsButton.classList.add(...effects)
+		else langsButton.classList.remove(...effects)
+
 		languages.forEach(({ CODE, NAME }) => {
 			const elem = document.getElementById(`header-lang-button-${CODE}`)
 			if (!elem) return
@@ -171,10 +207,10 @@ const t = useTranslations(lang)
 			else if (CODE !== lang) classList.replace('flex', 'hidden')
 
 			classList.replace('opacity-75', 'opacity-0')
-			if (open && CODE === lang) classList.replace('flex', 'hidden')
+			if (!isOpen && CODE === lang) classList.replace('flex', 'hidden')
 
 			setTimeout(() => {
-				if (open) {
+				if (!isOpen) {
 					children[0].innerHTML = NAME
 					children[0].classList.replace('text-md', 'text-sm')
 					classList.replace('opacity-0', 'opacity-75')
@@ -188,10 +224,6 @@ const t = useTranslations(lang)
 				}
 			}, 200)
 		})
-		if (!open)
-			document
-				.getElementById('header-lang-button')
-				?.classList.langsButton.classList.toggle('pointer-events-none')
 	}
 
 	initLangs()
