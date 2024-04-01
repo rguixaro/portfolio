@@ -62,7 +62,7 @@ export function getRouteFromUrl(url: URL): string | undefined {
 }
 
 export function getRoute(key: string, lang: string = defaultLang): string {
-	const t = useTranslations(lang as keyof typeof ui)
+	const t = useTranslations('en' as keyof typeof ui)
 	// @ts-expect-error
 	let route = (t(`nav.${key}`) as string)?.toLowerCase()
 	route = route?.normalize('NFD').replace(/[\u0300-\u036F]/g, '')
