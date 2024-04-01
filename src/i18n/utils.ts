@@ -69,3 +69,9 @@ export function getRoute(key: string, lang: string = defaultLang): string {
 	if (route === 'home') route = ''
 	return getRelativeLocaleUrl(lang, route)
 }
+
+export function inRoute(href: string, url?: string): boolean {
+	const urlPath = url?.replaceAll('/', '') || ''
+	const hrefPath = href.split('/').pop()
+	return urlPath === hrefPath
+}

@@ -10,6 +10,7 @@ import {
 	useTranslatedPath,
 	useTranslations,
 	getRoute,
+	inRoute,
 } from '@/i18n/utils'
 import { languages } from '@/i18n/ui'
 
@@ -35,7 +36,7 @@ const t = useTranslations(lang)
 									'h-8 rounded-full px-3 text-current',
 									'flex items-center justify-center',
 									'transition-colors duration-300 ease-in-out',
-									routeWithoutLang === HREF
+									inRoute(HREF, routeWithoutLang)
 										? 'bg-primary dark:bg-primary text-white dark:text-white font-bold'
 										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition'
 								)}>
@@ -154,7 +155,7 @@ const t = useTranslations(lang)
 	]
 	let lastClick = 0
 
-	function initLangs() {
+	function initLangs(reset = false) {
 		const langsButton = document.getElementById('header-lang-button')
 
 		langsButton?.addEventListener('click', (event) => {
@@ -166,6 +167,7 @@ const t = useTranslations(lang)
 			setTimeout(() => toggleLangs(true), 100)
 		})
 
+		if (reset) return
 		languages.forEach(({ CODE }) => {
 			const btn = document.getElementById(`header-lang-button-${CODE}`)
 			if (!btn) return
@@ -221,5 +223,6 @@ const t = useTranslations(lang)
 		})
 	}
 
+	document.addEventListener('astro:after-swap', initLangs(true))
 	initLangs()
 </script>
