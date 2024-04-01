@@ -7,14 +7,9 @@ interface Context {
 }
 
 export async function GET(context: Context) {
-	const posts = await getCollection('blog')
+	const posts = await getCollection('project')
 
 	const items = [...posts]
-
-	items.sort(
-		(a, b) =>
-			new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-	)
 
 	return rss({
 		title: SITE.TITLE,
@@ -23,8 +18,8 @@ export async function GET(context: Context) {
 		items: items.map((item) => ({
 			title: item.data.title,
 			description: item.data.description,
-			pubDate: item.data.pubDate,
-			link: `/blog/${item.slug}/`,
+			date: item.data.date,
+			link: `/project/${item.slug}/`,
 		})),
 	})
 }

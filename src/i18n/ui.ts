@@ -17,6 +17,10 @@ export const ui = {
 		'home.title': 'Hola, sóc Ricard',
 		'home.role': 'Desenvolupador de Software',
 		'experience.title': 'Experiència',
+		'experience.description': 'Aquí hi ha una llista de llocs on he treballat.',
+		'projects.title': 'Projectes',
+		'projects.description':
+			'Aquí hi ha una llista de projectes en els que he treballat.',
 	},
 	en: {
 		'nav.home': 'Home',
@@ -26,6 +30,9 @@ export const ui = {
 		'home.title': 'Hello, I am Ricard',
 		'home.role': 'Software Developer',
 		'experience.title': 'Experience',
+		'experience.description': 'Here is a list of places I have worked at.',
+		'projects.title': 'Projects',
+		'projects.description': 'Here is a list of projects I have worked on.',
 	},
 	es: {
 		'nav.home': 'Inicio',
@@ -35,6 +42,11 @@ export const ui = {
 		'home.title': 'Hola, soy Ricard',
 		'home.role': 'Desarrollador de Software',
 		'experience.title': 'Experiencia',
+		'experience.description':
+			'Aquí hay una lista de lugares en los que he trabajado.',
+		'projects.title': 'Proyectos',
+		'projects.description':
+			'Aquí hay una lista de proyectos en los que he trabajado.',
 	},
 	no: {
 		'nav.home': 'Hjem',
@@ -44,6 +56,10 @@ export const ui = {
 		'home.title': 'Hei, jeg er Ricard',
 		'home.role': 'Programvareutvikler',
 		'experience.title': 'Erfaring',
+		'experience.description': 'Her er en liste over steder jeg har jobbet på.',
+		'projects.title': 'Prosjekter',
+		'projects.description':
+			'Her er en liste over prosjekter jeg har jobbet med.',
 	},
 } as const
 
