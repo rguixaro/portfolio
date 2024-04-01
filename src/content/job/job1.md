@@ -1,15 +1,14 @@
 ---
-title: Bank accountant
-description:
-    'Here is a sample of some basic Markdown syntax that can be used when writing
-    Markdown content in Astro.'
-date: 05/1995 - 09/1998
-url: http://ropibbe.nf/savadru
-location: Los Angeles, California
-org: Savadru Bank
+company: 'Apple'
+role: 'Software Engineer'
+dateStart: '2020/01/05'
+dateEnd: '2022/11/27'
 tags: ['accounting', 'finance', 'customer support', 'management']
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione
+distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum
+dolor. Sit amet consectetur adipisicing elit. Iure illo neque tempora.
+
+-   Sit amet consectetur adipisicing elit. Iure illo neque tempora.
+-   Quibusdam, debitis voluptatum, lorem ipsum

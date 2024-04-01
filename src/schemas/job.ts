@@ -1,11 +1,9 @@
 import { z } from 'astro:content'
 
 export const jobSchema = z.object({
-	title: z.string(),
-	description: z.string(),
-	date: z.string(),
+	company: z.string(),
+	role: z.string(),
+	dateStart: z.string(),
+	dateEnd: z.string().optional(),
 	tags: z.array(z.string()),
-	url: z.string(),
-	url_name: z.string().optional(),
-	location: z.string(),
 })
