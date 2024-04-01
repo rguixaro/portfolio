@@ -12,7 +12,7 @@ export const ui = {
 	ca: {
 		'nav.home': 'Inici',
 		'nav.about': 'Sobre mi',
-		'nav.work': 'Experiència',
+		'nav.experience': 'Experiència',
 		'nav.projects': 'Projectes',
 		'home.title': 'Hola, sóc Ricard',
 		'home.role': 'Desenvolupador de Software',
@@ -20,7 +20,7 @@ export const ui = {
 	en: {
 		'nav.home': 'Home',
 		'nav.about': 'About',
-		'nav.work': 'Experience',
+		'nav.experience': 'Experience',
 		'nav.projects': 'Projects',
 		'home.title': 'Hello, I am Ricard',
 		'home.role': 'Software Developer',
@@ -28,7 +28,7 @@ export const ui = {
 	es: {
 		'nav.home': 'Inicio',
 		'nav.about': 'Sobre mí',
-		'nav.work': 'Experiencia',
+		'nav.experience': 'Experiencia',
 		'nav.projects': 'Proyectos',
 		'home.title': 'Hola, soy Ricard',
 		'home.role': 'Desarrollador de Software',
@@ -36,7 +36,7 @@ export const ui = {
 	no: {
 		'nav.home': 'Hjem',
 		'nav.about': 'Om',
-		'nav.work': 'Erfaring',
+		'nav.experience': 'Erfaring',
 		'nav.projects': 'Prosjekter',
 		'home.title': 'Hei, jeg er Ricard',
 		'home.role': 'Programvareutvikler',

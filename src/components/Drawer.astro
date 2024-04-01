@@ -1,6 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n'
-
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 const { pathname } = Astro.url
@@ -10,6 +8,7 @@ import {
 	getLangFromUrl,
 	useTranslatedPath,
 	useTranslations,
+	getRoute,
 } from '@/i18n/utils'
 import { languages } from '@/i18n/ui'
 
@@ -28,11 +27,7 @@ const t = useTranslations(lang)
 		{
 			LINKS.map(({ ID, HREF }) => (
 				<a
-					href={getRelativeLocaleUrl(
-						lang,
-						/** @ts-ignore */
-						t(`nav.${ID}`).toLowerCase()
-					)}
+					href={getRoute(ID, lang)}
 					class={cn(
 						'flex items-center justify-center px-3 py-1 rounded-full',
 						'text-current hover:text-black dark:hover:text-white',

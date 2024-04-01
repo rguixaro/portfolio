@@ -1,6 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n'
-
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 import Container from '@/components/Container.astro'
@@ -11,6 +9,7 @@ import {
 	getLangFromUrl,
 	useTranslatedPath,
 	useTranslations,
+	getRoute,
 } from '@/i18n/utils'
 import { languages } from '@/i18n/ui'
 
@@ -31,11 +30,7 @@ const t = useTranslations(lang)
 					{
 						LINKS.map(({ ID, HREF }) => (
 							<a
-								href={getRelativeLocaleUrl(
-									lang,
-									/** @ts-ignore */
-									t(`nav.${ID}`).toLowerCase()
-								)}
+								href={getRoute(ID, lang)}
 								class={cn(
 									'h-8 rounded-full px-3 text-current',
 									'flex items-center justify-center',

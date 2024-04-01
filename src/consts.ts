@@ -23,7 +23,7 @@ export const PROJECTS: Page = {
 // Links
 export const LINKS: Links = [
 	{ ID: 'home', HREF: '/' },
-	{ ID: 'work', HREF: '/work' },
+	{ ID: 'experience', HREF: '/experience' },
 	{ ID: 'projects', HREF: '/projects' },
 ]
 

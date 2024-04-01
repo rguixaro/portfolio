@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import { defaultLang, routes, showDefaultLang, ui } from './ui'
 
 export function getLangFromUrl(url: URL) {
@@ -57,4 +59,12 @@ export function getRouteFromUrl(url: URL): string | undefined {
 	}
 
 	return undefined
+}
+
+export function getRoute(key: string, lang: string = defaultLang): string {
+	const t = useTranslations(lang as keyof typeof ui)
+	// @ts-expect-error
+	let route = (t(`nav.${key}`) as string)?.toLowerCase()
+	route = route?.normalize('NFD').replace(/[\u0300-\u036F]/g, '')
+	return getRelativeLocaleUrl(lang, route)
 }
