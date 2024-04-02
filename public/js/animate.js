@@ -1,5 +1,5 @@
 function animate() {
-	const animateElements = document.querySelectorAll('.animate')
+	const animateElements = document.querySelectorAll('.animate, .animateWithRotate')
 
 	animateElements.forEach((element, index) => {
 		setTimeout(() => {

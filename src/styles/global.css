@@ -76,7 +76,7 @@ header.scrolled {
 }
 
 article {
-	@apply prose dark:prose-invert max-w-full pb-12;
+	@apply prose dark:prose-invert max-w-full pb-6 pt-6;
 }
 
 .page-heading {
@@ -106,7 +106,21 @@ article {
 		transform 1s ease;
 }
 
+.animateWithRotate {
+	opacity: 0;
+	rotate: 180deg;
+	transform: translateY(50px);
+	transition:
+		opacity 1s ease,
+		transform 1s ease;
+}
+
 .animate.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animateWithRotate.show {
 	opacity: 1;
 	transform: translateY(0);
 }
