@@ -1,0 +1,15 @@
+---
+const { lang = 'ca' } = Astro.props
+---
+
+<astro-lang data-lang={lang}></astro-lang>
+
+<script>
+	class AstroLang extends HTMLElement {
+		constructor() {
+			super()
+		}
+	}
+
+	customElements.define('astro-lang', AstroLang)
+</script>
