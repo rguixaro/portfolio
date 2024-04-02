@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 
 import PageLayout from '@/layouts/PageLayout.astro'
 import StackCard from '@/components/StackCard.astro'
-import { SITE, SOCIALS } from '@/consts'
+import { SOCIALS } from '@/consts'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
@@ -33,7 +33,7 @@ const stack = [
 ]
 ---
 
-<PageLayout title='Home' description={SITE.DESCRIPTION}>
+<PageLayout title={t('home.title')} description={t('home.description')}>
 	<!-- Light Mode: Particles -->
 	<div class='absolute inset-0 block dark:hidden'>
 		<div id='particles1' class='fixed inset-0'></div>
@@ -87,11 +87,21 @@ const stack = [
 					>
 						{t('home.role')}
 					</p>
+					<div
+						id='ctaButtons'
+						class='animated flex flex-wrap gap-4 justify-center mt-5'
+					>
+						<a
+							href='/en/projects'
+							class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'
+						>
+							{t('home.projects')}
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
 	<div class='relative bg-white dark:bg-black'>
 		<div class='mx-auto max-w-screen-sm p-5 space-y-24 pb-16'>
 			<!-- About Section -->
@@ -153,7 +163,7 @@ const stack = [
 					<div class='flex justify-between'>
 						<a
 							href={getRelativeLocaleUrl(
-								lang,
+								'en',
 								t('nav.projects').toLowerCase()
 							)}
 							class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'
