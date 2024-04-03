@@ -2,10 +2,10 @@
 import { getCollection } from 'astro:content'
 
 import PageLayout from '@/layouts/PageLayout.astro'
-import Card from '@/components/Card.astro'
+import Card from '@/components/projects/Card.astro'
 import { useTranslations } from '@/i18n/utils'
 
-const t = useTranslations('ca')
+const t = useTranslations('en')
 const projects = await getCollection('project')
 ---
 
