@@ -6,12 +6,12 @@ import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://example.com', // TODO: change this
 	integrations: [mdx(), sitemap(), tailwind({ applyBaseStyles: false }), icon()],
 	i18n: {
-		defaultLocale: 'ca',
-		locales: ['ca', 'en', 'es', 'no'],
+		defaultLocale: 'en',
+		locales: ['en', 'ca', 'es', 'no'],
 		routing: { prefixDefaultLocale: false },
-		fallback: { es: 'en', no: 'en', en: 'es' },
+		/* fallback: { es: 'en', no: 'en', ca: 'es' }, */
 	},
 })
