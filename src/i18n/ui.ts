@@ -1,17 +1,16 @@
 export const languages = [
-	{ NAME: 'Català', CODE: 'ca' },
 	{ NAME: 'English', CODE: 'en' },
+	{ NAME: 'Català', CODE: 'ca' },
 	{ NAME: 'Español', CODE: 'es' },
 	{ NAME: 'Norsk', CODE: 'no' },
 ]
 
-export const defaultLang = 'ca'
+export const defaultLang = 'en'
 export const showDefaultLang = false
 
 export const ui = {
 	ca: {
 		'nav.home': 'Inici',
-		'nav.about': 'Sobre mi',
 		'nav.experience': 'Experiència',
 		'nav.projects': 'Projectes',
 		'home.title': 'Hola, sóc Ricard',
@@ -27,7 +26,6 @@ export const ui = {
 	},
 	en: {
 		'nav.home': 'Home',
-		'nav.about': 'About',
 		'nav.experience': 'Experience',
 		'nav.projects': 'Projects',
 		'home.title': 'Hello, I am Ricard',
@@ -42,7 +40,6 @@ export const ui = {
 	},
 	es: {
 		'nav.home': 'Inicio',
-		'nav.about': 'Sobre mí',
 		'nav.experience': 'Experiencia',
 		'nav.projects': 'Proyectos',
 		'home.title': 'Hola, soy Ricard',
@@ -59,7 +56,6 @@ export const ui = {
 	},
 	no: {
 		'nav.home': 'Hjem',
-		'nav.about': 'Om',
 		'nav.experience': 'Erfaring',
 		'nav.projects': 'Prosjekter',
 		'home.title': 'Hei, jeg er Ricard',
@@ -76,20 +72,24 @@ export const ui = {
 } as const
 
 export const routes: { [key: string]: { [key: string]: string } } = {
-	ca: {
-		home: '/',
-		about: '/sobre-mi',
-	},
 	en: {
-		home: '/',
-		about: '/about',
+		home: 'home',
+		experience: 'experience',
+		projects: 'projects',
+	},
+	ca: {
+		home: 'inici',
+		experience: 'experiencia',
+		projects: 'projectes',
 	},
 	es: {
-		home: '/',
-		about: '/sobre-mi',
+		home: 'inicio',
+		experience: 'experiencia',
+		projects: 'proyectos',
 	},
 	no: {
-		home: '/',
-		about: '/om',
+		home: 'hjem',
+		experience: 'erfaring',
+		projects: 'prosjekter',
 	},
 } as const
