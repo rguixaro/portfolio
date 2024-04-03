@@ -1,0 +1,41 @@
+---
+import ProjectsPage from '@/components/projects/Page.astro'
+import ExperiencePage from '@/components/jobs/Page.astro'
+
+import { getRouteFromUrl, useTranslatedPath } from '@/i18n/utils'
+import { languages } from '@/i18n/ui'
+
+const route = getRouteFromUrl(Astro.url)
+
+const { lang } = Astro.params
+
+export function getStaticPaths() {
+	let experience = languages.map(({ CODE }) => {
+		const translatePath = useTranslatedPath()
+		const slug = translatePath('experience', CODE)
+			.replace(/^\//, '')
+			.replace(CODE, '')
+		return { params: { lang: CODE, slug } }
+	})
+	let projects = languages.map(({ CODE }) => {
+		const translatePath = useTranslatedPath()
+		const slug = translatePath('projects', CODE)
+			.replace(/^\//, '')
+			.replace(CODE, '')
+		return { params: { lang: CODE, slug } }
+	})
+	return [...experience, ...projects]
+}
+
+if (route !== 'projects' && route !== 'experience') return Astro.redirect('/')
+---
+
+{
+	route === 'projects' ? (
+		<ProjectsPage lang={lang} />
+	) : route === 'experience' ? (
+		<ExperiencePage lang={lang} />
+	) : (
+		<meta http-equiv='refresh' content={`0; url=/`} />
+	)
+}
