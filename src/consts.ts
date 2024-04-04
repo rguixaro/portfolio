@@ -1,4 +1,4 @@
-import type { Links, Page, Site, Socials } from '@/types'
+import type { Links, Site, Socials, TechStack } from '@/types'
 
 // Global
 export const SITE: Site = {
@@ -6,18 +6,6 @@ export const SITE: Site = {
 	DESCRIPTION:
 		'Welcome to Astro Sphere, a portfolio and blog for designers and developers.',
 	AUTHOR: 'Ricard Guixaró',
-}
-
-// Work Page
-export const WORK: Page = {
-	TITLE: 'Work',
-	DESCRIPTION: 'Places I have worked.',
-}
-
-// Projects Page
-export const PROJECTS: Page = {
-	TITLE: 'Projects',
-	DESCRIPTION: 'Recent projects I have worked on.',
 }
 
 // Links
@@ -46,5 +34,25 @@ export const SOCIALS: Socials = [
 		ICON: 'linkedin',
 		TEXT: 'rguixaro',
 		HREF: 'https://www.linkedin.com/in/rguixaro/',
+	},
+]
+
+// Tech stacks
+export const TECH_STACK: TechStack[] = [
+	{ NAME: 'Astro', ICON: 'astro', HREF: 'https://astro.build' },
+	{
+		NAME: 'Javascript',
+		ICON: 'javascript',
+		HREF: 'https://www.javascript.com',
+	},
+	{
+		NAME: 'Typescript',
+		ICON: 'typescript',
+		HREF: 'https://www.typescriptlang.org',
+	},
+	{
+		NAME: 'Tailwind',
+		ICON: 'tailwind',
+		HREF: 'https://tailwindcss.com',
 	},
 ]

@@ -70,10 +70,11 @@ const projects = await getCollection('project')
 						title={data.title}
 						timeframe={data.date}
 						description={data.description}
-						tags={data.tags}
+						stack={data.stack}
 						url={data.url}
 						url_name={data.url_name}
 						location={data.location}
+						t={t}
 					/>
 				)
 			})

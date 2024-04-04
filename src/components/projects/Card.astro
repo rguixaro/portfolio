@@ -1,53 +1,91 @@
 ---
 import { Icon } from 'astro-icon/components'
-import FormattedDate from './FormattedDate.astro';
+import StackCard from '@/components/StackCard.astro'
+import FormattedDate from './FormattedDate.astro'
+import type { TechStack } from '@/types'
+import { TECH_STACK } from '@/consts'
 
-
-const { timeframe, title, description, url, tags, url_name, location } =
-  Astro.props;
+const { timeframe, title, description, url, stack, url_name, location, t } =
+	Astro.props
+const techStack: TechStack[] = stack.map((item: string) =>
+	TECH_STACK.find(
+		(stack: TechStack) => stack.NAME.toLowerCase() === item.toLowerCase()
+	)
+)
 ---
 
-<div class="border border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md">
-  <div class="card-body">
-    <div class="grid grid-cols-3 gap-4 mb-2">
-      <div class="self-start col-span-2 justify-self-start text-left">
-        <h1 class="uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</h1>
-        {location && (
-          <div class="flex items-center mt-2">
-            <p class="text-sm  font-light text-secondary">{location}</p>
-          </div>
-        )}
-      </div>
+<div
+	class='border border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md'
+>
+	<div class='card-body'>
+		<div class='grid grid-cols-3 gap-4 mb-2'>
+			<div class='self-start col-span-2 justify-self-start text-left'>
+				<h1
+					class='uppercase card-title font-extrabold tracking-tighter md:text-2xl'
+				>
+					{title}
+				</h1>
+				{
+					location && (
+						<div class='flex items-center mt-2'>
+							<p class='text-sm  font-light text-secondary'>
+								{location}
+							</p>
+						</div>
+					)
+				}
+			</div>
 
-      <div class="self-center justify-self-end">
-        {timeframe && (
-          <div class="w-max h-max text-center text-sm inline-block align-middle shadow-md border border-primary/15 dark:border-white/20 rounded p-1.5">
-            {typeof timeframe === 'string' ? timeframe : <FormattedDate date={timeframe} /> }
-          </div>
-        )}
-      </div>
-    </div>
+			<div class='self-center justify-self-end'>
+				{
+					timeframe && (
+						<div class='w-max h-max text-center text-sm inline-block align-middle shadow-md border border-primary/15 dark:border-white/20 rounded p-1.5'>
+							{typeof timeframe === 'string' ? (
+								timeframe
+							) : (
+								<FormattedDate date={timeframe} />
+							)}
+						</div>
+					)
+				}
+			</div>
+		</div>
 
-    <div class="grid grid-cols-3 gap-4 place-items-center">
-      <div class="self-start col-span-2 justify-self-start text-left">
-        <article class="prose">
-          <Fragment set:html={description}></Fragment>
-        </article>
-        {Array.isArray(tags) && (
-          <div class="flex flex-wrap content-around gap-2 my-4">
-            {tags.map((item) => (
-              <span class="text-center inline-block align-middle w-max h-max text-sm shadow-md mb-1 border border-primary/15 dark:border-white/20 rounded p-1.5" :key={item}>{item}</span>
-            ))}
-          </div>
-        )}
-      </div>
+		<div class='grid grid-cols-3 gap-4 place-items-center'>
+			<div class='self-start col-span-2 justify-self-start text-left'>
+				<article class='prose'>
+					<Fragment set:html={description} />
+				</article>
+				{
+					Array.isArray(stack) && (
+						<div class='space-y-4'>
+							<p class='font-semibold text-black dark:text-white'>
+								{t('project.developed-with')}
+							</p>
+							<div class='flex flex-wrap content-around gap-2 my-4'>
+								{techStack.map((item: TechStack) => (
+									<StackCard
+										text={item.NAME}
+										icon={item.ICON}
+										href={item.HREF}
+									/>
+								))}
+							</div>
+						</div>
+					)
+				}
+			</div>
 
-      <div class="self-center justify-self-end">
-        <a href={url} target="_blank" class="link link-hover text-sm text-right flex justify-center items-center">
-          {url_name}
-        {url !== "#" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
-        </a>
-      </div>
-    </div>
-  </div>
+			<div class='self-center justify-self-end'>
+				<a
+					href={url}
+					target='_blank'
+					class='link link-hover text-sm text-right flex justify-center items-center'
+				>
+					{url_name}
+					{url !== '#' && <Icon name='carbon:link' class='w-4 h-4 ml-2' />}
+				</a>
+			</div>
+		</div>
+	</div>
 </div>

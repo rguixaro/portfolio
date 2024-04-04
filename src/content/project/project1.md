@@ -7,7 +7,7 @@ date: 08/07/2022
 url: http://ropibbe.nf/savadru
 location: Los Angeles, California
 org: Savadru Bank
-tags: ['accounting', 'finance', 'customer support', 'management']
+stack: ['astro', 'javascript', 'typescript', 'tailwind']
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown

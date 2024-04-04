@@ -18,3 +18,9 @@ export type Socials = {
 	TEXT: string
 	HREF: string
 }[]
+
+export interface TechStack {
+	NAME: string
+	ICON: string
+	HREF: string
+}
