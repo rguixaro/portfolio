@@ -2,7 +2,6 @@
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 import Container from '@/components/Container.astro'
-const { pathname } = Astro.url
 
 import {
 	getRouteFromUrl,
@@ -15,7 +14,6 @@ import { languages } from '@/i18n/ui'
 
 const lang = getLangFromUrl(Astro.url)
 const route = getRouteFromUrl(Astro.url)
-const routeWithoutLang = pathname?.toString()?.replace(`/${lang}`, '')
 const translatePath = useTranslatedPath(lang)
 const t = useTranslations(lang)
 ---
@@ -37,7 +35,7 @@ const t = useTranslations(lang)
 									'h-8 rounded-full px-3 text-current',
 									'flex items-center justify-center',
 									'transition-colors duration-300 ease-in-out',
-									inRoute(HREF, routeWithoutLang)
+									inRoute(HREF, route)
 										? 'bg-primary dark:bg-primary text-white dark:text-white font-bold'
 										: 'hover:bg-black/5 dark:hover:bg-white/10 opacity-75 hover:text-black dark:hover:text-white hover:translate-y-1 transition'
 								)}>
@@ -55,7 +53,7 @@ const t = useTranslations(lang)
 				<div
 					id='header-lang-button'
 					aria-label={`Change language`}
-					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent stroke-current border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all delay-200'
+					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all delay-200 hover:scale-105 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'
 				>
 					{
 						languages.map(({ CODE }) => (
@@ -81,7 +79,7 @@ const t = useTranslations(lang)
 				<button
 					id='header-theme-button'
 					aria-label={`Toggle light and dark theme`}
-					class={'hidden md:flex size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out hover:scale-105 transition hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'}
+					class={'hidden md:flex size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out hover:scale-105 transition delay-150 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'}
 				>
 					<svg class='size-full block dark:hidden'>
 						<use href='/ui.svg#sun'></use>
@@ -144,6 +142,7 @@ const t = useTranslations(lang)
 
 <!--  -->
 <script is:inline define:vars={{ lang, languages }}>
+	let langVar = lang
 	let lastClick = 0
 	const effects = [
 		'bg-black/5',
@@ -156,6 +155,10 @@ const t = useTranslations(lang)
 		'shadow-sm',
 	]
 
+	/**
+	 * Toggles the visibility of the language buttons and their text/animations.
+	 * @param {boolean} close
+	 */
 	function toggleLangs(close = false) {
 		const langsButton = document.getElementById('header-lang-button')
 		const isOpen = langsButton.classList.contains('w-64')
@@ -172,10 +175,10 @@ const t = useTranslations(lang)
 
 			const { classList, children } = elem
 			if (classList.contains('opacity-0')) classList.replace('hidden', 'flex')
-			else if (CODE !== lang) classList.replace('flex', 'hidden')
+			else if (CODE !== langVar) classList.replace('flex', 'hidden')
 
 			classList.replace('opacity-75', 'opacity-0')
-			if (!isOpen && CODE === lang) classList.replace('flex', 'hidden')
+			if (!isOpen && CODE === langVar) classList.replace('flex', 'hidden')
 
 			setTimeout(() => {
 				if (!isOpen) {
@@ -185,7 +188,7 @@ const t = useTranslations(lang)
 				} else {
 					children[0].innerHTML = CODE
 					children[0].classList.replace('text-sm', 'text-md')
-					if (CODE === lang) {
+					if (CODE === langVar) {
 						classList.replace('opacity-0', 'opacity-75')
 						classList.replace('hidden', 'flex')
 					}
@@ -194,6 +197,9 @@ const t = useTranslations(lang)
 		})
 	}
 
+	/**
+	 * Initializes the language buttons and their event listeners.
+	 */
 	function initLangs() {
 		const langsButton = document.getElementById('header-lang-button')
 		langsButton?.addEventListener('click', (event) => {
@@ -208,7 +214,7 @@ const t = useTranslations(lang)
 			const btn = document.getElementById(`header-lang-button-${CODE}`)
 			if (!btn) return
 
-			if (CODE === lang) {
+			if (CODE === langVar) {
 				btn.classList.replace('opacity-0', 'opacity-75')
 				btn.classList.replace('hidden', 'flex')
 				btn.children[0].classList.toggle('hover:font-bold')
@@ -221,9 +227,18 @@ const t = useTranslations(lang)
 		})
 	}
 
+	/**
+     * @type {EventListener}
+     Emitted when the Astro app has finished swapping the page content.
+     Controls if the language buttons should be re-initialized or not.
+     */
 	document.addEventListener('astro:after-swap', () => {
-		const langVar = document.getElementById('lang')?.lang
-		if (langVar === lang) initLangs()
+		const newLang = document.getElementById('lang')?.lang
+		const alreadyLoaded = document
+			.getElementById(`header-lang-button-${langVar}`)
+			?.children[0].classList.contains('cursor-pointer')
+		if (newLang === langVar && !alreadyLoaded) initLangs()
+		else langVar = newLang
 	})
 	initLangs()
 </script>

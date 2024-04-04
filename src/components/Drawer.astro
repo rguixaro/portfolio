@@ -1,24 +1,23 @@
 ---
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
-const { pathname } = Astro.url
 
 import {
 	getRouteFromUrl,
 	getLangFromUrl,
 	useTranslatedPath,
 	useTranslations,
-	getRoute,
 	inRoute,
 } from '@/i18n/utils'
 import { languages } from '@/i18n/ui'
 
 const lang = getLangFromUrl(Astro.url)
 const route = getRouteFromUrl(Astro.url)
-const routeWithoutLang = pathname?.toString()?.replace(`/${lang}`, '')
 const translatePath = useTranslatedPath(lang)
 const t = useTranslations(lang)
 ---
+
+<astro-lang id='lang' lang={lang}></astro-lang>
 
 <div
 	id='drawer'
@@ -28,13 +27,13 @@ const t = useTranslations(lang)
 		{
 			LINKS.map(({ ID, HREF }) => (
 				<a
-					href={getRoute(ID, lang)}
+					href={translatePath(HREF)}
 					class={cn(
 						'flex items-center justify-center px-3 py-1 rounded-full',
 						'text-current hover:text-black dark:hover:text-white',
 						'hover:bg-black/5 dark:hover:bg-white/20',
 						'transition-colors duration-300 ease-in-out',
-						inRoute(HREF, routeWithoutLang)
+						inRoute(HREF, route)
 							? 'pointer-events-none bg-black dark:bg-white text-white dark:text-black'
 							: ''
 					)}>
@@ -54,7 +53,11 @@ const t = useTranslations(lang)
 			{
 				languages.map(({ CODE, NAME }) => (
 					<a
-						href={translatePath(`/${route ? route : ''}`, CODE)}
+						href={
+							lang !== CODE
+								? translatePath(`/${route ? route : ''}`, CODE)
+								: null
+						}
 						id={`drawer-lang-button-${CODE}`}
 						class='hidden opacity-0 px-2 items-center justify-center bg-transparent transition-opacity duration-300'>
 						<span class='text-sm  light:text-black'>{NAME}</span>
@@ -84,6 +87,11 @@ const t = useTranslations(lang)
 </style>
 
 <script is:inline define:vars={{ lang, languages }}>
+	let langVar = lang
+
+	/**
+	 * Toggles the visibility of the language buttons and their text/animations.
+	 */
 	function toggleLangs() {
 		const langsButton = document.getElementById('drawer-lang-button')
 		if (!langsButton) return
@@ -91,7 +99,7 @@ const t = useTranslations(lang)
 		const isOpen = langsButton.classList.contains('h-52')
 		langsButton.classList.toggle('h-52')
 		languages.forEach(({ CODE }) => {
-			const isDefault = CODE === lang
+			const isDefault = CODE === langVar
 			const btn = document.getElementById(`drawer-lang-button-${CODE}`)
 			if (!btn) return
 
@@ -109,7 +117,6 @@ const t = useTranslations(lang)
 			} else if (!isDefault) {
 				setTimeout(() => {
 					btn.classList.remove('hidden')
-
 					btn.classList.remove('opacity-0')
 					btn.classList.add('opacity-100')
 				}, 300)
@@ -117,6 +124,9 @@ const t = useTranslations(lang)
 		})
 	}
 
+	/**
+	 * Initializes the language buttons and their event listeners.
+	 */
 	function initLangs() {
 		const langsButton = document.getElementById('drawer-lang-button')
 		langsButton?.addEventListener('click', toggleLangs)
@@ -125,12 +135,25 @@ const t = useTranslations(lang)
 			const btn = document.getElementById(`drawer-lang-button-${CODE}`)
 			if (!btn) return
 
-			if (CODE === lang) {
+			if (CODE === langVar) {
 				btn.classList.remove('hidden')
 				btn.classList.add('opacity-100')
 			}
 		})
 	}
 
+	/**
+     * @type {EventListener}
+     Emitted when the Astro app has finished swapping the page content.
+     Controls if the language buttons should be re-initialized or not.
+     */
+	document.addEventListener('astro:after-swap', () => {
+		const newLang = document.getElementById('lang')?.lang
+		const alreadyLoaded = document
+			.getElementById(`drawer-lang-button-${langVar}`)
+			?.classList.contains('opacity-100')
+		if (newLang === langVar && !alreadyLoaded) initLangs()
+		else langVar = newLang
+	})
 	initLangs()
 </script>
