@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 
 import PageLayout from '@/layouts/PageLayout.astro'
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import Card from '@/components/projects/Card.astro'
 import { useTranslations } from '@/i18n/utils'
 
@@ -62,22 +63,9 @@ const projects = await getCollection('project')
 			</div>
 		</div>
 	</section>
-	<section class='relative w-[50vw] mt-16 self-center'>
-		{
-			projects.map(({ data }) => {
-				return (
-					<Card
-						title={data.title}
-						timeframe={data.date}
-						description={data.description}
-						stack={data.stack}
-						url={data.url}
-						url_name={data.url_name}
-						location={data.location}
-						t={t}
-					/>
-				)
-			})
-		}
-	</section>
+	<ContentLayout>
+		<section class='mt-16 animate'>
+			{projects.map(({ data }) => <Card data={data} t={t} />)}
+		</section>
+	</ContentLayout>
 </PageLayout>

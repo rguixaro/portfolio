@@ -79,26 +79,26 @@ function formatWorkDate(input: Date | string) {
 	</section>
 	<section class='relative w-[50vw] mt-16 self-center'>
 		{jobs.map((entry) => (
-				<li class='animate bg-white/75 dark:bg-black/75 border-b border-primary/75 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none'>
-					<div class='text-sm uppercase mb-4'>
-						{formatWorkDate(entry.data.dateStart)} -{' '}
-						{entry.data.dateEnd ? formatWorkDate(entry.data.dateEnd) : t('experience.present')}
-					</div>
-					<div class='text-black dark:text-white font-semibold'>
-						{entry.data.company}
-					</div>
-					<div class='text-sm font-semibold'>{entry.data.role}</div>
-					<article class='prose dark:prose-invert'>
-						<entry.Content />
-					</article>
-                    {Array.isArray(entry.data.tags) && (
-                        <div class='flex flex-wrap content-around gap-2'>
-                            {entry.data.tags.map((item) => (
+            <li class='animate bg-white/75 dark:bg-black/75 border-b border-primary/75 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none'>
+                <div class='text-sm uppercase mb-4'>
+                    {formatWorkDate(entry.data.dateStart)} -{' '}
+                    {entry.data.dateEnd ? formatWorkDate(entry.data.dateEnd) : t('experience.present')}
+                </div>
+                <div class='text-black dark:text-white font-semibold'>
+                    {entry.data.company}
+                </div>
+                <div class='text-sm font-semibold'>{entry.data.role}</div>
+                <article class='prose dark:prose-invert'>
+                    <entry.Content />
+                </article>
+                {Array.isArray(entry.data.tags) && (
+                    <div class='flex flex-wrap content-around gap-2'>
+                        {entry.data.tags.map((item) => (
                             <span class="text-center inline-block align-middle w-max h-max text-sm shadow-md mb-1 border border-primary/15 dark:border-white/20 rounded p-1.5" :key={item}>{item}</span>
-                            ))}
-                        </div>
-                    )}
-				</li>
-			))}
+                        ))} 
+                    </div>
+                )}
+            </li>
+        ))}
 	</section>
 </PageLayout>

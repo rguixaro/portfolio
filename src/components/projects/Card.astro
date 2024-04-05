@@ -1,21 +1,22 @@
 ---
 import { Icon } from 'astro-icon/components'
 import StackCard from '@/components/StackCard.astro'
-import FormattedDate from './FormattedDate.astro'
-import type { TechStack } from '@/types'
-import { TECH_STACK } from '@/consts'
+import type { TechStack, Project } from '@/types'
+import { getStack } from '@/lib/utils'
 
-const { timeframe, title, description, url, stack, url_name, location, t } =
-	Astro.props
-const techStack: TechStack[] = stack.map((item: string) =>
-	TECH_STACK.find(
-		(stack: TechStack) => stack.NAME.toLowerCase() === item.toLowerCase()
-	)
-)
+interface Props {
+	data: Project
+	t: (key: string) => string
+}
+
+const { data, t } = Astro.props
+const { title, description, stack, url, github } = data
+
+const techStack = getStack(stack)
 ---
 
 <div
-	class='border border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md'
+	class='border z-50 bg-white/75 dark:bg-black/75 border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md'
 >
 	<div class='card-body'>
 		<div class='grid grid-cols-3 gap-4 mb-2'>
@@ -25,34 +26,10 @@ const techStack: TechStack[] = stack.map((item: string) =>
 				>
 					{title}
 				</h1>
-				{
-					location && (
-						<div class='flex items-center mt-2'>
-							<p class='text-sm  font-light text-secondary'>
-								{location}
-							</p>
-						</div>
-					)
-				}
-			</div>
-
-			<div class='self-center justify-self-end'>
-				{
-					timeframe && (
-						<div class='w-max h-max text-center text-sm inline-block align-middle shadow-md border border-primary/15 dark:border-white/20 rounded p-1.5'>
-							{typeof timeframe === 'string' ? (
-								timeframe
-							) : (
-								<FormattedDate date={timeframe} />
-							)}
-						</div>
-					)
-				}
 			</div>
 		</div>
-
-		<div class='grid grid-cols-3 gap-4 place-items-center'>
-			<div class='self-start col-span-2 justify-self-start text-left'>
+		<div class='grid grid-cols-4 gap-5 place-items-center'>
+			<div class='self-start col-span-3 justify-self-start text-left'>
 				<article class='prose'>
 					<Fragment set:html={description} />
 				</article>
@@ -75,17 +52,31 @@ const techStack: TechStack[] = stack.map((item: string) =>
 					)
 				}
 			</div>
-
-			<div class='self-center justify-self-end'>
-				<a
-					href={url}
-					target='_blank'
-					class='link link-hover text-sm text-right flex justify-center items-center'
-				>
-					{url_name}
-					{url !== '#' && <Icon name='carbon:link' class='w-4 h-4 ml-2' />}
-				</a>
-			</div>
+			{
+				!!url && (
+					<div class='self-center justify-self-end'>
+						<a
+							href={url}
+							target='_blank'
+							class='link link-hover text-sm text-right flex justify-center items-center my-5'>
+							{url !== '#' && (
+								<Icon name='carbon:link' class='w-4 h-4 ml-2' />
+							)}
+						</a>
+						<a
+							href={github}
+							target='_blank'
+							class='link link-hover text-sm text-right flex justify-center items-center my-5'>
+							{github !== '#' && (
+								<Icon
+									name='carbon:logo-github'
+									class='w-4 h-4 ml-2'
+								/>
+							)}
+						</a>
+					</div>
+				)
+			}
 		</div>
 	</div>
 </div>
