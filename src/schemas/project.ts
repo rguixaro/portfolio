@@ -7,5 +7,4 @@ export const projectSchema = z.object({
 	stack: z.array(z.string()),
 	url: z.string(),
 	url_name: z.string().optional(),
-	location: z.string(),
 })

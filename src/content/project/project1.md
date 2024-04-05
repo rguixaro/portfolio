@@ -5,7 +5,6 @@ description:
     Markdown content in Astro.'
 date: 08/07/2022
 url: http://ropibbe.nf/savadru
-location: Los Angeles, California
 org: Savadru Bank
 stack: ['astro', 'javascript', 'typescript', 'tailwind']
 ---
