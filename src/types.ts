@@ -28,8 +28,7 @@ export interface TechStack {
 export interface Project {
 	title: string
 	description: string
-	date: Date
 	stack: string[]
 	url?: string
-	url_name?: string
+	github?: string
 }

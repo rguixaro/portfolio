@@ -3,9 +3,8 @@ title: Bank accountant
 description:
     'Here is a sample of some basic Markdown syntax that can be used when writing
     Markdown content in Astro.'
-date: 08/07/2022
 url: http://ropibbe.nf/savadru
-org: Savadru Bank
+github: Savadru Bank
 stack: ['astro', 'javascript', 'typescript', 'tailwind']
 ---
 
