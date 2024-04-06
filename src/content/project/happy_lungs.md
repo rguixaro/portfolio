@@ -1,10 +1,10 @@
 ---
-title: Bank accountant
+name: Happy Lungs
 description:
-    'Here is a sample of some basic Markdown syntax that can be used when writing
-    Markdown content in Astro.'
-url: http://ropibbe.nf/savadru
-github: Savadru Bank
+    'Mobile application that allows the user to create pins linked to a geographic
+    location and receive information on the pollution levels of the air (retrieved
+    from Open Data BCN).'
+github: https://github.com/HappyLungs
 stack: ['astro', 'javascript', 'typescript', 'tailwind']
 ---
 

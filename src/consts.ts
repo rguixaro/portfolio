@@ -55,4 +55,19 @@ export const TECH_STACK: TechStack[] = [
 		ICON: 'tailwind',
 		HREF: 'https://tailwindcss.com',
 	},
+	{
+		NAME: 'React',
+		ICON: 'react',
+		HREF: 'https://reactjs.org',
+	},
+	{
+		NAME: 'React Native',
+		ICON: 'react',
+		HREF: 'https://reactnative.dev',
+	},
+	{
+		NAME: 'MongoDB',
+		ICON: 'mongodb',
+		HREF: 'https://www.mongodb.com',
+	},
 ]

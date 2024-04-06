@@ -26,9 +26,12 @@ export interface TechStack {
 }
 
 export interface Project {
-	title: string
+	name: string
 	description: string
 	stack: string[]
 	url?: string
 	github?: string
+	googlePlay?: string
+	appStore?: string
+	logo?: string
 }
