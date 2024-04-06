@@ -10,15 +10,15 @@ const route = getRouteFromUrl(Astro.url)
 const { lang } = Astro.params
 
 export function getStaticPaths() {
-	let experience = languages.map(({ CODE }) => {
-		const translatePath = useTranslatedPath()
+	const translatePath = useTranslatedPath()
+
+	const experience = languages.map(({ CODE }) => {
 		const slug = translatePath('experience', CODE)
 			.replace(/^\//, '')
 			.replace(CODE, '')
 		return { params: { lang: CODE, slug } }
 	})
-	let projects = languages.map(({ CODE }) => {
-		const translatePath = useTranslatedPath()
+	const projects = languages.map(({ CODE }) => {
 		const slug = translatePath('projects', CODE)
 			.replace(/^\//, '')
 			.replace(CODE, '')

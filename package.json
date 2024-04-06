@@ -13,7 +13,8 @@
 	"dependencies": {
 		"@iconify-json/carbon": "^1.1.31",
 		"@tailwindcss/typography": "^0.5.11",
-		"astro": "^4.5.9"
+		"astro": "^4.5.9",
+		"vite": "^5.2.8"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "0.43.1",
