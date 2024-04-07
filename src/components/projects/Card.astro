@@ -1,16 +1,19 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
+
 import StackCard from '@/components/StackCard.astro'
-import type { TechStack, Project } from '@/types'
+import type { TechStack } from '@/types'
 import { getStack } from '@/lib/utils'
 
 interface Props {
-	data: Project
+	entry: CollectionEntry<'project'>
 	t: (key: string) => string
 }
 
-const { data, t } = Astro.props
-const { name, description, stack, url, github, logo } = data
+const { entry, t } = Astro.props
+const { name, stack, url, github, logo, invert = false } = entry.data
+const { Content } = await entry.render()
 
 const techStack = getStack(stack)
 ---
@@ -21,12 +24,24 @@ const techStack = getStack(stack)
 	<div class='card-body grid grid-cols-4'>
 		<div class='grid col-span-4'>
 			<div class='grid grid-cols-3 gap-4 mb-2 justify-between items-center'>
-				<div class='grid col-span-2 justify-self-start text-left'>
-					<h1
-						class='uppercase card-title font-extrabold tracking-tighter md:text-2xl'
-					>
-						{name}
-					</h1>
+				<div class='grid col-span-3'>
+					<div class='flex flex-row items-center'>
+						{
+							!!logo && (
+								<svg
+									height='5rem'
+									width='5rem'
+									class={`mr-5 ${invert && 'dark:invert'}`}>
+									<use href={logo} />
+								</svg>
+							)
+						}
+						<h1
+							class='uppercase card-title font-extrabold tracking-tighter md:text-2xl'
+						>
+							{name}
+						</h1>
+					</div>
 				</div>
 				<div class='col-start-4 col-span-1'>
 					{
@@ -71,21 +86,8 @@ const techStack = getStack(stack)
 			</div>
 			<div class='grid grid-cols-1 gap-5 place-items-center'>
 				<div class='self-start grid-cols-1 justify-self-start text-left'>
-					<article class='grid grid-cols-4'>
-						<div class='grid col-span-3 mr-2'>{description}</div>
-						<div
-							class='grid col-span-1 col-start-4 items-center justify-end'
-						>
-							{
-								!!logo && (
-									<img
-										src={logo}
-										alt={name}
-										class='w-24 h-24 object-contain'
-									/>
-								)
-							}
-						</div>
+					<article>
+						<Content />
 					</article>
 					{
 						Array.isArray(stack) && (
