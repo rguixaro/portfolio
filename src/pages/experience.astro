@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 
 import PageLayout from '@/layouts/PageLayout.astro'
 import { useTranslations } from '@/i18n/utils'
+import { slideInRight } from '@/lib/animations'
 
 const t = useTranslations('en')
 
@@ -29,7 +30,11 @@ function formatWorkDate(input: Date | string) {
 }
 ---
 
-<PageLayout title={t('experience.title')} description={t('experience.description')}>
+<PageLayout
+	title={t('experience.title')}
+	description={t('experience.description')}
+	swapAnimation={slideInRight}
+>
 	<div class='absolute inset-0 block dark:hidden'>
 		<div id='particles1' class='fixed inset-0'></div>
 		<div id='particles2' class='fixed inset-0'></div>
@@ -46,7 +51,7 @@ function formatWorkDate(input: Date | string) {
 	<script is:inline src='/js/bg.js'></script>
 
 	<!-- Sphere -->
-	<section class='relative h-[16vh] w-full'>
+	<section class='relative h-[20vh] w-full'>
 		<div id='sphere-wrapper' class='animateWithRotate absolute inset-0 top-2/4'>
 			<div
 				id='sphere-inner'
@@ -65,7 +70,7 @@ function formatWorkDate(input: Date | string) {
 			</div>
 		</div>
 		<div
-			class='animateWithRotate absolute h-[16vh] mt-5 w-full flex items-center justify-center'
+			class='animateWithRotate absolute h-[16vh] mt-9 w-full flex items-center justify-center'
 		>
 			<div
 				class='relative flex-col w-full h-[16vh] flex items-center justify-center'

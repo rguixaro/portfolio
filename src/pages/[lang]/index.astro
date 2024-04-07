@@ -5,6 +5,7 @@ import PageLayout from '@/layouts/PageLayout.astro'
 import StackCard from '@/components/StackCard.astro'
 import { SOCIALS } from '@/consts'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import { slideUp } from '@/lib/animations'
 
 const lang = getLangFromUrl(Astro.url)
 
@@ -43,7 +44,11 @@ const stack = [
 ]
 ---
 
-<PageLayout title={t('home.title')} description={t('home.description')}>
+<PageLayout
+	title={t('home.title')}
+	description={t('home.description')}
+	swapAnimation={slideUp}
+>
 	<!-- Light Mode: Particles -->
 	<div class='absolute inset-0 block dark:hidden'>
 		<div id='particles1' class='fixed inset-0'></div>
@@ -97,17 +102,6 @@ const stack = [
 					>
 						{t('home.role')}
 					</p>
-					<div
-						id='ctaButtons'
-						class='animated flex flex-wrap gap-4 justify-center mt-5'
-					>
-						<a
-							href='/projects'
-							class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'
-						>
-							{t('home.projects')}
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>

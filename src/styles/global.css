@@ -97,6 +97,62 @@ article {
 	}
 }
 
+/** Styles for swap transition animation */
+@keyframes slideIn {
+	from {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.2;
+	}
+	to {
+		transform: translateX(500px);
+		opacity: 0;
+	}
+}
+@keyframes slideOut {
+	from {
+		transform: translateX(500px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.2;
+	}
+	to {
+		transform: translateY(-500px);
+		opacity: 0;
+	}
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-500px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	to {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
 /** styles for public /animation.js */
 .animate {
 	opacity: 0;

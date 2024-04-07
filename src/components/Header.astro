@@ -1,8 +1,9 @@
 ---
+import { fade } from 'astro:transitions'
+
 import { LINKS } from '@/consts'
 import { cn } from '@/lib/utils'
 import Container from '@/components/Container.astro'
-
 import {
 	getRouteFromUrl,
 	getLangFromUrl,
@@ -20,7 +21,11 @@ const t = useTranslations(lang)
 
 <astro-lang id='lang' lang={lang}></astro-lang>
 
-<header id='header' class='fixed top-0 w-full h-16 z-50'>
+<header
+	id='header'
+	class='fixed top-0 w-full h-16 z-50'
+	transition:animate={fade({ duration: '.3s' })}
+>
 	<Container size='md'>
 		<div class='relative h-full w-full'>
 			<div class='absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2'>
