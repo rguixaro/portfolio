@@ -70,4 +70,19 @@ export const TECH_STACK: TechStack[] = [
 		ICON: 'mongodb',
 		HREF: 'https://www.mongodb.com',
 	},
+	{
+		NAME: 'Kotlin',
+		ICON: 'kotlin',
+		HREF: 'https://kotlinlang.org/',
+	},
+	{
+		NAME: 'Firebase',
+		ICON: 'firebase',
+		HREF: 'https://firebase.google.com',
+	},
+	{
+		NAME: 'Java',
+		ICON: 'java',
+		HREF: 'https://developer.android.com/codelabs/build-your-first-android-app#0',
+	},
 ]

@@ -1,7 +1,7 @@
 ---
 name: Transactions
 github: ''
-stack: ['java', 'firebase']
+stack: ['java', 'kotlin', 'firebase']
 logo: /projects.svg#transactions
 ---
 
