@@ -22,7 +22,6 @@ export type Socials = {
 export interface TechStack {
 	NAME: string
 	ICON: string
-	HREF: string
 }
 
 export interface Project {

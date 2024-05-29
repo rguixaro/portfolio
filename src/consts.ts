@@ -39,50 +39,15 @@ export const SOCIALS: Socials = [
 
 // Tech stacks
 export const TECH_STACK: TechStack[] = [
-	{ NAME: 'Astro', ICON: 'astro', HREF: 'https://astro.build' },
-	{
-		NAME: 'Javascript',
-		ICON: 'javascript',
-		HREF: 'https://www.javascript.com',
-	},
-	{
-		NAME: 'Typescript',
-		ICON: 'typescript',
-		HREF: 'https://www.typescriptlang.org',
-	},
-	{
-		NAME: 'Tailwind',
-		ICON: 'tailwind',
-		HREF: 'https://tailwindcss.com',
-	},
-	{
-		NAME: 'React',
-		ICON: 'react',
-		HREF: 'https://reactjs.org',
-	},
-	{
-		NAME: 'React Native',
-		ICON: 'react',
-		HREF: 'https://reactnative.dev',
-	},
-	{
-		NAME: 'MongoDB',
-		ICON: 'mongodb',
-		HREF: 'https://www.mongodb.com',
-	},
-	{
-		NAME: 'Kotlin',
-		ICON: 'kotlin',
-		HREF: 'https://kotlinlang.org/',
-	},
-	{
-		NAME: 'Firebase',
-		ICON: 'firebase',
-		HREF: 'https://firebase.google.com',
-	},
-	{
-		NAME: 'Java',
-		ICON: 'java',
-		HREF: 'https://developer.android.com/codelabs/build-your-first-android-app#0',
-	},
+	{ NAME: 'Astro', ICON: 'astro' },
+	{ NAME: 'Javascript', ICON: 'javascript' },
+	{ NAME: 'Typescript', ICON: 'typescript' },
+	{ NAME: 'Tailwind', ICON: 'tailwind' },
+	{ NAME: 'React', ICON: 'react' },
+	{ NAME: 'React Native', ICON: 'react' },
+	{ NAME: 'MongoDB', ICON: 'mongodb' },
+	{ NAME: 'Kotlin', ICON: 'kotlin' },
+	{ NAME: 'Firebase', ICON: 'firebase' },
+	{ NAME: 'Java', ICON: 'java' },
+	{ NAME: 'Nginx', ICON: 'nginx' },
 ]

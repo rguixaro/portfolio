@@ -2,14 +2,12 @@
 type Props = {
 	text: string
 	icon: string
-	href: string
 }
 
-const { text, icon, href } = Astro.props
+const { text, icon } = Astro.props
 ---
 
 <a
-	href={href}
 	target='_blank'
 	class='w-fit px-3 py-2 group rounded border flex gap-2 items-center border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-800 blend'
 >
@@ -17,7 +15,7 @@ const { text, icon, href } = Astro.props
 		<use href={`/stack.svg#${icon}`}></use>
 	</svg>
 	<span
-		class='text-sm capitalize text-neutral-500 dark:text-neutral-400 group-hover:text-black group-hover:dark:text-white blend'
+		class='cursor-default select-none text-sm capitalize text-neutral-500 dark:text-neutral-400 group-hover:text-black group-hover:dark:text-white blend'
 	>
 		{text}
 	</span>
