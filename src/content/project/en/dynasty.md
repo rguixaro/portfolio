@@ -7,5 +7,4 @@ invert: true
 
 A web application designed to register the family tree of a family. It allows to
 consult and modify the data of any member of the ‘dynasty’, as well as add new
-members. members. Hosted, with the API and the (non-relational) database, on a server
-(VPS).
+members. Hosted, with the API and the (non-relational) database, on a server (VPS).

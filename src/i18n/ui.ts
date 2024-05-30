@@ -24,6 +24,7 @@ export const ui = {
 		'projects.description':
 			'Aquí hi ha una llista de projectes en els que he treballat.',
 		'project.developed-with': 'Desenvolupat amb',
+		'project.links': 'Enllaços',
 	},
 	en: {
 		'nav.home': 'Home',
@@ -39,6 +40,7 @@ export const ui = {
 		'projects.title': 'Projects',
 		'projects.description': 'Here is a list of projects I have worked on.',
 		'project.developed-with': 'Developed with',
+		'project.links': 'Links',
 	},
 	es: {
 		'nav.home': 'Inicio',
@@ -56,6 +58,7 @@ export const ui = {
 		'projects.description':
 			'Aquí hay una lista de proyectos en los que he trabajado.',
 		'project.developed-with': 'Desarrollado con',
+		'project.links': 'Enlaces',
 	},
 	no: {
 		'nav.home': 'Hjem',
@@ -72,6 +75,7 @@ export const ui = {
 		'projects.description':
 			'Her er en liste over prosjekter jeg har jobbet med.',
 		'project.developed-with': 'Utviklet med',
+		'project.links': 'Lenker',
 	},
 } as const
 
