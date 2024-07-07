@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import { Icon } from 'astro-icon/components'
 
 import PageLayout from '@/layouts/PageLayout.astro'
 import StackCard from '@/components/StackCard.astro'
@@ -131,22 +132,6 @@ const stack = [
 				</article>
 			</section>
 
-			<!-- Tech Stack Section -->
-			<section class='animate'>
-				<div class='space-y-4'>
-					<p class='font-semibold text-black dark:text-white'>
-						Website build with
-					</p>
-					<div class='flex flex-wrap items-center gap-2 mt-5'>
-						{
-							stack.map((item) => (
-								<StackCard text={item.text} icon={item.icon} />
-							))
-						}
-					</div>
-				</div>
-			</section>
-
 			<!-- Project Preview Section -->
 			<section class='animate'>
 				<div class='space-y-4'>
@@ -161,7 +146,7 @@ const stack = [
 							<span
 								class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'
 							>
-								All projects
+								{t('home.projects.all')}
 							</span>
 						</a>
 					</div>
@@ -172,29 +157,56 @@ const stack = [
 			<section class='animate'>
 				<div>
 					<p class='font-semibold text-black dark:text-white'>
-						Let's Connect
+						{t('home.connect')}
 					</p>
-					<p>Reach out to me via email or on social media.</p>
+					<p>{t('home.connections')}</p>
 					<div class='grid grid-cols-4 gap-y-2 mt-4 auto-cols-min'>
 						{
-							SOCIALS.map((social) => (
+							SOCIALS.map(({ NAME, TEXT, HREF }) => (
 								<>
 									<div class='col-span-1 flex items-center gap-1'>
 										<span class='whitespace-nowrap truncate'>
-											{social.NAME}
+											{NAME}
 										</span>
 									</div>
 									<div class='col-span-3 truncate'>
 										<a
-											href={social.HREF}
+											href={HREF}
 											target='_blank'
 											class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'>
 											<span class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'>
-												{social.TEXT}
+												{TEXT}
 											</span>
 										</a>
 									</div>
 								</>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Tech Stack Section -->
+			<section class='animate'>
+				<div class='space-y-4'>
+					<p class='font-semibold text-black dark:text-white flex-row'>
+						<p
+							class='flex font-semibold text-black dark:text-white items-center'
+						>
+							<a
+								href={'https://github.com/rguixaro/portfolio'}
+								target='_blank'
+								class='cursor-pointer link link-hover text-sm mr-2'
+							>
+								<Icon name='carbon:link' class='w-4 h-4 ml-2' />
+							</a>
+							{t('home.developed-with')}
+						</p>
+					</p>
+					<div class='flex flex-wrap items-center gap-2 mt-5'>
+						{
+							stack.map((item) => (
+								<StackCard text={item.text} icon={item.icon} />
 							))
 						}
 					</div>

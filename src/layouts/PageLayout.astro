@@ -22,6 +22,6 @@ const lang = getLangFromUrl(Astro.url)
 		<main transition:animate={swapAnimation || 'none'}>
 			<slot />
 		</main>
-		<Footer />
+		<Footer lang={lang} />
 	</body>
 </html>
