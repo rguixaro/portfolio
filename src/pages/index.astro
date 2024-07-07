@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 
 import PageLayout from '@/layouts/PageLayout.astro'
@@ -12,84 +13,71 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const stack = [
-	{
-		text: 'Astro',
-		icon: 'astro',
-		href: 'https://astro.build',
-	},
-	{
-		text: 'Javascript',
-		icon: 'javascript',
-		href: 'https://www.javascript.com',
-	},
-	{
-		text: 'Typescript',
-		icon: 'typescript',
-		href: 'https://www.typescriptlang.org',
-	},
-	{
-		text: 'Tailwind',
-		icon: 'tailwind',
-		href: 'https://tailwindcss.com',
-	},
+	{ text: 'Astro', icon: 'astro', href: 'https://astro.build', },
+	{ text: 'Javascript', icon: 'javascript', href: 'https://www.javascript.com', },
+	{ text: 'Typescript', icon: 'typescript', href: 'https://www.typescriptlang.org', },
+	{ text: 'Tailwind', icon: 'tailwind', href: 'https://tailwindcss.com', },
 ]
+
+const entry = await getEntry('home', `${lang}/intro`)
+const { Content } = await entry.render()
 ---
 
 <PageLayout
-	title={t('home.title')}
+	title={t('home.main')}
 	description={t('home.description')}
 	swapAnimation={slideUp}
 >
 	<!-- Light Mode: Particles -->
-	<div class='absolute inset-0 block dark:hidden'>
-		<div id='particles1' class='fixed inset-0'></div>
-		<div id='particles2' class='fixed inset-0'></div>
-		<div id='particles3' class='fixed inset-0'></div>
+	<div class="absolute inset-0 block dark:hidden">
+		<div id="particles1" class="fixed inset-0"></div>
+		<div id="particles2" class="fixed inset-0"></div>
+		<div id="particles3" class="fixed inset-0"></div>
 	</div>
 
 	<!-- Dark Theme: Stars -->
-	<div class='absolute inset-0 bg-black hidden dark:block'>
-		<div id='stars1' class='fixed inset-0'></div>
-		<div id='stars2' class='fixed inset-0'></div>
-		<div id='stars3' class='fixed inset-0'></div>
+	<div class="absolute inset-0 bg-black hidden dark:block">
+		<div id="stars1" class="fixed inset-0"></div>
+		<div id="stars2" class="fixed inset-0"></div>
+		<div id="stars3" class="fixed inset-0"></div>
 	</div>
 
-	<script is:inline src='/js/bg.js'></script>
+	<script is:inline src="/js/bg.js"></script>
 
 	<!-- Sphere -->
-	<section class='relative h-[50vh] w-full'>
+	<section class="relative h-[50vh] w-full">
 		<div
-			id='sphere-wrapper'
-			class='animate absolute inset-0 top-2/4 overflow-hidden'
+			id="sphere-wrapper"
+			class="animate absolute inset-0 top-2/4 overflow-hidden"
 		>
 			<div
-				id='sphere-inner'
-				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%'
+				id="sphere-inner"
+				class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%"
 			>
 				<div
-					id='sphere-content'
-					class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'
+					id="sphere-content"
+					class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
 				>
 					<div
-						id='sphere-blur'
-						class='w-full h-20 rounded-full bg-neutral-900/15 dark:bg-white/5 blur-2xl'
+						id="sphere-blur"
+						class="w-full h-20 rounded-full bg-neutral-900/15 dark:bg-white/5 blur-2xl"
 					>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div
-			class='animate absolute h-[75vh] w-full flex items-center justify-center'
+			class="animate absolute h-[75vh] w-full flex items-center justify-center"
 		>
-			<div class='relative w-full h-full flex items-center justify-center'>
-				<div class='p-5 text-center'>
+			<div class="relative w-full h-full flex items-center justify-center">
+				<div class="p-5 text-center">
 					<p
-						class='animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75'
+						class="animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75"
 					>
 						{t('home.title')}
 					</p>
 					<p
-						class='animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white'
+						class="animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white"
 					>
 						{t('home.role')}
 					</p>
@@ -97,120 +85,94 @@ const stack = [
 			</div>
 		</div>
 	</section>
-	<div class='relative bg-white dark:bg-black'>
-		<div class='mx-auto max-w-screen-sm p-5 space-y-24 pb-16'>
+	<div class="relative bg-white dark:bg-black">
+		<div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
 			<!-- About Section -->
-			<section class='animate'>
-				<article>
-					<p>
-						I am a <b><i>software developer</i></b>, <b
-							><i>ui/ux designer</i></b
-						>, <b><i>product planner</i></b>, <b><i>mentor</i></b>, <b
-							><i>student</i></b
-						>, <b><i>minimalist</i></b>, <b><i>eternal optimist</i></b>, <b
-							><i>crypto enthusiast</i></b
-						> and <b><i>sarcasm connoisseur</i></b>.
-					</p>
-					<p>
-						I love to both build and break things. I am motivated by
-						challenging projects with self-guided research and dynamic
-						problem solving. My true passion is crafting creative front
-						end designs with unique takes on color, typography and
-						motion.
-					</p>
-					<p>During my career</p>
-					<p>
-						I have built products ranging from marketing and ecommerce
-						websites to complex enterprise apps with focus on delivering
-						fast, elegant code along with delightful user interfaces.
-					</p>
-					<p>Now</p>
-					<p>
-						I currently work as a software developer at StreamlineFS,
-						where I do product planning, design and development.
-					</p>
+			<section class="animate">
+				<article class="text-center">
+					<Content />
 				</article>
-			</section>
 
-			<!-- Project Preview Section -->
-			<section class='animate'>
-				<div class='space-y-4'>
-					<div class='flex justify-between'>
-						<a
-							href={getRelativeLocaleUrl(
-								'en',
-								t('nav.projects').toLowerCase()
-							)}
-							class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'
-						>
-							<span
-								class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'
-							>
-								{t('home.projects.all')}
-							</span>
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Contact Section -->
-			<section class='animate'>
-				<div>
-					<p class='font-semibold text-black dark:text-white'>
-						{t('home.connect')}
-					</p>
-					<p>{t('home.connections')}</p>
-					<div class='grid grid-cols-4 gap-y-2 mt-4 auto-cols-min'>
-						{
-							SOCIALS.map(({ NAME, TEXT, HREF }) => (
-								<>
-									<div class='col-span-1 flex items-center gap-1'>
-										<span class='whitespace-nowrap truncate'>
-											{NAME}
-										</span>
-									</div>
-									<div class='col-span-3 truncate'>
-										<a
-											href={HREF}
-											target='_blank'
-											class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'>
-											<span class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'>
-												{TEXT}
-											</span>
-										</a>
-									</div>
-								</>
-							))
-						}
-					</div>
-				</div>
-			</section>
-
-			<!-- Tech Stack Section -->
-			<section class='animate'>
-				<div class='space-y-4'>
-					<p class='font-semibold text-black dark:text-white flex-row'>
-						<p
-							class='flex font-semibold text-black dark:text-white items-center'
-						>
+				<!-- Project Preview Section -->
+				<section class="animate">
+					<div class="space-y-4">
+						<div class="flex justify-between my-5">
 							<a
-								href={'https://github.com/rguixaro/portfolio'}
-								target='_blank'
-								class='cursor-pointer link link-hover text-sm mr-2'
+								href={getRelativeLocaleUrl(
+									'en',
+									t('nav.projects').toLowerCase()
+								)}
+								class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
 							>
-								<Icon name='carbon:link' class='w-4 h-4 ml-2' />
+								<span
+									class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+								>
+									{t('home.projects.all')}
+								</span>
 							</a>
-							{t('home.developed-with')}
-						</p>
-					</p>
-					<div class='flex flex-wrap items-center gap-2 mt-5'>
-						{
-							stack.map((item) => (
-								<StackCard text={item.text} icon={item.icon} />
-							))
-						}
+						</div>
 					</div>
-				</div>
+				</section>
+
+				<!-- Contact Section -->
+				<section class="animate">
+					<div>
+						<p class="font-semibold text-black dark:text-white">
+							{t('home.connect')}
+						</p>
+						<p>{t('home.connections')}</p>
+						<div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
+							{
+								SOCIALS.map(({ NAME, TEXT, HREF }) => (
+									<>
+										<div class="col-span-1 flex items-center gap-1">
+											<span class="whitespace-nowrap truncate">
+												{NAME}
+											</span>
+										</div>
+										<div class="col-span-3 truncate">
+											<a
+												href={HREF}
+												target="_blank"
+												class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+												<span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+													{TEXT}
+												</span>
+											</a>
+										</div>
+									</>
+								))
+							}
+						</div>
+					</div>
+				</section>
+
+				<!-- Tech Stack Section -->
+				<section class="animate">
+					<div class="space-y-4">
+						<p class="font-semibold text-black dark:text-white flex-row">
+							<p
+								class="flex font-semibold text-black dark:text-white items-center"
+							>
+								<a
+									href={'https://github.com/rguixaro/portfolio'}
+									target="_blank"
+									class="cursor-pointer link link-hover text-sm mr-2"
+								>
+									<Icon name="carbon:link" class="w-4 h-4 ml-2" />
+								</a>
+								{t('home.developed-with')}
+							</p>
+						</p>
+						<div class="flex flex-wrap items-center gap-2 mt-5">
+							{
+								stack.map((item) => (
+									<StackCard text={item.text} icon={item.icon} />
+								))
+							}
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 
 import PageLayout from '@/layouts/PageLayout.astro'
@@ -22,31 +23,18 @@ export function getStaticPaths() {
 const t = useTranslations(lang)
 
 const stack = [
-	{
-		text: 'Astro',
-		icon: 'astro',
-		href: 'https://astro.build',
-	},
-	{
-		text: 'Javascript',
-		icon: 'javascript',
-		href: 'https://www.javascript.com',
-	},
-	{
-		text: 'Typescript',
-		icon: 'typescript',
-		href: 'https://www.typescriptlang.org',
-	},
-	{
-		text: 'Tailwind',
-		icon: 'tailwind',
-		href: 'https://tailwindcss.com',
-	},
+	{ text: 'Astro', icon: 'astro', href: 'https://astro.build', },
+	{ text: 'Javascript', icon: 'javascript', href: 'https://www.javascript.com', },
+	{ text: 'Typescript', icon: 'typescript', href: 'https://www.typescriptlang.org', },
+	{ text: 'Tailwind', icon: 'tailwind', href: 'https://tailwindcss.com', },
 ]
+
+const entry = await getEntry('home', `${lang}/intro`)
+ const { Content } = await entry.render()
 ---
 
 <PageLayout
-	title={t('home.title')}
+	title={t('home.main')}
 	description={t('home.description')}
 	swapAnimation={slideUp}
 >
@@ -111,41 +99,15 @@ const stack = [
 		<div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
 			<!-- About Section -->
 			<section class="animate">
-				<article>
-					<p>
-						I am a <b><i>software developer</i></b>, <b
-							><i>ui/ux designer</i></b
-						>, <b><i>product planner</i></b>, <b><i>mentor</i></b>, <b
-							><i>student</i></b
-						>, <b><i>minimalist</i></b>, <b><i>eternal optimist</i></b>, <b
-							><i>crypto enthusiast</i></b
-						> and <b><i>sarcasm connoisseur</i></b>.
-					</p>
-					<p>
-						I love to both build and break things. I am motivated by
-						challenging projects with self-guided research and dynamic
-						problem solving. My true passion is crafting creative front
-						end designs with unique takes on color, typography and
-						motion.
-					</p>
-					<p>During my career</p>
-					<p>
-						I have built products ranging from marketing and ecommerce
-						websites to complex enterprise apps with focus on delivering
-						fast, elegant code along with delightful user interfaces.
-					</p>
-					<p>Now</p>
-					<p>
-						I currently work as a software developer at StreamlineFS,
-						where I do product planning, design and development.
-					</p>
+				<article class="text-center">
+					<Content />
 				</article>
 			</section>
 
 			<!-- Project Preview Section -->
 			<section class="animate">
 				<div class="space-y-4">
-					<div class="flex justify-between">
+						<div class="flex justify-between my-5">
 						<a
 							href={getRelativeLocaleUrl(
 								'en',

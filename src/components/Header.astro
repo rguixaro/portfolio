@@ -19,18 +19,18 @@ const translatePath = useTranslatedPath(lang)
 const t = useTranslations(lang)
 ---
 
-<astro-lang id='lang' lang={lang}></astro-lang>
+<astro-lang id="lang" lang={lang}></astro-lang>
 
 <header
-	id='header'
-	class='fixed top-0 w-full h-16 z-50'
+	id="header"
+	class="fixed top-0 w-full h-16 z-50"
 	transition:animate={fade({ duration: '.3s' })}
 >
-	<Container size='md'>
-		<div class='relative h-full w-auto'>
-			<div class='absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+	<Container size="md">
+		<div class="relative h-full w-full">
+			<div class="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2">
 				<nav
-					class='hidden md:flex items-center justify-center text-sm gap-5'
+					class="hidden md:flex items-center justify-center text-sm gap-5"
 				>
 					{
 						LINKS.map(({ ID, HREF }) => (
@@ -51,12 +51,12 @@ const t = useTranslations(lang)
 				</nav>
 			</div>
 			<div
-				class='buttons absolute left-0 sm:right-0 sm:left-3/4 top-1/2 -translate-y-1/2 flex gap-1'
+				class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1"
 			>
 				<div
-					id='header-lang-button'
+					id="header-lang-button"
 					aria-label={'Change language'}
-					class='hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all delay-200 hover:scale-105 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'
+					class="hidden md:flex size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current border border-black/10 dark:border-white/25 duration-300 ease-in-out transition-all delay-200 hover:scale-105 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm"
 				>
 					{
 						languages.map(({ CODE }) => (
@@ -68,8 +68,8 @@ const t = useTranslations(lang)
 								}
 								id={`header-lang-button-${CODE}`}
 								aria-label={'Change language'}
-								class='hidden opacity-0 px-2 items-center justify-center bg-transparent transition-opacity duration-200 delay-100'>
-								<span class='text-md font-medium hover:font-bold light:text-black'>
+								class="hidden opacity-0 px-2 items-center justify-center bg-transparent transition-opacity duration-200 delay-100">
+								<span class="text-md font-medium hover:font-bold light:text-black">
 									{CODE}
 								</span>
 							</a>
@@ -77,27 +77,27 @@ const t = useTranslations(lang)
 					}
 				</div>
 				<button
-					id='header-theme-button'
+					id="header-theme-button"
 					aria-label={'Toggle light and dark theme'}
 					class:list={'hidden md:flex size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/15 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 duration-300 ease-in-out hover:scale-105 transition delay-150 hover:shadow-primary hover:dark:shadow-white hover:shadow-sm'}
 				>
-					<svg class='size-full block dark:hidden'>
-						<use href='/ui.svg#sun'></use>
+					<svg class="size-full block dark:hidden">
+						<use href="/ui.svg#sun"></use>
 					</svg>
-					<svg class='size-full hidden dark:block'>
-						<use href='/ui.svg#moon'></use>
+					<svg class="size-full hidden dark:block">
+						<use href="/ui.svg#moon"></use>
 					</svg>
 				</button>
 				<button
-					id='header-drawer-button'
+					id="header-drawer-button"
 					aria-label={'Toggle drawer open and closed'}
 					class:list={'flex md:hidden size-9 rounded-full p-2 mx-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out'}
 				>
-					<svg id='drawer-open' class='size-full'>
-						<use href='/ui.svg#menu'></use>
+					<svg id="drawer-open" class="size-full">
+						<use href="/ui.svg#menu"></use>
 					</svg>
-					<svg id='drawer-close' class='size-full'>
-						<use href='/ui.svg#x'></use>
+					<svg id="drawer-close" class="size-full">
+						<use href="/ui.svg#x"></use>
 					</svg>
 				</button>
 			</div>
@@ -121,6 +121,15 @@ const t = useTranslations(lang)
 	#header-drawer-button.open > #drawer-close {
 		@apply block;
 	}
+    @media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px) {
+    .buttons {
+        left:0;
+    }
+    /* Styles */
+}
+
 </style>
 
 <script is:inline>

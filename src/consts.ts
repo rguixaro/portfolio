@@ -2,10 +2,8 @@ import type { Links, Site, Socials, TechStack } from '@/types'
 
 // Global
 export const SITE: Site = {
-	TITLE: 'Astro Sphere',
-	DESCRIPTION:
-		'Welcome to Astro Sphere, a portfolio and blog for designers and developers.',
-	AUTHOR: 'Ricard Guixaró',
+	TITLE: 'Ricard Guixaró',
+	DESCRIPTION: 'Welcome to my portfolio.',
 }
 
 // Links

@@ -3,9 +3,7 @@ export interface Page {
 	DESCRIPTION: string
 }
 
-export interface Site extends Page {
-	AUTHOR: string
-}
+export interface Site extends Page {}
 
 export type Links = {
 	ID: string
