@@ -2,16 +2,25 @@
 import { getCollection } from 'astro:content'
 
 import PageLayout from '@/layouts/PageLayout.astro'
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import Card from '@/components/projects/Card.astro'
 import { useTranslations } from '@/i18n/utils'
+import { slideInRight } from '@/lib/animations'
 
 const { lang } = Astro.props
 
 const t = useTranslations(lang as 'ca' | 'en' | 'es' | 'no')
-const projects = await getCollection('project')
+
+const collection = (await getCollection('project')).filter(
+	(item) => item.id.split('/')[0] === lang
+)
 ---
 
-<PageLayout title={t('projects.title')} description={t('projects.description')}>
+<PageLayout
+	title={t('projects.title')}
+	description={t('projects.description')}
+	swapAnimation={slideInRight}
+>
 	<div class='absolute inset-0 block dark:hidden'>
 		<div id='particles1' class='fixed inset-0'></div>
 		<div id='particles2' class='fixed inset-0'></div>
@@ -28,11 +37,11 @@ const projects = await getCollection('project')
 	<script is:inline src='/js/bg.js'></script>
 
 	<!-- Sphere -->
-	<section class='relative h-[16vh] w-full'>
+	<section class='relative h-[20vh] w-full'>
 		<div id='sphere-wrapper' class='animateWithRotate absolute inset-0 top-2/4'>
 			<div
 				id='sphere-inner'
-				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-white/25 from-0% to-5%'
+				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%'
 			>
 				<div
 					id='sphere-content'
@@ -47,7 +56,7 @@ const projects = await getCollection('project')
 			</div>
 		</div>
 		<div
-			class='animateWithRotate absolute h-[16vh] mt-5 w-full flex items-center justify-center'
+			class='animateWithRotate absolute h-[16vh] mt-9 w-full flex items-center justify-center'
 		>
 			<div
 				class='relative flex-col w-full h-[16vh] flex items-center justify-center'
@@ -62,22 +71,9 @@ const projects = await getCollection('project')
 			</div>
 		</div>
 	</section>
-	<section class='relative w-[50vw] mt-16 self-center'>
-		{
-			projects.map(({ data }) => {
-				return (
-					<Card
-						title={data.title}
-						timeframe={data.date}
-						description={data.description}
-						stack={data.stack}
-						url={data.url}
-						url_name={data.url_name}
-						location={data.location}
-						t={t}
-					/>
-				)
-			})
-		}
-	</section>
+	<ContentLayout>
+		<section class='mt-16 animate'>
+			{collection.map((project) => <Card entry={project} t={t} />)}
+		</section>
+	</ContentLayout>
 </PageLayout>

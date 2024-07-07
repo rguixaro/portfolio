@@ -1,14 +1,11 @@
 ---
-company: 'Google'
-role: 'Staff Software Engineer'
-dateStart: '2022/11/27'
-tags: ['accounting', 'finance', 'customer support', 'management']
+company: 'Joyería Tous'
+role: 'Prácticas en informática'
+dateStart: '2019/06/04'
+dateEnd: '2019/08/27'
+tags: ['IT', 'gestión de servidores', 'hardware', 'software']
 ---
 
-Sit amet consectetur adipisicing elit. Iure illo neque tempora, voluptatem est
-quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae
-maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor.
-
--   Aadipisicing elit. Iure illo neque tempora, voluptatem est.
--   dolorem dignissimos nulla ratione.
--   Quibusdam, debitis voluptatum, lorem ipsum dolor.
+Formé parte del Departamento de Informática para las prácticas de dos meses.
+Responsable de actualizar el hardware y el software de varios sistemas y de ayudar a
+resolver problemas técnicos en caso de ocurrir.

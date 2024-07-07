@@ -3,10 +3,17 @@ import { getCollection } from 'astro:content'
 
 import PageLayout from '@/layouts/PageLayout.astro'
 import { useTranslations } from '@/i18n/utils'
+import { slideInRight } from '@/lib/animations'
 
 const t = useTranslations('en')
-const collection = await getCollection('job')
-collection.sort((a, b) => new Date(b.data.dateStart).getTime()-new Date(a.data.dateStart).getTime())
+
+const collection = (await getCollection('job'))
+	.filter((item) => item.id.split('/')[0] === 'en')
+	.sort(
+		(a, b) =>
+			new Date(b.data.dateStart).getTime() -
+			new Date(a.data.dateStart).getTime()
+	)
 
 const jobs = await Promise.all(
 	collection.map(async (item) => {
@@ -17,13 +24,17 @@ const jobs = await Promise.all(
 
 function formatWorkDate(input: Date | string) {
 	if (typeof input === 'string') return input
-	const month = input.toLocaleDateString('en', {month: 'short',})
+	const month = input.toLocaleDateString('en', { month: 'short' })
 	const year = new Date(input).getFullYear()
 	return `${month} ${year}`
 }
 ---
 
-<PageLayout title={t('experience.title')} description={t('experience.description')}>
+<PageLayout
+	title={t('experience.title')}
+	description={t('experience.description')}
+	swapAnimation={slideInRight}
+>
 	<div class='absolute inset-0 block dark:hidden'>
 		<div id='particles1' class='fixed inset-0'></div>
 		<div id='particles2' class='fixed inset-0'></div>
@@ -40,11 +51,11 @@ function formatWorkDate(input: Date | string) {
 	<script is:inline src='/js/bg.js'></script>
 
 	<!-- Sphere -->
-	<section class='relative h-[16vh] w-full'>
+	<section class='relative h-[20vh] w-full'>
 		<div id='sphere-wrapper' class='animateWithRotate absolute inset-0 top-2/4'>
 			<div
 				id='sphere-inner'
-				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-white/25 from-0% to-5%'
+				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%'
 			>
 				<div
 					id='sphere-content'
@@ -59,7 +70,7 @@ function formatWorkDate(input: Date | string) {
 			</div>
 		</div>
 		<div
-			class='animateWithRotate absolute h-[16vh] mt-5 w-full flex items-center justify-center'
+			class='animateWithRotate absolute h-[16vh] mt-9 w-full flex items-center justify-center'
 		>
 			<div
 				class='relative flex-col w-full h-[16vh] flex items-center justify-center'
@@ -75,11 +86,14 @@ function formatWorkDate(input: Date | string) {
 		</div>
 	</section>
 	<section class='relative w-[50vw] mt-16 self-center'>
-		{jobs.map((entry) => (
+		{
+			jobs.map((entry) => (
 				<li class='animate bg-white/75 dark:bg-black/75 border-b border-primary/75 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none'>
 					<div class='text-sm uppercase mb-4'>
 						{formatWorkDate(entry.data.dateStart)} -{' '}
-						{entry.data.dateEnd ? formatWorkDate(entry.data.dateEnd) : t('experience.present')}
+						{entry.data.dateEnd
+							? formatWorkDate(entry.data.dateEnd)
+							: t('experience.present')}
 					</div>
 					<div class='text-black dark:text-white font-semibold'>
 						{entry.data.company}
@@ -88,14 +102,19 @@ function formatWorkDate(input: Date | string) {
 					<article class='prose dark:prose-invert'>
 						<entry.Content />
 					</article>
-                    {Array.isArray(entry.data.tags) && (
-                        <div class='flex flex-wrap content-around gap-2'>
-                            {entry.data.tags.map((item) => (
-                            <span class="text-center inline-block align-middle w-max h-max text-sm shadow-md mb-1 border border-primary/15 dark:border-white/20 rounded p-1.5" :key={item}>{item}</span>
-                            ))}
-                        </div>
-                    )}
+					{Array.isArray(entry.data.tags) && (
+						<div class='flex flex-wrap content-around gap-2'>
+							{entry.data.tags.map((item) => (
+								<div class='cursor-default w-fit px-3 py-2 group rounded border flex gap-2 items-center border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-800 blend'>
+									<span class='text-sm capitalize text-neutral-500 dark:text-neutral-400 group-hover:text-black group-hover:dark:text-white blend'>
+										{item}
+									</span>
+								</div>
+							))}
+						</div>
+					)}
 				</li>
-			))}
+			))
+		}
 	</section>
 </PageLayout>

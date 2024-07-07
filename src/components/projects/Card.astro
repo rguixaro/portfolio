@@ -1,90 +1,113 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
-import StackCard from '@/components/StackCard.astro'
-import FormattedDate from './FormattedDate.astro'
-import type { TechStack } from '@/types'
-import { TECH_STACK } from '@/consts'
 
-const { timeframe, title, description, url, stack, url_name, location, t } =
-	Astro.props
-const techStack: TechStack[] = stack.map((item: string) =>
-	TECH_STACK.find(
-		(stack: TechStack) => stack.NAME.toLowerCase() === item.toLowerCase()
-	)
-)
+import StackCard from '@/components/StackCard.astro'
+import Links from '@/components/projects/Links.astro'
+import type { TechStack } from '@/types'
+import { getStack } from '@/lib/utils'
+
+interface Props {
+	entry: CollectionEntry<'project'>
+	t: (key: string) => string
+}
+
+const { entry, t } = Astro.props
+const {
+	name,
+	stack,
+	url,
+	github,
+	googlePlay,
+	appStore,
+	logo,
+	invert = false,
+} = entry.data
+const { Content } = await entry.render()
+
+const techStack = getStack(stack)
 ---
 
 <div
-	class='border border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md'
+	class='border z-50 bg-white/75 dark:bg-black/75 border-primary/15 dark:border-white/20 w-full hover:shadow-lg transition-all duration-200 my-4 rounded-xl p-5 shadow-md'
 >
-	<div class='card-body'>
-		<div class='grid grid-cols-3 gap-4 mb-2'>
-			<div class='self-start col-span-2 justify-self-start text-left'>
-				<h1
-					class='uppercase card-title font-extrabold tracking-tighter md:text-2xl'
-				>
-					{title}
-				</h1>
-				{
-					location && (
-						<div class='flex items-center mt-2'>
-							<p class='text-sm  font-light text-secondary'>
-								{location}
-							</p>
-						</div>
-					)
-				}
+	<div class='card-body grid grid-cols-4'>
+		<div class='grid col-span-4'>
+			<div class='grid grid-cols-3 gap-4 mb-2 justify-between items-center'>
+				<div class='grid col-span-3'>
+					<div class='flex flex-row items-center'>
+						{
+							!!logo && (
+								<svg
+									height='5rem'
+									width='5rem'
+									class={`mr-5 ${invert && 'dark:invert'}`}>
+									<use href={logo} />
+								</svg>
+							)
+						}
+						<h1
+							class='uppercase card-title font-extrabold tracking-tighter md:text-2xl'
+						>
+							{name}
+						</h1>
+					</div>
+				</div>
+				<div class='col-start-4 col-span-1 hidden sm:block'>
+					<Links entry={entry} />
+				</div>
 			</div>
-
-			<div class='self-center justify-self-end'>
-				{
-					timeframe && (
-						<div class='w-max h-max text-center text-sm inline-block align-middle shadow-md border border-primary/15 dark:border-white/20 rounded p-1.5'>
-							{typeof timeframe === 'string' ? (
-								timeframe
-							) : (
-								<FormattedDate date={timeframe} />
-							)}
-						</div>
-					)
-				}
-			</div>
-		</div>
-
-		<div class='grid grid-cols-3 gap-4 place-items-center'>
-			<div class='self-start col-span-2 justify-self-start text-left'>
-				<article class='prose'>
-					<Fragment set:html={description} />
-				</article>
-				{
-					Array.isArray(stack) && (
-						<div class='space-y-4'>
-							<p class='font-semibold text-black dark:text-white'>
-								{t('project.developed-with')}
-							</p>
-							<div class='flex flex-wrap content-around gap-2 my-4'>
-								{techStack.map((item: TechStack) => (
-									<StackCard
-										text={item.NAME}
-										icon={item.ICON}
-										href={item.HREF}
-									/>
-								))}
+			<div class='grid grid-cols-1 col-span-1 gap-5 place-items-center'>
+				<div class='self-start grid-cols-1 justify-self-start text-left'>
+					<article>
+						<Content />
+					</article>
+					{
+						Array.isArray(stack) && (
+							<div class='space-y-4'>
+								<p class='font-semibold text-black dark:text-white'>
+									{t('project.developed-with')}
+								</p>
+								<div class='flex flex-row justify-between'>
+									<div class='flex flex-wrap content-around gap-2 my-4'>
+										{techStack.map((item: TechStack) => (
+											<StackCard
+												text={item.NAME}
+												icon={item.ICON}
+											/>
+										))}
+									</div>
+									<p class='flex font-semibold text-black dark:text-white'>
+										{!!url && (
+											<a
+												href={url}
+												target='_blank'
+												class='cursor-pointer link link-hover text-sm text-right flex justify-center items-center my-5'>
+												{'Visit '}
+												{url !== '#' && (
+													<Icon
+														name='carbon:link'
+														class='w-4 h-4 ml-2'
+													/>
+												)}
+											</a>
+										)}
+									</p>
+								</div>
 							</div>
-						</div>
-					)
-				}
-			</div>
-
-			<div class='self-center justify-self-end'>
-				<a
-					href={url}
-					target='_blank'
-					class='link link-hover text-sm text-right flex justify-center items-center'
-				>
-					{url_name}
-					{url !== '#' && <Icon name='carbon:link' class='w-4 h-4 ml-2' />}
-				</a>
+						)
+					}
+					{
+						github || googlePlay || appStore ? (
+							<div class='space-y-4 sm:hidden'>
+								<p class='font-semibold text-black dark:text-white'>
+									{t('project.links')}
+								</p>
+								<Links entry={entry} />
+							</div>
+						) : null
+					}
+				</div>
 			</div>
 		</div>
 	</div>

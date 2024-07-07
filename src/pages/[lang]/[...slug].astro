@@ -1,6 +1,6 @@
 ---
 import ProjectsPage from '@/components/projects/Page.astro'
-import ExperiencePage from '@/components/jobs/Page.astro'
+import ExperiencePage from '@/components/experience/Page.astro'
 
 import { getRouteFromUrl, useTranslatedPath } from '@/i18n/utils'
 import { languages } from '@/i18n/ui'
@@ -10,15 +10,15 @@ const route = getRouteFromUrl(Astro.url)
 const { lang } = Astro.params
 
 export function getStaticPaths() {
-	let experience = languages.map(({ CODE }) => {
-		const translatePath = useTranslatedPath()
+	const translatePath = useTranslatedPath()
+
+	const experience = languages.map(({ CODE }) => {
 		const slug = translatePath('experience', CODE)
 			.replace(/^\//, '')
 			.replace(CODE, '')
 		return { params: { lang: CODE, slug } }
 	})
-	let projects = languages.map(({ CODE }) => {
-		const translatePath = useTranslatedPath()
+	const projects = languages.map(({ CODE }) => {
 		const slug = translatePath('projects', CODE)
 			.replace(/^\//, '')
 			.replace(CODE, '')

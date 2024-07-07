@@ -38,6 +38,7 @@ html {
 	color-scheme: light;
 	background-color: white;
 	font-family: 'Montserrat', sans-serif;
+	overflow-x: hidden;
 }
 
 html.dark {
@@ -61,7 +62,7 @@ main {
 }
 
 header {
-	@apply border-b;
+	@apply border-b-2;
 	@apply transition-all duration-300 ease-in-out;
 }
 
@@ -71,7 +72,7 @@ header:not(.scrolled) {
 
 header.scrolled {
 	@apply bg-white/75 dark:bg-black/50;
-	@apply border-black/10 dark:border-white/25;
+	@apply border-primary/25;
 	@apply backdrop-blur-sm saturate-200;
 }
 
@@ -94,6 +95,62 @@ article {
 	}
 	to {
 		transform: translateY(-2000px);
+	}
+}
+
+/** Styles for swap transition animation */
+@keyframes slideIn {
+	from {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.2;
+	}
+	to {
+		transform: translateX(500px);
+		opacity: 0;
+	}
+}
+@keyframes slideOut {
+	from {
+		transform: translateX(500px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.2;
+	}
+	to {
+		transform: translateY(-500px);
+		opacity: 0;
+	}
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-500px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	to {
+		transform: translateY(0px);
+		opacity: 1;
 	}
 }
 

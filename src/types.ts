@@ -3,9 +3,7 @@ export interface Page {
 	DESCRIPTION: string
 }
 
-export interface Site extends Page {
-	AUTHOR: string
-}
+export interface Site extends Page {}
 
 export type Links = {
 	ID: string
@@ -22,5 +20,15 @@ export type Socials = {
 export interface TechStack {
 	NAME: string
 	ICON: string
-	HREF: string
+}
+
+export interface Project {
+	name: string
+	stack: string[]
+	url?: string
+	github?: string
+	googlePlay?: string
+	appStore?: string
+	logo?: string
+	invert?: boolean
 }

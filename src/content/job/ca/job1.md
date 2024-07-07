@@ -1,14 +1,19 @@
 ---
-company: 'Apple'
-role: 'Software Engineer'
-dateStart: '2020/01/05'
-dateEnd: '2022/11/27'
-tags: ['accounting', 'finance', 'customer support', 'management']
+company: 'Owius Technologies'
+role: 'Desenvolupador Full-Stack'
+dateStart: '2022/06/16'
+dateEnd: '2024/08/12'
+tags:
+    [
+        'Desenvolupament Web',
+        'Desenvolupament Mòbil',
+        'Gestió de servidors',
+        'Gestió de bases de dades',
+    ]
 ---
 
-Voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione
-distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum
-dolor. Sit amet consectetur adipisicing elit. Iure illo neque tempora.
-
--   Sit amet consectetur adipisicing elit. Iure illo neque tempora.
--   Quibusdam, debitis voluptatum, lorem ipsum
+Vaig treballar en diversos projectes de software simultàniament, i estava involucrat
+en tot el procés de desenvolupament, des del disseny a la implementació i lliurament
+final. Era el responsable de desenvolupar aplicacions mòbils tant per a Android com
+per a iOS. També vaig participar en la creació de diverses webs i el seu corresponent
+desplegament.
