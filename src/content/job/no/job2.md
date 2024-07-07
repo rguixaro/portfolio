@@ -1,14 +1,11 @@
 ---
-company: 'Google'
-role: 'Staff Software Engineer'
-dateStart: '2022/11/27'
-tags: ['accounting', 'finance', 'customer support', 'management']
+company: 'Tous Jewelry'
+role: 'IT-praktikant'
+dateStart: '2019/06/04'
+dateEnd: '2019/08/27'
+tags: ['IT', 'serveradministrasjon', 'maskinvare', 'programvare']
 ---
 
-Sit amet consectetur adipisicing elit. Iure illo neque tempora, voluptatem est
-quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae
-maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor.
-
--   Aadipisicing elit. Iure illo neque tempora, voluptatem est.
--   dolorem dignissimos nulla ratione.
--   Quibusdam, debitis voluptatum, lorem ipsum dolor.
+Jeg var en del av IT-avdelingen i løpet av det to måneder lange internshipet. Hjalp
+til med å oppdatere maskin- og programvare i flere systemer og løste tekniske
+problemer når det var behov for det.
