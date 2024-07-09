@@ -223,18 +223,7 @@ const { Content } = await entry.render()
 <script is:inline>
 	function viewCV(event) {
 		event.preventDefault()
-		fetch('https://portfolio.rguixaro.dev/public/resume.pdf')
-			.then(async (res) => {
-				const blob = await res.blob()
-				const url = window.URL.createObjectURL(blob)
-				window.open(url, '_blank')
-			})
-			.catch(() =>
-				window.open(
-					'https://portfolio.rguixaro.dev/public/resume.pdf',
-					'_blank'
-				)
-			)
+		window.open('https://portfolio.rguixaro.dev/resume.pdf', '_blank')
 	}
 
 	function inintializeViewCV() {
