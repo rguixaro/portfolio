@@ -53,5 +53,15 @@
     <symbol id="nginx" fill="none" viewBox="0 0 512 512">
         <svg xmlns="http://www.w3.org/2000/svg" width="496" height="496" viewBox="0 0 32 32"><path d="M16 2a10 10 0 0 1 1 1l11 6a1 1 0 0 1 0 1v13l-12 7-12-7V9l11-6 1-1" style="fill:#019639"/><path d="M9 11v10a2 2 0 0 0 0 1 2 2 0 0 0 2 1 2 2 0 0 0 1-2v-7l7 8a3 3 0 0 0 3 1 2 2 0 0 0 1-1V10a2 2 0 0 0-3 0v8l-7-8a3 3 0 0 0-3-1 2 2 0 0 0-1 2Z" style="fill:#fff"/></svg>
     </symbol>
+
+    <!-- vue icon -->
+    <symbol id="vue" fill="none" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.8 226.7"><path fill="#41b883" d="m161 0-30 52-30-52H0l131 227L262 0z"/><path fill="#34495e" d="m161 0-30 52-30-52H52l79 136L209 0z"/></svg>
+    </symbol>
+
+    <!-- ionic icon -->
+    <symbol id="ionic" fill="none" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#468aff" d="M256 154a102 102 0 1 0 102 102 102 102 0 0 0-102-102Z"/><circle fill="#468aff" cx="402.6" cy="116.5" r="46.5"/><path fill="#468aff" d="m460 163-2-4-3 3a70 70 0 0 1-28 20l-3 1 1 3a181 181 0 0 1 14 70A183 183 0 1 1 256 73a181 181 0 0 1 78 18l3 1 2-3a70 70 0 0 1 20-27l4-3-4-2a222 222 0 0 0-103-25 224 224 0 1 0 224 224 222 222 0 0 0-20-93Z"/></svg>
+    </symbol>
   </defs>
 </svg>

@@ -48,4 +48,6 @@ export const TECH_STACK: TechStack[] = [
 	{ NAME: 'Firebase', ICON: 'firebase' },
 	{ NAME: 'Java', ICON: 'java' },
 	{ NAME: 'Nginx', ICON: 'nginx' },
+	{ NAME: 'Vue', ICON: 'vue' },
+	{ NAME: 'Ionic', ICON: 'ionic' },
 ]
