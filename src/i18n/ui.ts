@@ -13,7 +13,7 @@ export const ui = {
 		'nav.home': 'Inici',
 		'nav.experience': 'Experiència',
 		'nav.projects': 'Projectes',
-		'home.main': 'Portafolis',
+		'home.main': 'Dossier digital',
 		'home.title': 'Ricard Guixaró',
 		'home.description': 'Pàgina principal',
 		'home.role': 'Desenvolupador de Software',
