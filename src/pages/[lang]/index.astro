@@ -230,10 +230,23 @@ const { Content } = await entry.render()
 	</div>
 </PageLayout>
 
-<script is:inline>
+<astro-lang data-lang={lang}></astro-lang>
+
+<script is:inline define:vars={{ lang }}>
+	let langVar = lang
+
 	function viewCV(event) {
 		event.preventDefault()
-		window.open('https://portfolio.rguixaro.dev/resume.pdf', '_blank')
+		const fileNames = {
+			ca: 'resume-en.pdf',
+			en: 'resume-en.pdf',
+			es: 'resume-en.pdf',
+			no: 'resume-no.pdf',
+		}
+		window.open(
+			`https://portfolio.rguixaro.dev/uploads/${fileNames[langVar]}`,
+			'_blank'
+		)
 	}
 
 	function inintializeViewCV() {
@@ -241,6 +254,21 @@ const { Content } = await entry.render()
 		elemCV?.addEventListener('click', viewCV)
 	}
 
+	/**
+	 * @type {EventListener}
+	 * Emitted when the Astro app has finished swapping the page content.
+	 * Initializes the viewCV function.
+	 */
 	document.addEventListener('astro:after-swap', inintializeViewCV)
 	inintializeViewCV()
+
+	/**
+	 * @type {EventListener}
+	 * Emitted when the Astro app has finished swapping the page content.
+	 * Controls the cv language.
+	 */
+	document.addEventListener('astro:after-swap', () => {
+		const newLang = document.getElementById('lang')?.lang
+		if (newLang !== langVar) langVar = newLang
+	})
 </script>
