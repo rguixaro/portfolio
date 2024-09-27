@@ -1,8 +1,8 @@
 ---
 company: 'Owius Technologies'
 role: 'Full-stack-utvikler'
-dateStart: '2022/06/16'
-dateEnd: '2024/08/12'
+dateStart: '2022'
+dateEnd: '2024'
 tags:
     [
         'Webutvikling',

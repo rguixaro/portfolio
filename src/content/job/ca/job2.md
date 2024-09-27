@@ -1,8 +1,8 @@
 ---
 company: 'Joieria Tous'
 role: 'Pràctiques en informàtica'
-dateStart: '2019/06/04'
-dateEnd: '2019/08/27'
+dateStart: '2019'
+dateEnd: '2019'
 tags: ['IT', 'gestió de servidors', 'hardware', 'software']
 ---
 
