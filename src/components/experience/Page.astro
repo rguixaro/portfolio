@@ -92,10 +92,13 @@ function formatWorkDate(input: Date | string) {
 			jobs.map((entry) => (
 				<li class='animate bg-white/75 dark:bg-black/75 border-b border-primary/75 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none'>
 					<div class='text-sm uppercase mb-4'>
-						{formatWorkDate(entry.data.dateStart)} -{' '}
-						{entry.data.dateEnd
-							? formatWorkDate(entry.data.dateEnd)
-							: t('experience.present')}
+						{formatWorkDate(entry.data.dateStart)}
+						{entry.data.dateStart !== entry.data.dateEnd &&
+							`- ${
+								entry.data.dateEnd
+									? formatWorkDate(entry.data.dateEnd)
+									: t('experience.present')
+							}`}
 					</div>
 					<div class='text-black dark:text-white font-semibold'>
 						{entry.data.company}
