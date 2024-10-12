@@ -24,6 +24,7 @@ export const ui = {
 		'home.connections':
 			"Posa't en contacte amb mi per correu electrònic o a les xarxes socials.",
 		'home.developed-with': 'Web desenvolupat amb',
+		'home.hosted-on': 'Web allotjat a',
 		'experience.title': 'Experiencia i Formació Acadèmica',
 		'experience.description': 'Aquí hi ha una llista de llocs on he treballat.',
 		'experience.present': 'Actualitat',
@@ -50,6 +51,7 @@ export const ui = {
 		'home.connect': "Let's connect",
 		'home.connections': 'Reach out to me via email or on social media.',
 		'home.developed-with': 'Web developed with',
+		'home.hosted-on': 'Web hosted on',
 		'experience.title': 'Experience and Education',
 		'experience.description': 'Here is a list of places I have worked at.',
 		'experience.present': 'Present',
@@ -75,6 +77,7 @@ export const ui = {
 		'home.connections':
 			'Ponte en contacto conmigo por correo electrónico o en las redes sociales.',
 		'home.developed-with': 'Web desarrollada con',
+		'home.hosted-on': 'Web alojado en',
 		'experience.title': 'Experiencia i Formación Académica',
 		'experience.description':
 			'Aquí hay una lista de lugares en los que he trabajado.',
@@ -102,6 +105,7 @@ export const ui = {
 		'home.connect': 'La oss komme i kontakt',
 		'home.connections': 'Ta kontakt med meg via e-post eller sosiale medier.',
 		'home.developed-with': 'Web utviklet me',
+		'home.hosted-on': 'Web vert på',
 		'experience.title': 'Erfaring og Utdanning',
 		'experience.description': 'Her er en liste over steder jeg har jobbet på.',
 		'experience.present': 'Nåværende',
