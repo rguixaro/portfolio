@@ -41,8 +41,10 @@ export const TECH_STACK: TechStack[] = [
 	{ NAME: 'Javascript', ICON: 'javascript' },
 	{ NAME: 'Typescript', ICON: 'typescript' },
 	{ NAME: 'Tailwind', ICON: 'tailwind' },
+	{ NAME: 'CSS', ICON: 'css' },
 	{ NAME: 'React', ICON: 'react' },
 	{ NAME: 'React Native', ICON: 'react' },
+	{ NAME: 'Express', ICON: '' },
 	{ NAME: 'MongoDB', ICON: 'mongodb' },
 	{ NAME: 'Kotlin', ICON: 'kotlin' },
 	{ NAME: 'Firebase', ICON: 'firebase' },
@@ -50,4 +52,7 @@ export const TECH_STACK: TechStack[] = [
 	{ NAME: 'Nginx', ICON: 'nginx' },
 	{ NAME: 'Vue', ICON: 'vue' },
 	{ NAME: 'Ionic', ICON: 'ionic' },
+	{ NAME: 'AWS', ICON: 'aws' },
+	{ NAME: 'DynamoDB', ICON: 'dynamodb' },
+	{ NAME: 'S3', ICON: 's3' },
 ]

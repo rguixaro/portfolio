@@ -1,11 +1,15 @@
 ---
 name: Dynasty
-stack: ['react', 'javascript', 'mongodb', 'nginx']
+stack: ['react', 'typescript', 'aws', 'dynamodb', 's3']
 logo: /projects.svg#dynasty
 invert: true
 ---
 
 Aplicación web que registra el árbol genealógico de una familia. Permite consultar y
 modificar los datos de cualquier miembro de la 'dinastía', además de añadir nuevos
-miembros. Alojada, junto con la API y la base de datos (no-relacional), en un
-servidor (VPS).
+miembros. Alojada, junto con la API y la base de datos (no-relacional), en AWS.
+
+<b>Responsabilidades</b>
+
+Es un proyecto personal, por lo que desarrollado he todo el software, desde el diseño
+de la arquitectura, hasta el despliegue utilizando varios servicios de AWS.
