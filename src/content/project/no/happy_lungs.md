@@ -1,7 +1,7 @@
 ---
 name: Happy Lungs
 github: https://github.com/HappyLungs
-stack: ['react native', 'javascript', 'react', 'mongodb']
+stack: ['react native', 'express', 'react', 'mongodb']
 logo: /projects.svg#happy_lungs
 invert: true
 ---
@@ -9,3 +9,9 @@ invert: true
 Mobilapplikasjon som gjør det mulig for brukeren å lage pins knyttet til en
 geografisk plassering og og motta informasjon om forurensningsnivået i luften (data
 hentet fra Open Data BCN).
+
+<b>Ansvar</b>
+
+Jeg var en del av det mobile frontend-teamet som var ansvarlig for utviklingen av
+applikasjonen. Jeg måtte sørge for riktig utvikling for både Android og iOS
+plattformene.
