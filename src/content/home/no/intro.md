@@ -1,14 +1,17 @@
 <p>
-    Jeg er en svært motivert og dedikert <b><i>full-stack programvareutvikler</i></b>, spesialisert i frontend-utvikling med interesse for å skape visuelt tiltalende og <b><i>brukervennlige applikasjoner</i></b>.
+    Jeg er en lidenskapelig  <b
+        ><i>programvareingeniør </i></b
+    >med nesten tre års erfaring med utvikling av både <b><i>web/mobilapplikasjoner</i></b> og <b><i>backend systemer</i></b>.
     <p>
-       Som <b><i>uteksaminert informatikkstudent</i></b> med mer enn <b><i>to års erfaring som programvareutvikler</i></b>, er jeg ivrig etter å bruke ferdighetene og kunnskapen jeg har tilegnet meg i en ny profesjonell setting.
+        Jeg er dyktig i alle aspekter av livssyklusen til programvareutvikling,<b
+            ><i>
+               fra konsept til utvikling og levering</i></b>. Jeg jobber kontinuerlig med å forbedre mine personlige og profesjonelle <b><i>tekniske ferdigheter</i></b> for å holde tritt med den stadig voksende teknologibransjen.
     </p>
-    <p>
+  <p>
        Jeg anser meg selv som <b><i>en hardtarbeidende og ansvarsfull person</i></b>, som alltid prøver å forbedre meg selv og ser etter nye utfordringer for å utvikle evnene og kompetansen min.
     </p>
-    <p>I løpet av min karriere</p>
+    <p>Gjennom hele min karriere som programvareingeniør</p>
     <p>
-       Jeg har vært ansvarlig for å hjelpe til med <b><i>programvareutviklingsprosjekter</i></b>, inkludert testing og feilsøking av kode og implementering av nye funksjoner. Jeg har fått verdifull erfaring med å jobbe i et lite team og samarbeide med andre avdelinger
-avdelinger for å sikre at prosjektene ble fullført i tide.
+        Jeg har vært med på å utvikle programvaren til flere prosjekter, enten det har vært <b><i>frontend eller backend</i></b>,<b><i> mobil eller web</i></b>. Jeg har tilegnet meg verdifull kompetanse ved å samarbeide med et lite team og eksterne partnere for å sikre at prosjektene blir fullført til rett tid.
     </p>
 </p>

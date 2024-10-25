@@ -1,17 +1,11 @@
 <p>
-    I am a highly motivated and dedicated <b
-        ><i>full-stack software developer</i></b
-    >, specialized in frontend development with an interest in
-    creating visually appealing and <b
-        ><i>user-friendly applications</i></b
-    >.
+    I am a passionate  <b
+        ><i>software engineer </i></b
+    >with almost three years of experience developing both <b><i>web/mobile applications</i></b> and <b><i>backend systems</i></b>.
     <p>
-        As a <b
+        Skilled in all aspects of the software development lifecycle,<b
             ><i>
-                graduated Computer Science</i></b> student with more than
-        <b><i>two years of experience</i></b> working as a software developer,
-        I am eager to apply the skills and knowledge that I have
-        gained to a new professional setting.
+               from concept to development and delivery</i></b>. I am constantly working on improving my personal and professional <b><i>technical skills</i></b> in order to keep up with the ever-growing tech industry.
     </p>
     <p>
         I consider myself a <b
@@ -20,13 +14,8 @@
         challenges in order to develop my abilities and
         expertise.
     </p>
-    <p>During my career</p>
+    <p>Throughout my career as a software engineer</p>
     <p>
-        I have been responsible for assisting with <b
-            ><i>software development projects</i></b
-        >, including testing and debugging code, and implementing
-        new features. I gained valuable experience in working
-        with a small team and collaborating with other
-        departments to ensure timely completion of projects.
+        I played a part in creating the software for several projects, be they <b><i>mobile or web</i></b>,<b><i> frontend or backend</i></b>. I have acquired valuable expertise by collaborating with a small team and external partners to ensure the timely completion of projects.
     </p>
 </p>
