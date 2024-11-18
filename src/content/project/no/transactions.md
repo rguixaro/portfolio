@@ -1,7 +1,8 @@
 ---
 name: Transactions
-github: ''
 stack: ['java', 'kotlin', 'firebase']
+order: 7
+github: ''
 logo: /projects.svg#transactions
 ---
 

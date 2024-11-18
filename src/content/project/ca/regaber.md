@@ -1,8 +1,9 @@
 ---
 name: Regaber
+stack: ['react native', 'typescript', 'express', 'mongodb', 'nginx']
+order: 6
 googlePlay: 'https://play.google.com/store/apps/details?id=com.regaber'
 appStore: 'https://apps.apple.com/es/app/regaber/id6448756686'
-stack: ['react native', 'typescript', 'express', 'mongodb', 'nginx']
 logo: /projects.svg#regaber
 ---
 
