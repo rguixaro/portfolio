@@ -11,9 +11,9 @@ const { lang } = Astro.props
 
 const t = useTranslations(lang as 'ca' | 'en' | 'es' | 'no')
 
-const collection = (await getCollection('project')).filter(
-	(item) => item.id.split('/')[0] === lang
-)
+const collection = (await getCollection('project'))
+	.filter((item) => item.id.split('/')[0] === lang)
+	.sort((a, b) => a.data.order - b.data.order)
 ---
 
 <PageLayout

@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { Icon } from 'astro-icon/components'
 
 import StackCard from '@/components/StackCard.astro'
 import Links from '@/components/projects/Links.astro'
@@ -41,7 +40,7 @@ const techStack = getStack(stack)
 								<svg
 									height='5rem'
 									width='5rem'
-									class={`mr-5 ${invert && 'dark:invert'}`}>
+									class:list={`mr-5 ${invert && 'dark:invert'}`}>
 									<use href={logo} />
 								</svg>
 							)
@@ -74,31 +73,16 @@ const techStack = getStack(stack)
 											<StackCard
 												text={item.NAME}
 												icon={item.ICON}
+												invert={item.INVERT || false}
 											/>
 										))}
 									</div>
-									<p class='flex font-semibold text-black dark:text-white'>
-										{!!url && (
-											<a
-												href={url}
-												target='_blank'
-												class='cursor-pointer link link-hover text-sm text-right flex justify-center items-center my-5'>
-												{'Visit '}
-												{url !== '#' && (
-													<Icon
-														name='carbon:link'
-														class='w-4 h-4 ml-2'
-													/>
-												)}
-											</a>
-										)}
-									</p>
 								</div>
 							</div>
 						)
 					}
 					{
-						github || googlePlay || appStore ? (
+						url || github || googlePlay || appStore ? (
 							<div class='space-y-4 sm:hidden'>
 								<p class='font-semibold text-black dark:text-white'>
 									{t('project.links')}
