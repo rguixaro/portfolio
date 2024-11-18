@@ -20,6 +20,7 @@ export type Socials = {
 export interface TechStack {
 	NAME: string
 	ICON: string
+	INVERT?: boolean
 }
 
 export interface Project {

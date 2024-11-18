@@ -1,7 +1,8 @@
 ---
 name: Happy Lungs
-github: https://github.com/HappyLungs
 stack: ['react native', 'express', 'react', 'mongodb']
+order: 6
+github: https://github.com/HappyLungs
 logo: /projects.svg#happy_lungs
 invert: true
 ---
