@@ -44,6 +44,7 @@ export const TECH_STACK: TechStack[] = [
 	{ NAME: 'CSS', ICON: 'css' },
 	{ NAME: 'React', ICON: 'react' },
 	{ NAME: 'NextJS', ICON: 'nextjs', INVERT: true },
+	{ NAME: 'Prisma', ICON: 'prisma' },
 	{ NAME: 'React Native', ICON: 'react' },
 	{ NAME: 'Express', ICON: '' },
 	{ NAME: 'MongoDB', ICON: 'mongodb' },
