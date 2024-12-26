@@ -1,7 +1,7 @@
 ---
 name: Transactions
 stack: ['java', 'kotlin', 'firebase']
-order: 7
+order: 8
 github: ''
 logo: /projects.svg#transactions
 ---
@@ -11,5 +11,5 @@ unidad familiar de forma compartida y sincronizada.
 
 <b>Responsabilidades</b>
 
-Es un proyecto personal, por lo que desarrollado he todo el software, desde el diseño
+Es un proyecto personal, por lo que he desarrollado todo el software, desde el diseño
 de la arquitectura, hasta la implementación.
