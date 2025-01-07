@@ -43,55 +43,55 @@ const { Content } = await entry.render()
 	swapAnimation={slideUp}
 >
 	<!-- Light Mode: Particles -->
-	<div class='absolute inset-0 block dark:hidden'>
-		<div id='particles1' class='fixed inset-0'></div>
-		<div id='particles2' class='fixed inset-0'></div>
-		<div id='particles3' class='fixed inset-0'></div>
+	<div class="absolute inset-0 block dark:hidden">
+		<div id="particles1" class="fixed inset-0"></div>
+		<div id="particles2" class="fixed inset-0"></div>
+		<div id="particles3" class="fixed inset-0"></div>
 	</div>
 
 	<!-- Dark Theme: Stars -->
-	<div class='absolute inset-0 bg-black hidden dark:block'>
-		<div id='stars1' class='fixed inset-0'></div>
-		<div id='stars2' class='fixed inset-0'></div>
-		<div id='stars3' class='fixed inset-0'></div>
+	<div class="absolute inset-0 bg-black hidden dark:block">
+		<div id="stars1" class="fixed inset-0"></div>
+		<div id="stars2" class="fixed inset-0"></div>
+		<div id="stars3" class="fixed inset-0"></div>
 	</div>
 
-	<script is:inline src='/js/bg.js'></script>
+	<script is:inline src="/js/bg.js"></script>
 
 	<!-- Sphere -->
-	<section class='relative h-[50vh] w-full'>
+	<section class="relative h-[50vh] w-full">
 		<div
-			id='sphere-wrapper'
-			class='animate absolute inset-0 top-2/4 overflow-hidden'
+			id="sphere-wrapper"
+			class="animate absolute inset-0 top-2/4 overflow-hidden"
 		>
 			<div
-				id='sphere-inner'
-				class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%'
+				id="sphere-inner"
+				class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[75vh] aspect-square rounded-full p-[5px] bg-gradient-to-b from-primary/75 dark:from-primary/25 dark:to-white/25 from-0% to-5%"
 			>
 				<div
-					id='sphere-content'
-					class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'
+					id="sphere-content"
+					class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
 				>
 					<div
-						id='sphere-blur'
-						class='w-full h-20 rounded-full bg-neutral-900/15 dark:bg-white/5 blur-2xl'
+						id="sphere-blur"
+						class="w-full h-20 rounded-full bg-neutral-900/15 dark:bg-white/5 blur-2xl"
 					>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div
-			class='animate absolute h-[75vh] w-full flex items-center justify-center'
+			class="animate absolute h-[75vh] w-full flex items-center justify-center"
 		>
-			<div class='relative w-full h-full flex items-center justify-center'>
-				<div class='p-5 text-center'>
+			<div class="relative w-full h-full flex items-center justify-center">
+				<div class="p-5 text-center">
 					<p
-						class='animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75'
+						class="animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75"
 					>
 						{t('home.title')}
 					</p>
 					<p
-						class='animate mt-5 text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white'
+						class="animate mt-5 text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white"
 					>
 						{t('home.role')}
 					</p>
@@ -99,47 +99,47 @@ const { Content } = await entry.render()
 			</div>
 		</div>
 	</section>
-	<div class='relative bg-white dark:bg-black'>
-		<div class='mx-auto max-w-screen-sm p-5 space-y-24 pb-16'>
+	<div class="relative bg-white dark:bg-black">
+		<div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
 			<!-- About Section -->
-			<section class='animate'>
-				<article class='text-center'>
+			<section class="animate">
+				<article class="text-center">
 					<Content />
 				</article>
 
 				<!-- CV Section -->
-				<div class='flex items-center justify-center'>
+				<div class="flex items-center justify-center">
 					<button
-						id='view-cv'
-						aria-label='Back to top of page'
-						class='group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-black/5 hover:dark:bg-white/10 border-primary/15 dark:border-white/20 transition-colors duration-300 ease-in-out'
+						id="view-cv"
+						aria-label="Back to top of page"
+						class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-black/5 hover:dark:bg-white/10 border-primary/15 dark:border-white/20 transition-colors duration-300 ease-in-out"
 					>
 						<div
-							class='w-full group-hover:text-black group-hover:dark:text-white transition-colors duration-300 ease-in-out mr-1'
+							class="w-full group-hover:text-black group-hover:dark:text-white transition-colors duration-300 ease-in-out mr-1"
 						>
 							{t('home.cv')}
 						</div>
 						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							width='20'
-							height='20'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke-width='2.5'
-							stroke-linecap='round'
-							stroke-linejoin='round'
-							class='stroke-current group-hover:stroke-primary group-hover:dark:stroke-white rotate-90'
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="stroke-current group-hover:stroke-primary group-hover:dark:stroke-white rotate-90"
 						>
 							<line
-								x1='12'
-								y1='19'
-								x2='12'
-								y2='5'
-								class='scale-y-0 group-hover:scale-y-100 translate-y-4 group-hover:translate-y-2 transition-all duration-300 ease-in-out'
+								x1="12"
+								y1="19"
+								x2="12"
+								y2="5"
+								class="scale-y-0 group-hover:scale-y-100 translate-y-4 group-hover:translate-y-2 transition-all duration-300 ease-in-out"
 							></line>
 							<polyline
-								points='5 19 12 12 19 19'
-								class='translate-y-1 group-hover:translate-y-0 transition-all duration-300 ease-in-out'
+								points="5 19 12 12 19 19"
+								class="translate-y-1 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
 							></polyline>
 						</svg>
 					</button>
@@ -147,18 +147,18 @@ const { Content } = await entry.render()
 			</section>
 
 			<!-- Project Preview Section -->
-			<section class='animate'>
-				<div class='space-y-4'>
-					<div class='flex justify-between my-5'>
+			<section class="animate">
+				<div class="space-y-4">
+					<div class="flex justify-between my-5">
 						<a
 							href={getRelativeLocaleUrl(
 								'en',
 								t('nav.projects').toLowerCase()
 							)}
-							class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'
+							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
 						>
 							<span
-								class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'
+								class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
 							>
 								{t('home.projects.all')}
 							</span>
@@ -168,27 +168,27 @@ const { Content } = await entry.render()
 			</section>
 
 			<!-- Contact Section -->
-			<section class='animate'>
+			<section class="animate">
 				<div>
-					<p class='font-semibold text-black dark:text-white'>
+					<p class="font-semibold text-black dark:text-white">
 						{t('home.connect')}
 					</p>
 					<p>{t('home.connections')}</p>
-					<div class='grid grid-cols-4 gap-y-2 mt-4 auto-cols-min'>
+					<div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
 						{
 							SOCIALS.map(({ NAME, TEXT, HREF }) => (
 								<>
-									<div class='col-span-1 flex items-center gap-1'>
-										<span class='whitespace-nowrap truncate'>
+									<div class="col-span-1 flex items-center gap-1">
+										<span class="whitespace-nowrap truncate">
 											{t(NAME.toLowerCase()) || NAME}
 										</span>
 									</div>
-									<div class='col-span-3 truncate'>
+									<div class="col-span-3 truncate">
 										<a
 											href={HREF}
-											target='_blank'
-											class='w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend'>
-											<span class='text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend'>
+											target="_blank"
+											class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+											<span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
 												{TEXT}
 											</span>
 										</a>
@@ -201,23 +201,23 @@ const { Content } = await entry.render()
 			</section>
 
 			<!-- Tech Stack Section -->
-			<section class='animate'>
-				<div class='space-y-4'>
-					<p class='font-semibold text-black dark:text-white flex-row'>
+			<section class="animate">
+				<div class="space-y-4">
+					<p class="font-semibold text-black dark:text-white flex-row">
 						<p
-							class='flex font-semibold text-black dark:text-white items-center'
+							class="flex font-semibold text-black dark:text-white items-center"
 						>
 							<a
 								href={'https://github.com/rguixaro/portfolio'}
-								target='_blank'
-								class='cursor-pointer link link-hover text-sm mr-2'
+								target="_blank"
+								class="cursor-pointer link link-hover text-sm mr-2"
 							>
-								<Icon name='carbon:link' class='w-4 h-4 ml-2' />
+								<Icon name="carbon:link" class="w-4 h-4 ml-2" />
 							</a>
 							{t('home.developed-with')}
 						</p>
 					</p>
-					<div class='flex flex-wrap items-center gap-2 mt-5'>
+					<div class="flex flex-wrap items-center gap-2 mt-5">
 						{
 							stack.map((item) => (
 								<StackCard text={item.text} icon={item.icon} />
@@ -225,15 +225,15 @@ const { Content } = await entry.render()
 						}
 					</div>
 				</div>
-				<div class='space-y-4'>
-					<p class='font-semibold text-black dark:text-white flex-row'>
+				<div class="space-y-4">
+					<p class="font-semibold text-black dark:text-white flex-row">
 						<p
-							class='flex font-semibold text-black dark:text-white items-center'
+							class="flex font-semibold text-black dark:text-white items-center"
 						>
 							{t('home.hosted-on')}
 						</p>
 					</p>
-					<div class='flex flex-wrap items-center gap-2 mt-5'>
+					<div class="flex flex-wrap items-center gap-2 mt-5">
 						<StackCard text={'AWS'} icon={'aws'} />
 					</div>
 				</div>
@@ -252,7 +252,7 @@ const { Content } = await entry.render()
 		const fileNames = {
 			ca: 'resume-ca.pdf',
 			en: 'resume-en.pdf',
-			es: 'resume-en.pdf',
+			es: 'resume-es.pdf',
 			no: 'resume-no.pdf',
 		}
 		window.open(
