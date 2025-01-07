@@ -11,7 +11,7 @@ logo: /projects.svg#watchupgrade
 Mobilapplikasjon som har som mål å tilby brukerne en enkel og rask metode for å gjøre
 klokkevurderinger og salgsadministrasjon.
 
-<b>Responsibilities</b>
+<b>Ansvar</b>
 
 Jeg jobbet som fullstack-utvikler og samarbeidet med både frontend og backend.
 Ansvarlig for å sikre riktig utvikling og distribusjon for Android- og

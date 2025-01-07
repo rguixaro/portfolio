@@ -1,7 +1,7 @@
 ---
 name: Dynasty
 stack: ['react', 'typescript', 'aws', 'dynamodb', 's3']
-order: 4
+order: 9
 logo: /projects.svg#dynasty
 invert: true
 ---

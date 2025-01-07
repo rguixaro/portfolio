@@ -1,7 +1,7 @@
 ---
 name: Happy Lungs
 stack: ['react native', 'express', 'react', 'mongodb']
-order: 7
+order: 10
 github: https://github.com/HappyLungs
 logo: /projects.svg#happy_lungs
 invert: true
