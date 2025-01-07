@@ -10,7 +10,7 @@ stack:
         'firebase',
         'nginx',
     ]
-order: 3
+order: 5
 googlePlay: 'https://play.google.com/store/apps/details?id=com.eatfity'
 appStore: 'https://apps.apple.com/es/app/eatfity-fitness-y-nutrici%C3%B3n/id6450825366'
 logo: /projects.svg#eatfity
