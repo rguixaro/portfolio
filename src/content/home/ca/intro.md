@@ -1,17 +1,11 @@
-<p>
-    Soc un  <b
-        ><i>enginyer de programari </i></b
-    >apassionat amb gairebé tres anys d'experiència en el desenvolupament d'aplicacions<b><i> web/mòbil </i></b> i <b><i> sistemes backend</i></b>.
+<div>
+    <b><i>Desenvolupador Full-Stack </i></b>amb gairebé tres anys d’experiència dissenyant, desenvolupant i integrant aplicacions <b><i>front-end</i></b> i <b><i>back-end</i></b> utilitzant tecnologies modernes com Java/JS, React, Vue,
+    Python, Node i d’altres.
     <p>
-        Hàbil en tots els aspectes del cicle de vida de desenvolupament de programari,<b
-            ><i>
-                des del concepte fins al desenvolupament i el lliurament</i></b>. Estic treballant constantment en la millora de les meves <b><i>habilitats tècniques personals i professionals</i></b> amb la finalitat de mantenir-me al dia amb la indústria de la tecnologia.
+        Experimentat en tots els aspectes del cicle de vida del desenvolupament de programari, des de <b><i> la definició </i></b>fins <b><i> al desenvolupament </i></b> i <b><i> el lliurament</i></b>.
     </p>
-   <p>
-      Em considero una <b><i>persona treballadora i responsable</i></b>, sempre intentant superar-me i buscant nous reptes per a desenvolupar les meves habilitats i coneixements.
-    </p>
-    <p>Durant la meva carrera professional</p>
     <p>
-       He participat en la creació de programari per a diversos projectes, siguin <b><i>mòbils o web</i></b>,<b><i> frontend o backend</i></b>. He adquirit una valuosa experiència col·laborant amb un petit equip i amb socis externs per a garantir la finalització puntual dels projectes.
+        Al llarg de la meva carrera com a desenvolupador, he estat involucrat en la creació de programari per a diversos projectes, ja siguin <b><i>mòbils</i></b> o <b><i>web</i></b>, <b><i>frontend</i></b> o <b><i>backend</i></b>.
+        He adquirit una valuosa experiència treballant amb un petit equip i socis externs per tal d'assegurar la finalització puntual dels projectes, sempre seguint les <b><i>millors pràctiques de desenvolupament</i></b>.
     </p>
-</p>
+</div>
