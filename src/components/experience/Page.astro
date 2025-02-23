@@ -100,9 +100,11 @@ function formatWorkDate(input: Date | string) {
 									: t('experience.present')
 							}`}
 					</div>
-					<div class='text-black dark:text-white font-semibold'>
-						{entry.data.company}
-					</div>
+                    <a href={entry.data.companyUrl} target='_blank'>
+                        <div class='text-black dark:text-white font-semibold'>
+					        {entry.data.company}
+					    </div>
+                    </a>
 					<div class='text-sm font-semibold'>{entry.data.role}</div>
 					<article class='prose dark:prose-invert'>
 						<entry.Content />
