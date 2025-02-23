@@ -1,5 +1,5 @@
 <div>
-    <b><i>Full-Stack Developer </i></b>with almost three 3 of experience designing, developing and integrating <b><i>front-end</i></b> and <b><i>back-end-based</i></b> applications using modern technologies like Java/JS, React, Vue, Python,
+    <b><i>Full-Stack Developer </i></b>with almost three 3 of experience designing, developing and integrating <b><i>front-end</i></b> and <b><i>back-end-based</i></b> applications using modern technologies like JS, React, Vue, Flutter, Python,
     Node and others.
     <p>
         Experienced in all aspects of the software development lifecycle, from<b><i> concept </i></b>to <b><i> development </i></b> and <b><i> delivery</i></b>.

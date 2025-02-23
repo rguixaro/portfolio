@@ -1,5 +1,6 @@
 ---
 company: 'Owius Technologies'
+companyUrl: https://owius.com
 role: 'Full-stack-utvikler'
 dateStart: '2022'
 dateEnd: '2024'

@@ -1,5 +1,5 @@
 <div>
-    <b><i>Desenvolupador Full-Stack </i></b>amb gairebé tres anys d’experiència dissenyant, desenvolupant i integrant aplicacions <b><i>front-end</i></b> i <b><i>back-end</i></b> utilitzant tecnologies modernes com Java/JS, React, Vue,
+    <b><i>Desenvolupador Full-Stack </i></b>amb gairebé tres anys d’experiència dissenyant, desenvolupant i integrant aplicacions <b><i>front-end</i></b> i <b><i>back-end</i></b> utilitzant tecnologies modernes com JS, React, Vue, Flutter,
     Python, Node i d’altres.
     <p>
         Experimentat en tots els aspectes del cicle de vida del desenvolupament de programari, des de <b><i> la definició </i></b>fins <b><i> al desenvolupament </i></b> i <b><i> el lliurament</i></b>.

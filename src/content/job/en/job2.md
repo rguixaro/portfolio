@@ -1,5 +1,6 @@
 ---
 company: 'Tous Jewelry'
+companyUrl: https://www.tous.com
 role: 'IT Internship'
 dateStart: '2019'
 dateEnd: '2019'
