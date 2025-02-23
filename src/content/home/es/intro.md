@@ -1,5 +1,5 @@
 <div>
-    <b><i>Desarrollador Full-Stack </i></b>con cerca de tres años de experiencia diseñando, desarrollando e integrando aplicaciones <b><i>front-end</i></b> y <b><i>back-end</i></b> utilizando tecnologías modernas como Java/JS, React, Vue,
+    <b><i>Desarrollador Full-Stack </i></b>con cerca de tres años de experiencia diseñando, desarrollando e integrando aplicaciones <b><i>front-end</i></b> y <b><i>back-end</i></b> utilizando tecnologías modernas como JS, React, Vue, Flutter,
     Python, Node y otras.
     <p>
         Experimentado en todos los aspectos del ciclo de vida del desarrollo de software, desde <b><i> la definición </i></b>hasta <b><i> el desarrollo </i></b> y <b><i> el despliegue</i></b>.

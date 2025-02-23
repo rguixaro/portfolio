@@ -1,5 +1,6 @@
 ---
 company: 'Joieria Tous'
+companyUrl: https://www.tous.com
 role: 'Pràctiques en informàtica'
 dateStart: '2019'
 dateEnd: '2019'
