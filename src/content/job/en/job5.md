@@ -7,4 +7,4 @@ tags: ['Web Development', 'Mobile Development']
 ---
 
 Implementation of features on both the frontend and the backend. Development of
-mobile applications.
+native mobile applications.

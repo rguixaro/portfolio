@@ -6,5 +6,5 @@ dateStart: '2025'
 tags: ['Webutvikling', 'Mobilutvikling']
 ---
 
-Implementering av funksjoner på både frontend og backend. Utvikling av
+Implementering av funksjoner på både frontend og backend. Utvikling av native
 mobilapplikasjoner.

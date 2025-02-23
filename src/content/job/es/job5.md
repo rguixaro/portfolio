@@ -7,4 +7,4 @@ tags: ['Desarrollo Web', 'Desarrollo Móvil']
 ---
 
 Implementación de funcionalidades tanto de frontend como de backend. Desarrollo de
-aplicaciones móviles.
+aplicaciones móviles nativas.
