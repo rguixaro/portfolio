@@ -18,8 +18,8 @@ export const SOCIALS: Socials = [
 	{
 		NAME: 'Email',
 		ICON: 'email',
-		TEXT: 'rguixaro@protonmail.ch',
-		HREF: 'mailto:rguixaro@protonmail.ch',
+		TEXT: 'info@rguixaro.dev',
+		HREF: 'mailto:info@rguixaro.dev',
 	},
 	{
 		NAME: 'Github',
