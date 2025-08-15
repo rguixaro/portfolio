@@ -1,21 +1,11 @@
-<p>
-    I am a passionate  <b
-        ><i>software engineer </i></b
-    >with almost three years of experience developing both <b><i>web/mobile applications</i></b> and <b><i>backend systems</i></b>.
+<div>
+    <b><i>Full-Stack Developer </i></b>with almost three 3 of experience designing, developing and integrating <b><i>front-end</i></b> and <b><i>back-end-based</i></b> applications using modern technologies like JS, React, Vue, Flutter, Python,
+    Node and others.
     <p>
-        Skilled in all aspects of the software development lifecycle,<b
-            ><i>
-               from concept to development and delivery</i></b>. I am constantly working on improving my personal and professional <b><i>technical skills</i></b> in order to keep up with the ever-growing tech industry.
+        Experienced in all aspects of the software development lifecycle, from<b><i> concept </i></b>to <b><i> development </i></b> and <b><i> delivery</i></b>.
     </p>
     <p>
-        I consider myself a <b
-            ><i>hardworking and responsible person</i></b
-        >, always trying to improve myself and looking for new
-        challenges in order to develop my abilities and
-        expertise.
+        Throughout my career as a software engineer, I have been involved in creating software for several projects, be they <b><i>mobile</i></b> or <b><i>web</i></b>, <b><i>frontend</i></b> or <b><i>backend</i></b>. I have gained valuable
+        experience working with a small team and external partners in order to ensure timely completion of projects while adhering to <b><i>coding best practices</i></b>.
     </p>
-    <p>Throughout my career as a software engineer</p>
-    <p>
-        I played a part in creating the software for several projects, be they <b><i>mobile or web</i></b>,<b><i> frontend or backend</i></b>. I have acquired valuable expertise by collaborating with a small team and external partners to ensure the timely completion of projects.
-    </p>
-</p>
+</div>
