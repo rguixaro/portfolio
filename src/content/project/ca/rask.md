@@ -1,7 +1,7 @@
 ---
 name: Rask
 stack: ['nextjs', 'typescript', 'django', 'mysql', 'aws']
-order: 4
+order: 1
 url: 'https://rask.rguixaro.dev'
 github: 'https://github.com/rguixaro/rask-app'
 logo: /projects.svg#rask
