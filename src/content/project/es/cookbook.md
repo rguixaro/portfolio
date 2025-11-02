@@ -1,7 +1,7 @@
 ---
 name: CookBook
 stack: ['nextjs', 'prisma', 'typescript', 'mongodb', 'tailwind', 'aws']
-order: 7
+order: 2
 url: 'https://cookbook.rguixaro.dev'
 github: 'https://github.com/rguixaro/cookbook-app'
 logo: /projects.svg#cookbook

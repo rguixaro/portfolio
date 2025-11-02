@@ -1,7 +1,7 @@
 ---
 name: WatchUpgrade
 stack: ['flutter', 'react', 'express', 'mongodb']
-order: 1
+order: 3
 github: ''
 googlePlay: 'https://play.google.com/store/apps/details?id=com.watchupgrademobile'
 appStore: 'https://apps.apple.com/es/app/watch-upgrade/id1622184911'

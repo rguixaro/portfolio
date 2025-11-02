@@ -1,7 +1,7 @@
 ---
 name: Prohabitatge
 stack: ['react native', 'typescript', 'express', 'mongodb']
-order: 3
+order: 5
 github: ''
 googlePlay: 'https://play.google.com/store/apps/details?id=com.proxare.android'
 appStore: 'https://apps.apple.com/ua/app/proxare/id6470037589'
