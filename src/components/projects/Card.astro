@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { render, type CollectionEntry } from 'astro:content'
 
 import StackCard from '@/components/StackCard.astro'
 import Links from '@/components/projects/Links.astro'
@@ -22,7 +22,7 @@ const {
 	logo,
 	invert = false,
 } = entry.data
-const { Content } = await entry.render()
+const { Content } = await render(entry)
 
 const techStack = getStack(stack)
 ---
