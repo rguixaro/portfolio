@@ -5,7 +5,7 @@ Personal portfolio website, the 2025 archive of [rguixaro.dev](https://rguixaro.
 **[portfolio-2025.rguixaro.dev](https://portfolio-2025.rguixaro.dev)**
 
 > This is the legacy snapshot of the site as it stood in 2025, kept online for
-> reference. The current portfolio lives at
+> reference. The current portfolio is hosted on
 > [portfolio.rguixaro.dev](https://portfolio.rguixaro.dev).
 
 ## Tech Stack
