@@ -13,15 +13,11 @@ export function getStaticPaths() {
 	const translatePath = useTranslatedPath()
 
 	const experience = languages.map(({ CODE }) => {
-		const slug = translatePath('experience', CODE)
-			.replace(/^\//, '')
-			.replace(CODE, '')
+		const slug = translatePath('experience', CODE).split('/').pop() ?? ''
 		return { params: { lang: CODE, slug } }
 	})
 	const projects = languages.map(({ CODE }) => {
-		const slug = translatePath('projects', CODE)
-			.replace(/^\//, '')
-			.replace(CODE, '')
+		const slug = translatePath('projects', CODE).split('/').pop() ?? ''
 		return { params: { lang: CODE, slug } }
 	})
 	return [...experience, ...projects]

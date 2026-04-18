@@ -1,17 +1,31 @@
-## Introduction
+# <img src="public/favicon.svg" alt="Portfolio" height="28"> Portfolio (2025)
 
-Personal portfolio hosted on [**portfolio.rguixaro.dev**](https://portfolio.rguixaro.dev).
+Personal portfolio website, the 2025 archive of [rguixaro.dev](https://rguixaro.dev).
 
-This project uses the following technologies:
+**[portfolio-2025.rguixaro.dev](https://portfolio-2025.rguixaro.dev)**
 
--   [**Astro**](https://astro.build/) | Web framework.
--   [**TypeScript**](https://www.typescriptlang.org/) | JavaScript with syntax for
-    types.
--   [**Tailwindcss**](https://tailwindcss.com/) | Design System.
--   [**Prettier**](https://prettier.io/) w/
-    [**prettier-plugin-tailwindcss**](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
-    | Code Formatter.
+> This is the legacy snapshot of the site as it stood in 2025, kept online for
+> reference. The current portfolio lives at
+> [portfolio.rguixaro.dev](https://portfolio.rguixaro.dev).
+
+## Tech Stack
+
+[Astro 6](https://astro.build) | [TypeScript](https://www.typescriptlang.org/) |
+[Tailwind CSS 4](https://tailwindcss.com) | [MDX](https://mdxjs.com/) |
+[Zod](https://zod.dev/) | [Iconify](https://iconify.design/)
+
+## Features
+
+- **Multi-language** - Catalan, English, Spanish, and Norwegian via Astro's built-in
+  i18n routing
+- **Projects showcase** - content-driven project cards with tech stack, links, and
+  per-locale descriptions
+- **Experience timeline** - chronological work history sourced from MDX collections
+- **Light & dark theme** - animated particles (light) and stars (dark) backgrounds
+  with smooth view transitions
+- **Static output** - fully pre-rendered to HTML for fast delivery via S3 +
+  CloudFront
 
 ## License
 
--   [**GPL-3.0**](https://github.com/rguixaro/portfolio/blob/main/LICENSE) license.
+[GPL-3.0](./LICENSE)
