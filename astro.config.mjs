@@ -4,9 +4,8 @@ import sitemap from '@astrojs/sitemap'
 import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://2024.portfolio.rguixaro.dev',
+	site: 'https://portfolio-2025.rguixaro.dev',
 	integrations: [mdx(), sitemap(), icon()],
 	i18n: {
 		defaultLocale: 'en',
