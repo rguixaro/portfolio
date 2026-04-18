@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import { getEntry } from 'astro:content'
+import { getEntry, render } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 
 import PageLayout from '@/layouts/PageLayout.astro'
@@ -34,7 +34,8 @@ const stack = [
 ]
 
 const entry = await getEntry('home', `${lang}/intro`)
-const { Content } = await entry.render()
+if (!entry) throw new Error(`Missing home entry: ${lang}/intro`)
+const { Content } = await render(entry)
 ---
 
 <PageLayout
