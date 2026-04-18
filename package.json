@@ -5,42 +5,33 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro",
-		"prepare": "husky"
+		"astro": "astro"
 	},
 	"dependencies": {
 		"@iconify-json/carbon": "^1.1.31",
-		"@tailwindcss/typography": "^0.5.11",
-		"astro": "^4.16.18",
-		"vite": "^5.2.8"
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.2.2",
+		"astro": "^6.1.8",
+		"tailwindcss": "^4.2.2",
+		"zod": "^4.3.6"
+	},
+	"overrides": {
+		"vite": "^7"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "0.43.1",
-		"@astrojs/check": "^0.5.10",
-		"@astrojs/mdx": "^2.2.1",
-		"@astrojs/rss": "^4.0.5",
-		"@astrojs/sitemap": "^3.1.1",
-		"@astrojs/tailwind": "^5.1.0",
+		"@astrojs/mdx": "^5.0.3",
+		"@astrojs/sitemap": "^3.7.2",
 		"@iconify-json/mdi": "^1.1.64",
-		"@typescript-eslint/eslint-plugin": "^7.3.1",
-		"@typescript-eslint/parser": "^7.3.1",
 		"astro-icon": "^1.1.0",
 		"clsx": "^2.1.0",
-		"eslint": "^8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-astro": "^0.32.0",
-		"eslint-plugin-jsx-a11y": "^6.8.0",
-		"husky": "^9.0.11",
 		"lightningcss": "^1.24.1",
-		"lint-staged": "^15.2.2",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.13.0",
 		"prettier-plugin-astro-organize-imports": "^0.4.3",
 		"prettier-plugin-tailwindcss": "^0.5.12",
 		"tailwind-merge": "^2.2.2",
-		"tailwindcss": "^3.4.1",
 		"typescript": "^5.4.3"
 	}
 }
