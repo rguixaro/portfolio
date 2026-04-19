@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro'
+import TimeWeather from './TimeWeather.astro'
+import LangSelector from './LangSelector.astro'
+import ThemeToggle from './ThemeToggle.astro'
+import StatusBroadcaster from './StatusBroadcaster.astro'
+import Hero from './sections/Hero.astro'
+import Experience from './sections/Experience.astro'
+import Expertise from './sections/Expertise.astro'
+import SideProjects from './sections/SideProjects.astro'
+import Contact from './sections/Contact.astro'
+---
+
+<Layout>
+	<div
+		class="absolute top-8 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-8"
+	>
+		<LangSelector />
+		<TimeWeather />
+		<div
+			class="group/theme-toggle theme-pill border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 cursor-pointer rounded-full border px-6 transition-colors [&_button]:h-8 [&_button]:w-8"
+		>
+			<ThemeToggle />
+		</div>
+	</div>
+
+	<script is:inline>
+		document.querySelectorAll('.theme-pill').forEach((pill) => {
+			pill.addEventListener('click', (e) => {
+				if (e.target.closest('button')) return
+				pill.querySelector('button')?.click()
+			})
+		})
+	</script>
+
+	<StatusBroadcaster />
+
+	<Hero />
+	<Experience />
+	<Expertise />
+	<SideProjects />
+	<Contact />
+</Layout>
