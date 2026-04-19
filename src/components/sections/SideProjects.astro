@@ -1,0 +1,144 @@
+---
+import SectionHeader from '../SectionHeader.astro'
+import GridBackdrop from '../GridBackdrop.astro'
+import ProjectRow from '../ProjectRow.astro'
+import { getLang, useTranslations } from '../../i18n/utils'
+
+const lang = getLang(Astro.currentLocale)
+const t = useTranslations(lang)
+
+const projectLabels = {
+	visit: t('projects.visit'),
+	wip: t('projects.status.wip'),
+	source: t('projects.source'),
+	toggle: t('aria.projects.toggle'),
+	live: t('projects.status.live'),
+	slow: t('projects.status.slow'),
+	down: t('projects.status.down'),
+}
+
+const projects = [
+	{
+		name: 'Roots',
+		codename: 'Atrium',
+		desc: t('projects.roots.desc'),
+		href: 'https://roots.rguixaro.dev',
+		repo: 'https://github.com/rguixaro/roots-app',
+		logo: '/projects.svg#atrium',
+		wip: false,
+		monitor: 'roots.rguixaro.dev',
+	},
+	{
+		name: 'Rask',
+		codename: 'Itinerarium',
+		desc: t('projects.rask.desc'),
+		href: 'https://rask.rguixaro.dev',
+		repo: 'https://github.com/rguixaro/rask-app',
+		logo: '/projects.svg#itinerarium',
+		wip: false,
+		monitor: 'rask.rguixaro.dev',
+	},
+	{
+		name: 'Cookbook',
+		codename: 'Receptarium',
+		desc: t('projects.cookbook.desc'),
+		href: 'https://cookbook.rguixaro.dev',
+		repo: 'https://github.com/rguixaro/cookbook-app',
+		logo: '/projects.svg#receptarium',
+		wip: false,
+		monitor: 'cookbook.rguixaro.dev',
+	},
+]
+---
+
+<section id={t('anchor.projects')} class="relative py-20">
+	<GridBackdrop />
+	<div class="relative mx-auto max-w-6xl px-6">
+		<SectionHeader label={t('section.projects')} />
+
+		<div class="grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0">
+			<div class="md:col-span-2 md:max-w-70 md:pr-16">
+				<p class="text-foreground/70 text-sm leading-relaxed">
+					{t('projects.description')}
+				</p>
+			</div>
+
+			<div class="flex flex-col md:col-span-4 md:col-start-3">
+				{
+					projects.map((p, i) => (
+						<ProjectRow
+							num={i + 1}
+							name={p.name}
+							codename={p.codename}
+							desc={p.desc}
+							href={p.href}
+							repo={p.repo}
+							logo={p.logo}
+							wip={p.wip}
+							monitor={p.monitor}
+							labels={projectLabels}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script
+	is:inline
+	define:vars={{
+		statusLabels: {
+			live: projectLabels.live,
+			slow: projectLabels.slow,
+			down: projectLabels.down,
+		},
+		statusLabelWord: t('contact.footer.status.label'),
+	}}
+>
+	;(() => {
+		const rows = document.querySelectorAll(
+			'.project-row[data-monitor]:not([data-monitor=""])',
+		)
+		if (!rows.length) return
+
+		const css = getComputedStyle(document.documentElement)
+		const color = (name) => css.getPropertyValue(name).trim()
+
+		const STATUS_CONFIG = {
+			live: { color: color('--status-live'), label: statusLabels.live },
+			slow: { color: color('--status-slow'), label: statusLabels.slow },
+			down: { color: color('--status-down'), label: statusLabels.down },
+		}
+
+		const apply = (data) => {
+			if (!Array.isArray(data)) return
+			rows.forEach((row) => {
+				const monitor = row.getAttribute('data-monitor')
+				if (!monitor) return
+
+				const entry = data.find((e) => e.key === monitor || e.name === monitor)
+				if (!entry || !entry.level) return
+
+				const sc = STATUS_CONFIG[entry.level]
+				const dot = row.querySelector('.project-status-dot')
+				const label = row.querySelector('.project-status-label')
+				const container = row.querySelector('.project-status')
+
+				if (dot) {
+					dot.style.backgroundColor = sc.color
+					dot.style.boxShadow = `0 0 6px ${sc.color}80`
+				}
+				if (label) label.textContent = sc.label
+				if (container) {
+					container.setAttribute('title', `${statusLabelWord}: ${sc.label}`)
+					container.setAttribute('data-ready', 'true')
+					container.style.display = ''
+				}
+			})
+		}
+
+		if (window.__gatusStatuses) apply(window.__gatusStatuses)
+		document.addEventListener('gatus:statuses', (e) => apply(e.detail))
+	})()
+</script>

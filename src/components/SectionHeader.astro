@@ -1,0 +1,13 @@
+---
+interface Props {
+	label: string
+}
+const { label } = Astro.props
+---
+
+<div class="mb-1 grid grid-cols-1 items-baseline md:grid-cols-6">
+	<span class="text-accent font-black tracking-wide uppercase md:col-span-2">
+		{label}
+	</span>
+</div>
+<div class="border-foreground/20 mb-12 border-t"></div>

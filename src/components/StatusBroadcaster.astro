@@ -1,0 +1,41 @@
+---
+import { STATUS_API_URL, STATUS_SLOW_MS } from '../lib/config'
+---
+
+<script
+	is:inline
+	define:vars={{ STATUS_URL: STATUS_API_URL, SLOW_MS: STATUS_SLOW_MS }}
+>
+	;(() => {
+		const classify = (entry) => {
+			if (!entry || !entry.results || !entry.results.length) return null
+			const latest = entry.results[entry.results.length - 1]
+			const durationMs = (latest.duration || 0) / 1_000_000
+			if (!latest.success) return 'down'
+			if (durationMs > SLOW_MS) return 'slow'
+			return 'live'
+		}
+
+		if (window.__gatusStatuses) return
+		if (window.__gatusPromise) return
+
+		window.__gatusPromise = fetch(STATUS_URL, { cache: 'no-store' })
+			.then((r) => (r.ok ? r.json() : null))
+			.then((data) => {
+				if (!Array.isArray(data)) return
+				const classified = data.map((entry) => ({
+					key: entry.key,
+					name: entry.name,
+					level: classify(entry),
+				}))
+				window.__gatusStatuses = classified
+				document.dispatchEvent(
+					new CustomEvent('gatus:statuses', { detail: classified }),
+				)
+			})
+			.catch(() => {})
+			.finally(() => {
+				window.__gatusPromise = null
+			})
+	})()
+</script>

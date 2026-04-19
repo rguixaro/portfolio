@@ -1,0 +1,38 @@
+---
+import { getLang, useTranslations } from '../i18n/utils'
+
+const locales = (['en', 'es', 'ca', 'nb'] as const).toSorted()
+const current = getLang(Astro.currentLocale)
+const t = useTranslations(current)
+
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(es|ca|nb)(\/|$)/, '/')
+
+const hrefFor = (l: string) =>
+	l === 'en'
+		? pathWithoutLocale
+		: pathWithoutLocale === '/'
+			? `/${l}/`
+			: `/${l}${pathWithoutLocale}`
+---
+
+<div
+	class="border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 flex h-8 items-center gap-1 rounded-full border px-2 text-xs tracking-widest uppercase transition-colors select-none"
+	aria-label={t('aria.lang.label')}
+>
+	{
+		locales.map((l) => (
+			<a
+				href={hrefFor(l)}
+				class:list={[
+					'rounded-full px-2 py-0.5 font-mono transition-colors',
+					l === current
+						? 'text-accent pointer-events-none font-semibold'
+						: 'text-foreground/50 hover:text-foreground hover:bg-foreground/10',
+				]}
+				aria-current={l === current ? 'page' : undefined}
+			>
+				{l}
+			</a>
+		))
+	}
+</div>

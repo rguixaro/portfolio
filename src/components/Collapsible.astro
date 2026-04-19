@@ -1,0 +1,160 @@
+---
+import NavDotsIcon from './NavDotsIcon.astro'
+import { rowTimings as timings } from '../lib/timings'
+
+interface Props {
+	groupName: string
+	toggleLabel: string
+	rootClass?: string
+	headerClass?: string
+	dataAttrs?: Record<string, string | undefined>
+}
+
+const {
+	groupName,
+	toggleLabel,
+	rootClass = '',
+	headerClass = '',
+	dataAttrs = {},
+} = Astro.props
+
+const rowId = `collapsible-${crypto.randomUUID().slice(0, 8)}`
+const panelId = `${rowId}-panel`
+const openEvent = `${groupName}-open`
+---
+
+<div id={rowId} class:list={['collapsible relative', rootClass]} {...dataAttrs}>
+	<div
+		class="collapsible-bg pointer-events-none absolute top-0 right-0 z-0 h-full w-10 origin-top-right opacity-0"
+		style={`transition: ${timings.initialBg};`}
+	>
+		<div
+			class="absolute inset-0 transition-colors"
+			style="background-color: var(--card-bg);"
+		>
+		</div>
+	</div>
+
+	<div class="relative z-1 flex flex-col">
+		<div
+			class:list={[
+				'collapsible-header border-foreground/10 cursor-pointer border-b py-3',
+				headerClass,
+			]}
+		>
+			<slot name="header" />
+
+			<button
+				type="button"
+				aria-label={toggleLabel}
+				aria-expanded="false"
+				aria-controls={panelId}
+				class="collapsible-toggle dot-toggle relative -mr-2 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center"
+			>
+				<NavDotsIcon />
+			</button>
+		</div>
+
+		<div
+			id={panelId}
+			inert
+			class="collapsible-panel grid grid-rows-[0fr] overflow-hidden opacity-0 blur-xs"
+			style={`transition: ${timings.initialWrapper}; transition-delay: ${timings.initialWrapperDelay};`}
+		>
+			<div class="overflow-hidden">
+				<slot name="body" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<script is:inline define:vars={{ rowId, panelId, timings, openEvent }}>
+	;(() => {
+		const root = document.getElementById(rowId)
+		if (!root) return
+		const toggle = root.querySelector('.collapsible-toggle')
+		const header = root.querySelector('.collapsible-header')
+		const wrapper = document.getElementById(panelId)
+		const bg = root.querySelector('.collapsible-bg')
+
+		let open = false
+		let leaveTimer
+		let inertTimer
+
+		const setOpen = (v) => {
+			open = v
+			toggle.setAttribute('aria-expanded', String(v))
+			toggle.classList.remove('hovering', 'leaving')
+			clearTimeout(leaveTimer)
+			clearTimeout(inertTimer)
+
+			if (v) {
+				wrapper.inert = false
+				bg.style.transition = timings.openBg
+				bg.classList.remove('opacity-0', 'w-10')
+				bg.classList.add('opacity-100', 'w-full')
+				wrapper.style.transition = timings.openWrapper
+				wrapper.style.transitionDelay = timings.openWrapperDelay
+				wrapper.classList.remove('grid-rows-[0fr]', 'opacity-0', 'blur-xs')
+				wrapper.classList.add('grid-rows-[1fr]', 'opacity-100', 'blur-0')
+
+				document.dispatchEvent(
+					new CustomEvent(openEvent, { detail: { source: root } }),
+				)
+			} else {
+				toggle.classList.add('closing')
+				setTimeout(() => toggle.classList.remove('closing'), timings.closingMs)
+				bg.style.transition = timings.closeBg
+				bg.classList.remove('opacity-100', 'w-full')
+				bg.classList.add('opacity-0', 'w-10')
+				wrapper.style.transition = timings.closeWrapper
+				wrapper.style.transitionDelay = timings.closeWrapperDelay
+				wrapper.classList.add('grid-rows-[0fr]', 'opacity-0', 'blur-xs')
+				wrapper.classList.remove('grid-rows-[1fr]', 'opacity-100', 'blur-0')
+				inertTimer = setTimeout(() => {
+					if (!open) wrapper.inert = true
+				}, timings.inertMs)
+			}
+		}
+
+		header.addEventListener('click', (e) => {
+			if (e.target.closest('a')) return
+			e.stopPropagation()
+			setOpen(!open)
+		})
+
+		header.addEventListener('pointerenter', () => {
+			if (open || toggle.classList.contains('closing')) return
+			clearTimeout(leaveTimer)
+			toggle.classList.remove('leaving')
+			toggle.classList.add('hovering')
+		})
+		header.addEventListener('pointerleave', () => {
+			if (open) return
+			if (!toggle.classList.contains('hovering')) return
+			toggle.classList.remove('hovering')
+			toggle.classList.add('leaving')
+			clearTimeout(leaveTimer)
+			leaveTimer = setTimeout(
+				() => toggle.classList.remove('leaving'),
+				timings.leavingMs,
+			)
+		})
+
+		document.addEventListener('click', (e) => {
+			if (!open) return
+			if (!root.contains(e.target)) setOpen(false)
+		})
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && open) {
+				setOpen(false)
+				toggle.focus()
+			}
+		})
+
+		document.addEventListener(openEvent, (e) => {
+			if (e.detail.source !== root && open) setOpen(false)
+		})
+	})()
+</script>

@@ -1,0 +1,52 @@
+---
+
+---
+
+<div
+	id="cursor"
+	class="pointer-events-none fixed z-9999"
+	style="transform: translate(-50%, -50%); left: -100px; top: -100px; opacity: 0;"
+	aria-hidden="true"
+>
+	<div
+		class="pointer-events-none absolute top-1/2 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full"
+		style="backdrop-filter: invert(1) grayscale(1); -webkit-backdrop-filter: invert(1) grayscale(1);"
+	>
+	</div>
+</div>
+
+<script is:inline>
+	;(() => {
+		const cursor = document.getElementById('cursor')
+		if (!cursor) return
+
+		if (window.matchMedia('(pointer: coarse)').matches) return
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+		document.body.classList.add('cursor-none')
+
+		let shown = false
+		window.addEventListener(
+			'pointermove',
+			(e) => {
+				cursor.style.left = e.clientX + 'px'
+				cursor.style.top = e.clientY + 'px'
+				if (!shown) {
+					cursor.style.opacity = '1'
+					shown = true
+				}
+			},
+			{ passive: true },
+		)
+
+		const hide = () => {
+			cursor.style.opacity = '0'
+			shown = false
+		}
+
+		document.addEventListener('pointerleave', hide)
+		window.addEventListener('mouseout', (e) => {
+			if (!e.relatedTarget) hide()
+		})
+	})()
+</script>

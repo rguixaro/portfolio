@@ -1,198 +1,200 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+@import '@fontsource/playfair-display/500-italic.css';
+@import '@fontsource/vt323/400.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-	--font-sans:
-		'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--color-primary: rgb(32, 85, 80);
-	--color-gold: #ffd700;
+:root {
+	--background: #fdfdfc;
+	--foreground: #12110d;
+	--accent: #3d6c5f;
+	--card-bg: #f1f4f2;
+
+	--status-live: #4ade80;
+	--status-slow: #fbbf24;
+	--status-down: #f87171;
+
+	--dot-trans-dur: 200ms;
+	--dot-anim-dur: 400ms;
 }
 
-@layer base {
-	@font-face {
-		font-family: 'Montserrat';
-		src: url('/fonts/montserrat-regular.ttf');
-		font-weight: 400;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Montserrat';
-		src: url('/fonts/montserrat-bold.ttf');
-		font-weight: 700;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Montserrat';
-		src: url('/fonts/montserrat-semibold.ttf');
-		font-weight: 600;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Montserrat';
-		src: url('/fonts/montserrat-medium.ttf');
-		font-weight: 500;
-		font-style: normal;
-		font-display: swap;
-	}
+.dark {
+	--background: #12110d;
+	--foreground: #fdfdfc;
+	--card-bg: color-mix(in oklab, var(--accent) 18%, var(--background));
+}
+
+.theme-inverted {
+	--background: #12110d;
+	--foreground: #fdfdfc;
+	--accent: #7ab39e;
+}
+.dark .theme-inverted {
+	--background: #fdfdfc;
+	--foreground: #12110d;
+	--accent: #3d6c5f;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-accent: var(--accent);
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+	--font-pixel: 'VT323', ui-monospace, monospace;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 html {
-	overflow-y: scroll;
-	color-scheme: light;
-	background-color: white;
-	font-family: 'Montserrat', sans-serif;
-	overflow-x: hidden;
-}
-
-html.dark {
-	color-scheme: dark;
-	background-color: black;
+	scroll-behavior: smooth;
 }
 
 html,
 body {
-	@apply h-full w-full antialiased;
-	@apply bg-white dark:bg-black;
-	@apply text-black/75 dark:text-white/75;
+	background-color: var(--background);
+	color: var(--foreground);
 }
 
-body {
-	@apply relative flex flex-col;
+.eyebrow-mono {
+	@apply font-mono text-[10px] tracking-widest uppercase;
+}
+.eyebrow-semibold {
+	@apply text-[10px] font-semibold tracking-widest uppercase;
 }
 
-main {
-	@apply flex flex-col flex-1 bg-white dark:bg-black;
+.cursor-none,
+.cursor-none * {
+	cursor: none !important;
 }
 
-header {
-	@apply border-b-2;
-	@apply transition-all duration-300 ease-in-out;
+.cursor-none :focus-visible {
+	cursor: auto !important;
 }
 
-header:not(.scrolled) {
-	@apply bg-transparent border-transparent;
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
-header.scrolled {
-	@apply bg-white/75 dark:bg-black/50;
-	@apply border-primary/25;
-	@apply backdrop-blur-sm saturate-200;
-}
-
-article {
-	@apply prose dark:prose-invert max-w-full pb-6 pt-6;
-}
-
-.page-heading {
-	@apply font-semibold text-black dark:text-white;
-}
-
-.blend {
-	@apply transition-all duration-300 ease-in-out;
-}
-
-/** Light theme particles on home page */
-@keyframes animateParticle {
-	from {
-		transform: translateY(0px);
-	}
-	to {
-		transform: translateY(-2000px);
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }
 
-/** Styles for swap transition animation */
-@keyframes slideIn {
-	from {
-		transform: translateX(0px);
-		opacity: 1;
-	}
-	80% {
-		opacity: 0.2;
-	}
-	to {
-		transform: translateX(500px);
-		opacity: 0;
-	}
+.text-accent::selection,
+.text-accent ::selection,
+.hero-name[data-accent='true'] span::selection {
+	background-color: color-mix(in oklab, var(--accent) 35%, transparent);
+	color: var(--foreground);
 }
-@keyframes slideOut {
-	from {
-		transform: translateX(500px);
-		opacity: 0;
+
+.hero-name {
+	transition: color 200ms ease;
+}
+.hero-name span {
+	color: var(--foreground);
+}
+.hero-name[data-accent='true'] span {
+	color: var(--accent);
+}
+.hero-name[data-variant='0'] span {
+	font-family: var(--font-sans);
+	font-weight: 300;
+	letter-spacing: -0.02em;
+}
+.hero-name[data-variant='1'] span {
+	font-family: var(--font-pixel);
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+.hero-name[data-variant='2'] span {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-style: italic;
+}
+.hero-name[data-variant='3'] span {
+	font-family: var(--font-mono);
+	font-weight: 500;
+}
+
+@keyframes nav-dot-flash {
+	0%,
+	100% {
+		fill-opacity: 1;
 	}
-	80% {
-		opacity: 0.8;
-	}
-	to {
-		transform: translateX(0px);
-		opacity: 1;
+	50% {
+		fill-opacity: 0.22;
 	}
 }
 
-@keyframes slideUp {
-	from {
-		transform: translateY(0px);
-		opacity: 1;
+@keyframes nav-dot-close-edge {
+	0% {
+		fill-opacity: 0.4;
 	}
-	80% {
-		opacity: 0.2;
+	50% {
+		fill-opacity: 0.22;
 	}
-	to {
-		transform: translateY(-500px);
-		opacity: 0;
+	100% {
+		fill-opacity: 1;
 	}
 }
 
-@keyframes slideDown {
-	from {
-		transform: translateY(-500px);
-		opacity: 0;
-	}
-	80% {
-		opacity: 0.8;
-	}
-	to {
-		transform: translateY(0px);
-		opacity: 1;
-	}
+.nav-dot-corner,
+.nav-dot-edge {
+	transition: fill-opacity var(--dot-trans-dur) ease;
 }
 
-/** styles for public /animation.js */
-.animate {
-	opacity: 0;
-	transform: translateY(50px);
-	transition:
-		opacity 1s ease,
-		transform 1s ease;
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-corner {
+	fill-opacity: 0.22;
+	transition-delay: var(--nav-dot-in-delay, 0ms);
+}
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-corner {
+	fill-opacity: 1;
+	transition-delay: var(--nav-dot-out-delay, 0ms);
+}
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-edge,
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease var(--nav-dot-in-delay, 0ms)
+		1;
+}
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-edge,
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1;
 }
 
-.animateWithRotate {
-	opacity: 0;
-	rotate: 180deg;
-	transform: translateY(50px);
-	transition:
-		opacity 1s ease,
-		transform 1s ease;
+.dot-toggle[aria-expanded='true'] .nav-dot-edge {
+	fill-opacity: 0.4;
+	transition-delay: var(--nav-dot-in-delay, 0ms);
+}
+.dot-toggle[aria-expanded='true'] .nav-dot-corner,
+.dot-toggle[aria-expanded='true'] .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease var(--nav-dot-in-delay, 0ms)
+		1;
 }
 
-.animate.show {
-	opacity: 1;
-	transform: translateY(0);
+.dot-toggle.closing .nav-dot-edge {
+	animation: nav-dot-close-edge var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1 backwards;
 }
-
-.animateWithRotate.show {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-article img {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	display: block;
-	margin: 0 auto;
+.dot-toggle.closing .nav-dot-corner,
+.dot-toggle.closing .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1;
 }
