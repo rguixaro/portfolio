@@ -1,0 +1,152 @@
+---
+import '../styles/global.css'
+import Cursor from '../components/Cursor.astro'
+import { getLang, useTranslations } from '../i18n/utils'
+
+interface Props {
+	title?: string
+	description?: string
+	image?: string
+	noindex?: boolean
+}
+
+const lang = getLang(Astro.currentLocale)
+const t = useTranslations(lang)
+
+const {
+	title = t('seo.title'),
+	description = t('seo.description'),
+	image = '/favicon.png',
+	noindex = false,
+} = Astro.props
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? ''
+const canonical = new URL(
+	Astro.url.pathname,
+	Astro.site ?? Astro.url,
+).toString()
+const ogImage = new URL(image, Astro.site ?? Astro.url).toString()
+
+const locales = ['en', 'es', 'ca', 'nb'] as const
+const ogLocaleMap: Record<string, string> = {
+	en: 'en_US',
+	es: 'es_ES',
+	ca: 'ca_ES',
+	nb: 'nb_NO',
+}
+
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(es|ca|nb)(\/|$)/, '/')
+
+const alternates = locales.map((l) => ({
+	hreflang: l,
+	href:
+		siteUrl +
+		(l === 'en'
+			? pathWithoutLocale
+			: `/${l}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`),
+}))
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Ricard Guixaró',
+	url: siteUrl || canonical,
+	jobTitle: t('seo.jobTitle'),
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Barcelona',
+		addressCountry: 'ES',
+	},
+	sameAs: [
+		'https://github.com/rguixaro',
+		'https://www.linkedin.com/in/rguixaro',
+	],
+}
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+		/>
+		<meta
+			name="theme-color"
+			content="#fdfdfc"
+			media="(prefers-color-scheme: light)"
+		/>
+		<meta
+			name="theme-color"
+			content="#12110d"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta
+			name="robots"
+			content={noindex ? 'noindex,nofollow' : 'index,follow'}
+		/>
+		<link rel="canonical" href={canonical} />
+
+		{
+			alternates.map((a) => (
+				<link rel="alternate" hreflang={a.hreflang} href={a.href} />
+			))
+		}
+		<link
+			rel="alternate"
+			hreflang="x-default"
+			href={siteUrl + pathWithoutLocale}
+		/>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Ricard Guixaró" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="2048" />
+		<meta property="og:image:height" content="2048" />
+		<meta property="og:image:alt" content={title} />
+		<meta property="og:locale" content={ogLocaleMap[lang] ?? 'en_US'} />
+		{
+			locales
+				.filter((l) => l !== lang)
+				.map((l) => (
+					<meta property="og:locale:alternate" content={ogLocaleMap[l]} />
+				))
+		}
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={title} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+		<script is:inline>
+			;(() => {
+				const stored = localStorage.getItem('theme')
+				const prefersDark = window.matchMedia(
+					'(prefers-color-scheme: dark)',
+				).matches
+				const dark = stored ? stored === 'dark' : prefersDark
+				if (dark) document.documentElement.classList.add('dark')
+			})()
+		</script>
+	</head>
+	<body class="min-h-screen antialiased">
+		<Cursor />
+		<slot />
+	</body>
+</html>
