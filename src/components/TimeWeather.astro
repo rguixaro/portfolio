@@ -1,0 +1,122 @@
+---
+import { getLang } from '../i18n/utils'
+
+const city = 'BCN'
+const lang = getLang(Astro.currentLocale)
+const bcp47: Record<string, string> = {
+	en: 'en-US',
+	es: 'es-ES',
+	ca: 'ca-ES',
+	nb: 'nb-NO',
+}
+const locale = bcp47[lang] ?? 'en-US'
+---
+
+<div class="text-foreground/50 text-center select-none" data-locale={locale}>
+	<p class="min-h-[1.5em] text-sm leading-relaxed">
+		<span class="text-foreground/80 font-medium">{city}</span>
+		<span id="tw-datetime"></span>
+	</p>
+	<p
+		class="flex min-h-[1.25em] items-center justify-center gap-1 text-xs leading-relaxed"
+	>
+		<span id="tw-temp" class="inline-block min-w-[3.25em] text-right">—°C</span>
+		<svg
+			id="tw-icon"
+			width="16"
+			height="16"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+		</svg>
+	</p>
+</div>
+
+<script is:inline>
+	;(() => {
+		const dt = document.getElementById('tw-datetime')
+		const temp = document.getElementById('tw-temp')
+		const icon = document.getElementById('tw-icon')
+		if (!dt || !temp || !icon) return
+
+		const locale =
+			dt.closest('[data-locale]')?.getAttribute('data-locale') || 'en-US'
+
+		const tick = () => {
+			const now = new Date()
+			const time = new Intl.DateTimeFormat(locale, {
+				hour: 'numeric',
+				minute: '2-digit',
+				hour12: locale.startsWith('en'),
+				timeZone: 'Europe/Madrid',
+			}).format(now)
+			const date = new Intl.DateTimeFormat(locale, {
+				month: 'short',
+				day: 'numeric',
+				year: 'numeric',
+				timeZone: 'Europe/Madrid',
+			}).format(now)
+			dt.textContent = `  ${time} · ${date}`
+		}
+		tick()
+		setInterval(tick, 30000)
+
+		const ICONS = {
+			sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>',
+			cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
+			rain: '<path d="M18 10h-1.26A8 8 0 1 0 9 12h9a4 4 0 0 0 0-8z"/><path d="M8 19v2M12 19v2M16 19v2"/>',
+			snow: '<path d="M18 10h-1.26A8 8 0 1 0 9 12h9a4 4 0 0 0 0-8z"/><path d="M8 19h.01M12 19h.01M16 19h.01"/>',
+			bolt: '<path d="M18 10h-1.26A8 8 0 1 0 9 12h9a4 4 0 0 0 0-8z"/><path d="m13 15-3 5h4l-3 5"/>',
+		}
+		const codeToIcon = (c) => {
+			if (c === 0 || c === 1) return 'sun'
+			if (c >= 2 && c <= 3) return 'cloud'
+			if (c >= 45 && c <= 48) return 'cloud'
+			if ((c >= 51 && c <= 67) || (c >= 80 && c <= 82)) return 'rain'
+			if ((c >= 71 && c <= 77) || (c >= 85 && c <= 86)) return 'snow'
+			if (c >= 95) return 'bolt'
+			return 'cloud'
+		}
+
+		const CACHE_KEY = 'tw-weather-cache'
+		const TTL_MS = 10 * 60 * 1000
+
+		const applyWeather = (t, code) => {
+			if (typeof t === 'number') temp.textContent = `${Math.round(t)}°C`
+			if (typeof code === 'number') icon.innerHTML = ICONS[codeToIcon(code)]
+		}
+
+		try {
+			const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null')
+			if (cached && Date.now() - cached.at < TTL_MS) {
+				applyWeather(cached.t, cached.code)
+				return
+			}
+		} catch (_) {}
+
+		fetch(
+			'https://api.open-meteo.com/v1/forecast?latitude=41.3874&longitude=2.1686&current=temperature_2m,weather_code&timezone=Europe%2FMadrid',
+		)
+			.then((r) => r.json())
+			.then((data) => {
+				const t = data?.current?.temperature_2m
+				const code = data?.current?.weather_code
+				applyWeather(t, code)
+				if (typeof t === 'number' && typeof code === 'number') {
+					try {
+						localStorage.setItem(
+							CACHE_KEY,
+							JSON.stringify({ t, code, at: Date.now() }),
+						)
+					} catch (_) {}
+				}
+			})
+			.catch(() => {})
+	})()
+</script>
