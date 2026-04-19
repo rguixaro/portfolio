@@ -1,0 +1,48 @@
+---
+import { getLang, useTranslations } from '../i18n/utils'
+const t = useTranslations(getLang(Astro.currentLocale))
+const uid = Math.random().toString(36).slice(2, 9)
+const maskId = `moon-mask-${uid}`
+const btnId = `theme-toggle-${uid}`
+---
+
+<button
+	type="button"
+	id={btnId}
+	aria-label={t('aria.theme.toggle')}
+	class="theme-toggle text-foreground group/theme-toggle z-50 flex h-10 w-10 cursor-pointer items-center justify-center"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+		<defs>
+			<mask id={maskId}>
+				<rect x="0" y="0" width="20" height="20" fill="white"></rect>
+				<circle
+					r="7"
+					fill="black"
+					cx="28"
+					cy="-4"
+					class="moon-cutout transition-transform duration-300 ease-in-out group-hover/theme-toggle:-translate-x-3.25 group-hover/theme-toggle:translate-y-2.25 dark:-translate-x-3.25 dark:translate-y-2.25"
+				></circle>
+			</mask>
+		</defs>
+		<circle cx="10" cy="10" r="7" fill="currentColor" mask={`url(#${maskId})`}
+		></circle>
+	</svg>
+</button>
+
+<script is:inline define:vars={{ btnId }}>
+	;(() => {
+		const btn = document.getElementById(btnId)
+		if (!btn) return
+		const apply = (theme) => {
+			document.documentElement.classList.toggle('dark', theme === 'dark')
+		}
+		btn.addEventListener('click', () => {
+			const next = document.documentElement.classList.contains('dark')
+				? 'light'
+				: 'dark'
+			localStorage.setItem('theme', next)
+			apply(next)
+		})
+	})()
+</script>
