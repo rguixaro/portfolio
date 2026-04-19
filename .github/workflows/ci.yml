@@ -68,6 +68,8 @@ jobs:
             --root-dir ${{ github.workspace }}/dist
             --no-progress
             --exclude-loopback
+            --exclude '^https?://(www\.)?rguixaro\.dev'
+            --exclude '^https?://(www\.)?tous\.com'
             './dist/**/*.html'
           fail: true
 
