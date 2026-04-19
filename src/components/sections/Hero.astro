@@ -1,0 +1,109 @@
+---
+import { getLang, useTranslations } from '../../i18n/utils'
+
+const lang = getLang(Astro.currentLocale)
+const t = useTranslations(lang)
+---
+
+<section class="relative min-h-screen overflow-hidden">
+	<div
+		class="pointer-events-none absolute inset-0 mx-auto hidden max-w-6xl grid-cols-6 px-6 md:grid"
+	>
+		<div class="border-foreground/10 border-r border-l"></div>
+		<div class="border-foreground/10 border-r"></div>
+		<div class="border-foreground/10 border-r"></div>
+		<div class="border-foreground/10 border-r"></div>
+		<div class="border-foreground/10 border-r"></div>
+		<div class="border-foreground/10 border-r"></div>
+	</div>
+
+	<div class="relative mx-auto h-screen max-w-6xl px-6">
+		<div
+			class="flex flex-col gap-4 pt-[32vh] md:absolute md:top-[38%] md:left-1/2 md:block md:w-205 md:max-w-full md:-translate-x-1/2 md:gap-0 md:pt-0"
+		>
+			<h1 class="sr-only">Ricard Guixaró</h1>
+
+			<div
+				class="hero-name relative cursor-pointer select-none md:absolute md:top-0 md:left-0"
+				data-variant="0"
+				aria-hidden="true"
+			>
+				<span
+					class="block text-6xl leading-none tracking-tight uppercase md:text-8xl lg:text-9xl"
+				>
+					RICARD
+				</span>
+			</div>
+
+			<div
+				class="hero-name relative -mt-3 ml-10 cursor-pointer select-none md:absolute md:top-27.5 md:left-35 md:mt-0 md:ml-0"
+				data-variant="0"
+				data-accent="true"
+				aria-hidden="true"
+			>
+				<span
+					class="block text-6xl leading-none uppercase md:text-8xl lg:text-9xl"
+				>
+					GUIXARÓ
+				</span>
+			</div>
+
+			<div
+				class="relative mt-6 max-w-70 select-none md:absolute md:top-0 md:left-135 md:mt-0"
+			>
+				<p class="text-foreground/70 text-sm leading-relaxed">
+					{t('hero.bio')}
+				</p>
+			</div>
+		</div>
+
+		<a
+			href={`#${t('anchor.experience')}`}
+			aria-label={t('aria.hero.scroll')}
+			class="text-foreground/50 hover:text-foreground absolute transition-colors"
+			style="left: 50%; bottom: 12%; transform: translateX(calc(-50% - 0.5px));"
+		>
+			<svg
+				width="36"
+				height="60"
+				viewBox="0 0 24 40"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="animate-bounce"
+			>
+				<path d="M12 4 v 28"></path>
+				<path d="m19 25 l-7 7 l-7 -7"></path>
+			</svg>
+		</a>
+	</div>
+</section>
+
+<script is:inline>
+	;(() => {
+		const MAX = 4
+		const els = [...document.querySelectorAll('.hero-name')]
+		const variantOf = (el) => parseInt(el.dataset.variant || '0', 10)
+		const taken = (except) => els.filter((o) => o !== except).map(variantOf)
+
+		els.forEach((el) => {
+			const used = taken(el)
+			let v
+			do {
+				v = Math.floor(Math.random() * MAX)
+			} while (used.includes(v))
+			el.dataset.variant = String(v)
+		})
+
+		els.forEach((el) => {
+			el.addEventListener('click', () => {
+				const used = taken(el)
+				let next = (variantOf(el) + 1) % MAX
+				while (used.includes(next)) next = (next + 1) % MAX
+				el.dataset.variant = String(next)
+			})
+		})
+	})()
+</script>

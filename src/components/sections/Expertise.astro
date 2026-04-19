@@ -1,0 +1,64 @@
+---
+import SectionHeader from '../SectionHeader.astro'
+import GridBackdrop from '../GridBackdrop.astro'
+import { getLang, useTranslations } from '../../i18n/utils'
+
+const lang = getLang(Astro.currentLocale)
+const t = useTranslations(lang)
+
+const cards = [
+	{
+		title: t('expertise.card.fullstack.title'),
+		copy: t('expertise.card.fullstack.copy'),
+	},
+	{
+		title: t('expertise.card.mobile.title'),
+		copy: t('expertise.card.mobile.copy'),
+	},
+	{ title: t('expertise.card.qa.title'), copy: t('expertise.card.qa.copy') },
+	{
+		title: t('expertise.card.devops.title'),
+		copy: t('expertise.card.devops.copy'),
+	},
+]
+---
+
+<section id={t('anchor.expertise')} class="relative overflow-hidden py-20">
+	<GridBackdrop />
+	<div class="relative mx-auto max-w-6xl px-6">
+		<SectionHeader label={t('section.expertise')} />
+
+		<div class="grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0">
+			<div class="md:col-span-2 md:pr-8">
+				<p class="text-foreground/70 text-3xl leading-relaxed">
+					{t('expertise.lead.focus')}
+					<span
+						class="text-accent rounded-sm box-decoration-clone px-1"
+						style="background-color: color-mix(in oklab, var(--accent) 18%, transparent);"
+					>
+						{t('expertise.lead.highlight')}
+					</span>
+				</p>
+			</div>
+
+			<div class="grid grid-cols-2 gap-4 md:col-span-4 md:col-start-3">
+				{
+					cards.map((c) => (
+						<div class="border-foreground/20 relative rounded-sm border p-5">
+							<span class="text-foreground mb-1 block text-sm font-medium">
+								{c.title}
+							</span>
+							<p class="text-foreground/60 text-[11px] leading-snug">
+								{c.copy}
+							</p>
+							<span class="bg-accent/80 border-background absolute -top-1.5 -left-0.5 box-content h-3 w-1 border-2" />
+							<span class="bg-accent/80 border-background absolute -top-0.5 -right-1.5 box-content h-1 w-3 border-2" />
+							<span class="bg-accent/80 border-background absolute -bottom-0.5 -left-1.5 box-content h-1 w-3 border-2" />
+							<span class="bg-accent/80 border-background absolute -right-0.5 -bottom-1.5 box-content h-3 w-1 border-2" />
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

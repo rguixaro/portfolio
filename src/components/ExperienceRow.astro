@@ -1,0 +1,187 @@
+---
+import Collapsible from './Collapsible.astro'
+
+interface Project {
+	name: string
+	desc?: string
+	href?: string
+}
+
+interface Props {
+	company: string
+	href?: string
+	role: string
+	period: string
+	location?: string
+	description?: string
+	responsibilities?: string[]
+	tech?: string[]
+	projects?: Project[]
+	labels?: {
+		responsibilities?: string
+		stack?: string
+		projects?: string
+		toggle?: string
+	}
+}
+
+const {
+	company,
+	href,
+	role,
+	period,
+	location,
+	description,
+	responsibilities,
+	tech,
+	projects,
+	labels,
+} = Astro.props
+
+const L = {
+	responsibilities: labels?.responsibilities ?? 'Responsibilities',
+	stack: labels?.stack ?? 'Stack',
+	projects: labels?.projects ?? 'Projects',
+	toggle: labels?.toggle ?? `Toggle ${company} details`,
+}
+---
+
+<Collapsible
+	groupName="experience"
+	toggleLabel={L.toggle}
+	rootClass="experience-row"
+	headerClass="grid grid-cols-1 items-center gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_auto_auto] md:gap-4"
+>
+	<Fragment slot="header">
+		<div class="flex min-w-0 flex-col">
+			<span class="text-foreground flex items-center gap-1 text-sm font-medium">
+				{
+					href ? (
+						<a
+							href={href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="hover:text-accent flex items-center gap-1 transition-colors"
+						>
+							{company}
+							<svg
+								width="12"
+								height="12"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M7 7h10v10" />
+								<path d="M7 17 17 7" />
+							</svg>
+						</a>
+					) : (
+						<span>{company}</span>
+					)
+				}
+			</span>
+			{
+				location && (
+					<span class="eyebrow-mono text-foreground/40 truncate">
+						{location}
+					</span>
+				)
+			}
+		</div>
+
+		<span class="text-foreground/70 truncate text-sm">{role}</span>
+
+		<span class="text-foreground/40 font-mono text-xs md:w-28 md:text-right"
+			>{period}</span
+		>
+	</Fragment>
+
+	<Fragment slot="body">
+		<div class="flex flex-col gap-4 px-4 py-4">
+			{
+				description && (
+					<p class="text-foreground/80 text-sm leading-relaxed">
+						{description}
+					</p>
+				)
+			}
+
+			{
+				responsibilities && responsibilities.length > 0 && (
+					<div class="flex flex-col gap-1">
+						<span class="eyebrow-semibold text-foreground/50">
+							{L.responsibilities}
+						</span>
+						<ul class="text-foreground/70 list-inside list-disc space-y-0.5 text-sm">
+							{responsibilities.map((r) => (
+								<li>{r}</li>
+							))}
+						</ul>
+					</div>
+				)
+			}
+
+			{
+				tech && tech.length > 0 && (
+					<div class="flex flex-col gap-1.5">
+						<span class="eyebrow-semibold text-foreground/50">{L.stack}</span>
+						<div class="flex flex-wrap gap-1.5">
+							{tech.map((t) => (
+								<span class="eyebrow-mono text-foreground/60 border-foreground/15 rounded-full border px-2 py-0.5">
+									{t}
+								</span>
+							))}
+						</div>
+					</div>
+				)
+			}
+
+			{
+				projects && projects.length > 0 && (
+					<div class="flex flex-col gap-1.5">
+						<span class="eyebrow-semibold text-foreground/50">
+							{L.projects}
+						</span>
+						<div class="flex flex-col gap-1.5">
+							{projects.map((p) => (
+								<div class="flex items-baseline gap-2 text-xs">
+									{p.href ? (
+										<a
+											href={p.href}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors"
+										>
+											{p.name}
+											<svg
+												width="10"
+												height="10"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<path d="M7 7h10v10" />
+												<path d="M7 17 17 7" />
+											</svg>
+										</a>
+									) : (
+										<span class="text-foreground/80 shrink-0 font-medium">
+											{p.name}
+										</span>
+									)}
+									{p.desc && <span class="text-foreground/60">· {p.desc}</span>}
+								</div>
+							))}
+						</div>
+					</div>
+				)
+			}
+		</div>
+	</Fragment>
+</Collapsible>
