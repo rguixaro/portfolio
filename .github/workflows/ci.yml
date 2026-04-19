@@ -67,7 +67,6 @@ jobs:
           args: >-
             --root-dir ${{ github.workspace }}/dist
             --no-progress
-            --exclude-mail
             --exclude-loopback
             './dist/**/*.html'
           fail: true
