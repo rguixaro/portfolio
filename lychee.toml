@@ -1,0 +1,23 @@
+# Lychee link checker config
+# See: https://lychee.cli.rs/usage/config/
+
+# Treat 429 (rate-limited) as success — common with GitHub/LinkedIn
+accept = [200, 206, 429]
+
+# Skip URLs that consistently 4xx for bots but resolve in browsers
+exclude = [
+  # LinkedIn returns 999 to non-browser UAs
+  "linkedin.com",
+  # Local dev placeholders
+  "localhost",
+  "127.0.0.1",
+]
+
+# Be polite
+max_concurrency = 8
+timeout = 20
+retry_wait_time = 2
+max_retries = 2
+
+# Don't fail on transient network issues
+no_progress = true
