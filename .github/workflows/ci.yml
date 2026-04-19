@@ -70,6 +70,16 @@ jobs:
             --exclude-loopback
             --exclude '^https?://(www\.)?rguixaro\.dev'
             --exclude '^https?://(www\.)?tous\.com'
+            --exclude '^https?://(www\.)?linkedin\.com'
+            --exclude '^https?://(www\.)?owius\.com'
+            --exclude '^https?://(www\.)?eatfity\.com'
+            --exclude '^https?://(www\.)?musicadders\.com'
+            --exclude '^https?://(www\.)?punto-limpio\.info'
+            --exclude '^https?://([a-z0-9-]+\.)?unilabs\.com'
+            --exclude '^https?://([a-z0-9-]+\.)?certmetrics\.com'
+            --exclude '^https?://(www\.)?github\.com'
+            --exclude '^https?://(www\.)?schema\.org'
+            --exclude '^https?://([a-z0-9-]+\.)?upc\.edu'
             './dist/**/*.html'
           fail: true
 
