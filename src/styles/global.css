@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+@import '@fontsource/playfair-display/500-italic.css';
+@import '@fontsource/vt323/400.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	--background: #fdfdfc;
+	--foreground: #12110d;
+	--accent: #3d6c5f;
+	--card-bg: #f1f4f2;
+
+	--status-live: #4ade80;
+	--status-slow: #fbbf24;
+	--status-down: #f87171;
+
+	--dot-trans-dur: 200ms;
+	--dot-anim-dur: 400ms;
+}
+
+.dark {
+	--background: #12110d;
+	--foreground: #fdfdfc;
+	--card-bg: color-mix(in oklab, var(--accent) 18%, var(--background));
+}
+
+.theme-inverted {
+	--background: #12110d;
+	--foreground: #fdfdfc;
+	--accent: #7ab39e;
+}
+.dark .theme-inverted {
+	--background: #fdfdfc;
+	--foreground: #12110d;
+	--accent: #3d6c5f;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-accent: var(--accent);
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+	--font-pixel: 'VT323', ui-monospace, monospace;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+}
+
+.eyebrow-mono {
+	@apply font-mono text-[10px] tracking-widest uppercase;
+}
+.eyebrow-semibold {
+	@apply text-[10px] font-semibold tracking-widest uppercase;
+}
+
+.cursor-none,
+.cursor-none * {
+	cursor: none !important;
+}
+
+.cursor-none :focus-visible {
+	cursor: auto !important;
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+.text-accent::selection,
+.text-accent ::selection,
+.hero-name[data-accent='true'] span::selection {
+	background-color: color-mix(in oklab, var(--accent) 35%, transparent);
+	color: var(--foreground);
+}
+
+.hero-name {
+	transition: color 200ms ease;
+}
+.hero-name span {
+	color: var(--foreground);
+}
+.hero-name[data-accent='true'] span {
+	color: var(--accent);
+}
+.hero-name[data-variant='0'] span {
+	font-family: var(--font-sans);
+	font-weight: 300;
+	letter-spacing: -0.02em;
+}
+.hero-name[data-variant='1'] span {
+	font-family: var(--font-pixel);
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+.hero-name[data-variant='2'] span {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-style: italic;
+}
+.hero-name[data-variant='3'] span {
+	font-family: var(--font-mono);
+	font-weight: 500;
+}
+
+@keyframes nav-dot-flash {
+	0%,
+	100% {
+		fill-opacity: 1;
+	}
+	50% {
+		fill-opacity: 0.22;
+	}
+}
+
+@keyframes nav-dot-close-edge {
+	0% {
+		fill-opacity: 0.4;
+	}
+	50% {
+		fill-opacity: 0.22;
+	}
+	100% {
+		fill-opacity: 1;
+	}
+}
+
+.nav-dot-corner,
+.nav-dot-edge {
+	transition: fill-opacity var(--dot-trans-dur) ease;
+}
+
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-corner {
+	fill-opacity: 0.22;
+	transition-delay: var(--nav-dot-in-delay, 0ms);
+}
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-corner {
+	fill-opacity: 1;
+	transition-delay: var(--nav-dot-out-delay, 0ms);
+}
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-edge,
+.dot-toggle[aria-expanded='false'].hovering .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease var(--nav-dot-in-delay, 0ms)
+		1;
+}
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-edge,
+.dot-toggle[aria-expanded='false'].leaving .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1;
+}
+
+.dot-toggle[aria-expanded='true'] .nav-dot-edge {
+	fill-opacity: 0.4;
+	transition-delay: var(--nav-dot-in-delay, 0ms);
+}
+.dot-toggle[aria-expanded='true'] .nav-dot-corner,
+.dot-toggle[aria-expanded='true'] .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease var(--nav-dot-in-delay, 0ms)
+		1;
+}
+
+.dot-toggle.closing .nav-dot-edge {
+	animation: nav-dot-close-edge var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1 backwards;
+}
+.dot-toggle.closing .nav-dot-corner,
+.dot-toggle.closing .nav-dot-center {
+	animation: nav-dot-flash var(--dot-anim-dur) ease
+		var(--nav-dot-out-delay, 0ms) 1;
+}
