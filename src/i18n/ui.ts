@@ -75,9 +75,9 @@ export const ui = {
 		'role.unilabs.role': 'Enginyer de Software',
 		'role.unilabs.period': '2025 - Actualitat',
 		'role.unilabs.description':
-			'Construint eines internes i plataformes per a clínics en una pràctica de radiologia distribuïda. Enfocat a una UX acurada i stacks de TypeScript mantenibles.',
+			'Creació de plataformes orientades a radiòlegs i eines internes per a fluxos de treball clínics i educació mèdica. Desenvolupament de sistemes en producció amb especial atenció a una UX clara i a arquitectures mantenibles.',
 		'role.unilabs.responsibilities':
-			'Dissenyar i entregar funcionalitats end-to-end per tota la stack. | Millorar la DX interna — tooling, CI, cultura de code review. | Col·laborar amb producte i equips clínics per convertir necessitats difuses en increments entregats.',
+			"Desenvolupament complet de funcionalitats frontend i backend | Lideratge del desenvolupament de Biomarkers4HCPs, una aplicació mòbil multiplataforma utilitzada per radiòlegs per a formació mèdica | Contribució al desenvolupament i manteniment de la plataforma d'e-learning Unilabs Academy | Col·laboració en la presa de decisions tècniques i en la millora contínua dels productes",
 		'role.unilabs.project.biomarkers.desc':
 			'App mòbil de microlearning sobre biomarcadors',
 		'role.unilabs.project.academy.desc':
@@ -85,9 +85,9 @@ export const ui = {
 		'role.owius.role': 'Desenvolupador Full-Stack',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			"Feina full-stack en diversos productes de client. De prototip a producció, tocant des del disseny de l'esquema fins al poliment de la UI.",
+			"Desenvolupament d'aplicacions mòbils híbrides i sistemes per a diversos clients. Més de 10 aplicacions lliurades d'inici a fi, des del disseny fins al llançament.",
 		'role.owius.responsibilities':
-			"Apropiació de funcionalitats end-to-end amb mínims traspassos. | Mentoritzar juniors i ajudar a establir convencions d'equip.",
+			"Responsabilitat integral de productes iOS i Android | Provisionament i manteniment de servidors de producció per a diverses aplicacions | Planificació i execució de sprints curts amb desplegament continu | Integració de grans APIs de tercers i escalat de productes fins a milers d'usuaris actius diaris",
 		'role.tous.role': 'Pràctiques IT',
 		'role.tous.period': '2019',
 		'role.tous.description':
@@ -178,9 +178,9 @@ export const ui = {
 		'role.unilabs.role': 'Software Engineer',
 		'role.unilabs.period': '2025 - Now',
 		'role.unilabs.description':
-			'Building internal tools and clinician-facing platforms for a distributed radiology practice. Focused on clean, considered UX and maintainable TypeScript stacks.',
+			'Building radiologist-facing platforms and supporting internal tools for clinical workflows and medical education. Delivered production-grade systems with a focus on clean UX and maintainable stacks.',
 		'role.unilabs.responsibilities':
-			'Design and ship end-to-end features across the stack. | Improve internal DX — tooling, CI, code review culture. | Partner with product and clinical teams to turn fuzzy needs into shipped increments.',
+			'End-to-end development of frontend and backend features | Led the development of Biomarkers4HCPs, a cross-platform mobile application used by radiologists for medical training | Contributed to the development and maintenance of the e-learning platform Unilabs Academy | Collaborated on technical decision-making and continuous product improvement',
 		'role.unilabs.project.biomarkers.desc':
 			'Mobile app for biomarkers microlearning',
 		'role.unilabs.project.academy.desc':
@@ -188,9 +188,9 @@ export const ui = {
 		'role.owius.role': 'Full-Stack Developer',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Full-stack work across several client products. From prototype to production, touching everything from schema design to UI polish.',
+			'Building hybrid mobile apps and systems for multiple client products. Delivered 10+ apps end-to-end, from design to release.',
 		'role.owius.responsibilities':
-			'Own features end-to-end with minimal handoffs. | Mentor juniors and help establish team conventions.',
+			'Ownership of iOS and Android products | Provisioning and maintaining production servers for multiple apps | Planning and executing short sprints with continuous deployment | Integrating large third-party APIs and scaling products to thousands of daily active users',
 		'role.tous.role': 'IT Internship',
 		'role.tous.period': '2019',
 		'role.tous.description':
@@ -282,9 +282,9 @@ export const ui = {
 		'role.unilabs.role': 'Ingeniero de Software',
 		'role.unilabs.period': '2025 - Actualidad',
 		'role.unilabs.description':
-			'Construyendo herramientas internas y plataformas para clínicos en una práctica de radiología distribuida. Enfocado en UX cuidada y stacks de TypeScript mantenibles.',
+			'Creación de plataformas orientadas a radiólogos y herramientas internas para flujos de trabajo clínicos y educación médica. Desarrollo de sistemas en producción con especial atención a una UX clara y a arquitecturas mantenibles.',
 		'role.unilabs.responsibilities':
-			'Diseñar y entregar features end-to-end en toda la stack. | Mejorar la DX interna — tooling, CI, cultura de code review. | Colaborar con producto y equipos clínicos para convertir necesidades difusas en incrementos entregados.',
+			'Desarrollo completo de funcionalidades frontend y backend | Liderazgo del desarrollo de Biomarkers4HCPs, una aplicación móvil multiplataforma utilizada por radiólogos para formación médica | Contribución al desarrollo y mantenimiento de la plataforma de e-learning Unilabs Academy | Colaboración en la toma de decisiones técnicas y en la mejora continua de los productos',
 		'role.unilabs.project.biomarkers.desc':
 			'App móvil de microlearning sobre biomarcadores',
 		'role.unilabs.project.academy.desc':
@@ -292,9 +292,9 @@ export const ui = {
 		'role.owius.role': 'Desarrollador Full-Stack',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Trabajo full-stack en varios productos de cliente. De prototipo a producción, tocando desde el diseño del esquema hasta el pulido de la UI.',
+			'Desarrollo de aplicaciones móviles híbridas y sistemas para diversos clientes. Más de 10 aplicaciones entregadas de inicio a fin, desde el diseño hasta el lanzamiento.',
 		'role.owius.responsibilities':
-			'Apropiación de features end-to-end con mínimos traspasos. | Mentorizar juniors y ayudar a establecer convenciones de equipo.',
+			'Responsabilidad de productos iOS y Android | Aprovisionamiento y mantenimiento de servidores de producción para múltiples aplicaciones | Planificación y ejecución de sprints cortos con despliegue continuo | Integración de grandes APIs de terceros y escalado de productos hasta miles de usuarios activos diarios',
 		'role.tous.role': 'Prácticas IT',
 		'role.tous.period': '2019',
 		'role.tous.description':
@@ -385,9 +385,9 @@ export const ui = {
 		'role.unilabs.role': 'Programvareutvikler',
 		'role.unilabs.period': '2025 - Nå',
 		'role.unilabs.description':
-			'Bygger interne verktøy og plattformer for klinikere i en distribuert radiologipraksis. Fokusert på ryddig UX og vedlikeholdbare TypeScript-stacker.',
+			'Utvikling av radiologifokuserte plattformer og interne verktøy for kliniske arbeidsflyter og medisinsk utdanning. Levering av produksjonssystemer med særlig fokus på tydelig UX og vedlikeholdbare arkitekturer.',
 		'role.unilabs.responsibilities':
-			'Designe og levere ende-til-ende-funksjoner på tvers av stacken. | Forbedre intern DX — tooling, CI, code review-kultur. | Samarbeide med produkt- og kliniske team for å gjøre uklare behov til leverte inkrementer.',
+			'Full utvikling av frontend- og backend-funksjonalitet | Ledet utviklingen av Biomarkers4HCPs, en tverrplattform mobilapplikasjon brukt av radiologer til medisinsk opplæring | Bidro til utvikling og vedlikehold av e-læringsplattformen Unilabs Academy | Samarbeidet om tekniske beslutninger og kontinuerlig produktforbedring',
 		'role.unilabs.project.biomarkers.desc':
 			'Mobilapp for microlearning om biomarkører',
 		'role.unilabs.project.academy.desc':
@@ -395,9 +395,9 @@ export const ui = {
 		'role.owius.role': 'Full-Stack-utvikler',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Full-stack-arbeid på tvers av flere kundeprodukter. Fra prototype til produksjon, fra skjemadesign til UI-polish.',
+			'Utvikling av hybride mobilapper og systemer for ulike kunder. Over 10 apper levert fra start til slutt, fra design til lansering.',
 		'role.owius.responsibilities':
-			'Eierskap til funksjoner ende-til-ende med minimale overleveringer. | Mentor for juniorer og bidra til å etablere team-konvensjoner.',
+			'Ansvar for iOS- og Android-produkter | Oppsett og vedlikehold av produksjonsservere for flere apper | Planlegging og gjennomføring av korte sprinter med kontinuerlig utrulling | Integrasjon av store tredjeparts-API-er og skalering av produkter til tusenvis av daglige aktive brukere',
 		'role.tous.role': 'IT-praksisplass',
 		'role.tous.period': '2019',
 		'role.tous.description':

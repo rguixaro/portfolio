@@ -40,10 +40,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(es|ca|nb)(\/|$)/, '/')
 const alternates = locales.map((l) => ({
 	hreflang: l,
 	href:
-		siteUrl +
-		(l === 'en'
-			? pathWithoutLocale
-			: `/${l}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`),
+		siteUrl + (l === 'en' ? pathWithoutLocale : `/${l}${pathWithoutLocale}`),
 }))
 
 const jsonLd = {
