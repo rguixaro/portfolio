@@ -117,7 +117,10 @@ const projects = [
 				const monitor = row.getAttribute('data-monitor')
 				if (!monitor) return
 
-				const entry = data.find((e) => e.key === monitor || e.name === monitor)
+				const entry = data.find(
+					(e) =>
+						e.key === monitor || e.name === monitor || e.hostname === monitor,
+				)
 				if (!entry || !entry.level) return
 
 				const sc = STATUS_CONFIG[entry.level]
