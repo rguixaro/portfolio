@@ -7,6 +7,7 @@ type GatusLevel = 'live' | 'slow' | 'down'
 interface GatusStatusEntry {
 	key: string
 	name: string
+	hostname?: string
 	level: GatusLevel | null
 }
 
