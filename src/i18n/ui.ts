@@ -21,7 +21,7 @@ export const ui = {
 		'experience.panel.projects': 'Projectes',
 
 		'expertise.lead.focus':
-			"Prioritzo construir software senzill d'entendre i fàcil d'escalar en",
+			"Prioritzo construir software fàcil de mantenir i d'escalar en",
 		'expertise.lead.highlight': 'entorns full-stack, mòbil i DevOps',
 		'expertise.card.fullstack.title': 'Desenvolupament full-stack',
 		'expertise.card.fullstack.copy':
@@ -124,7 +124,7 @@ export const ui = {
 		'experience.panel.projects': 'Projects',
 
 		'expertise.lead.focus':
-			'I prioritize building software that is easy to understand and easy to scale in',
+			'I prioritise building software that is easy to maintain and scale in',
 		'expertise.lead.highlight': 'full-stack, mobile and DevOps environments',
 		'expertise.card.fullstack.title': 'Full-stack development',
 		'expertise.card.fullstack.copy':
@@ -227,7 +227,7 @@ export const ui = {
 		'experience.panel.projects': 'Proyectos',
 
 		'expertise.lead.focus':
-			'Priorizo construir software sencillo de entender y fácil de escalar en',
+			'Priorizo construir software fácil de mantener y de escalar en',
 		'expertise.lead.highlight': 'entornos full-stack, móvil y DevOps',
 		'expertise.card.fullstack.title': 'Desarrollo full-stack',
 		'expertise.card.fullstack.copy':
@@ -331,8 +331,8 @@ export const ui = {
 		'experience.panel.projects': 'Prosjekter',
 
 		'expertise.lead.focus':
-			'Jeg prioriterer å bygge programvare som er enkel å forstå og enkel å skalere',
-		'expertise.lead.highlight': 'full-stack, mobil og DevOps-miljøer',
+			'Jeg prioriterer å bygge programvare som er enkel å vedlikeholde og skalere i',
+		'expertise.lead.highlight': 'full-stack-, mobil- og DevOps-miljøer',
 		'expertise.card.fullstack.title': 'Full-stack utvikling',
 		'expertise.card.fullstack.copy':
 			'Digitale produkter med Next.js, Nuxt.js, React, TypeScript og Python, fra grensesnitt til database.',
@@ -352,11 +352,11 @@ export const ui = {
 		'projects.visit': 'Besøk',
 		'projects.source': 'Kildekode',
 		'projects.rask.desc':
-			'En åpen kildekode URL-forkorter som prioriterer personvern og enkelhet ved opprettelse av korte lenker.',
+			'En URL-forkorter med åpen kildekode som prioriterer personvern og enkelhet ved opprettelse av korte lenker.',
 		'projects.cookbook.desc':
-			'En åpen kildekode-tjeneste for å opprette, organisere og dele oppskrifter på en enkel måte.',
+			'En tjeneste med åpen kildekode for å opprette, organisere og dele oppskrifter på en enkel måte.',
 		'projects.roots.desc':
-			'En åpen kildekode-applikasjon for å opprette, visualisere og administrere slektstrær på en samarbeidende og intuitiv måte.',
+			'En applikasjon med åpen kildekode for å opprette, visualisere og administrere slektstrær på en samarbeidende og intuitiv måte.',
 		'projects.edu.bachelor.name': 'Bachelor i datavitenskap',
 		'projects.edu.bachelor.location':
 			'Universitat Politècnica de Catalunya, Barcelona',
