@@ -21,7 +21,7 @@ export const roles: Role[] = [
 		company: 'Unilabs Academy',
 		href: 'https://www.unilabs.com',
 		location: 'Barcelona',
-		tech: ['Nuxt', 'Python', 'Flutter', 'PostgreSQL'],
+		tech: ['Nuxt', 'Python', 'Flutter', 'Django', 'PostgreSQL', 'Docker'],
 		hasResponsibilities: true,
 		projects: [
 			{
@@ -43,19 +43,34 @@ export const roles: Role[] = [
 		company: 'Owius Technologies',
 		href: 'https://owius.com',
 		location: 'Barcelona',
-		tech: ['React Native', 'TypeScript', 'React', 'Vue', 'Node', 'MongoDB'],
+		tech: [
+			'React Native',
+			'React',
+			'Vue',
+			'Node.js',
+			'Ionic',
+			'MySQL',
+			'MongoDB',
+		],
 		hasResponsibilities: true,
 		projects: [
-			{ slug: 'eatfity', name: 'Eatfity', href: 'https://eatfity.com/' },
+			{
+				slug: 'eatfity',
+				name: 'Eatfity',
+				href: 'https://eatfity.com/',
+				hasDesc: true,
+			},
 			{
 				slug: 'musicadders',
 				name: 'MusicAdders',
 				href: 'https://www.musicadders.com/',
+				hasDesc: true,
 			},
 			{
 				slug: 'puntolimpio',
 				name: 'Punto Limpio',
 				href: 'https://punto-limpio.info/',
+				hasDesc: true,
 			},
 		],
 	},
@@ -64,5 +79,6 @@ export const roles: Role[] = [
 		company: 'Tous Jewelry',
 		href: 'https://www.tous.com',
 		location: 'Manresa',
+		hasResponsibilities: true,
 	},
 ]
