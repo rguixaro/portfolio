@@ -1,6 +1,8 @@
 ---
 import Collapsible from './Collapsible.astro'
 
+import { STATUS_PAGE_URL } from '../lib/config'
+
 interface Props {
 	num: number
 	name: string
@@ -11,10 +13,13 @@ interface Props {
 	wip?: boolean
 	monitor?: string
 	logo?: string
+	tech?: string[]
 	labels?: {
 		visit?: string
 		wip?: string
 		source?: string
+		stack?: string
+		links?: string
 		toggle?: string
 	}
 }
@@ -29,6 +34,7 @@ const {
 	wip = false,
 	monitor,
 	logo,
+	tech,
 	labels,
 } = Astro.props
 
@@ -36,6 +42,8 @@ const L = {
 	visit: labels?.visit ?? 'Visit',
 	wip: labels?.wip ?? 'WIP',
 	source: labels?.source ?? 'Source',
+	stack: labels?.stack ?? 'Stack',
+	links: labels?.links ?? 'Links',
 	toggle: labels?.toggle ?? 'Toggle project details',
 }
 
@@ -58,7 +66,7 @@ const numStr = String(num).padStart(2, '0')
 			<span class="text-foreground truncate text-sm font-medium">{name}</span>
 			{
 				codename && (
-					<span class="eyebrow-mono text-foreground/50 shrink-0">
+					<span class="eyebrow-mono text-foreground/50 shrink-0 lowercase!">
 						[{codename}]
 					</span>
 				)
@@ -67,14 +75,31 @@ const numStr = String(num).padStart(2, '0')
 
 		{
 			monitor && (
-				<span
-					class="project-status text-foreground/50 hidden shrink-0 items-center gap-1.5 font-mono text-[11px] sm:flex"
-					style="display:none;"
+				<a
+					href={STATUS_PAGE_URL}
 					data-ready="false"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors"
+					style="display:none;"
 				>
-					<span class="project-status-dot h-1.5 w-1.5 rounded-full" />
+					<span class="project-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full" />
 					<span class="project-status-label" />
-				</span>
+					<svg
+						width="10"
+						height="10"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M7 7h10v10" />
+						<path d="M7 17 17 7" />
+					</svg>
+				</a>
 			)
 		}
 
@@ -88,7 +113,7 @@ const numStr = String(num).padStart(2, '0')
 	</Fragment>
 
 	<Fragment slot="body">
-		<div class="flex items-center gap-4 px-4 py-4">
+		<div class="flex items-start gap-4 px-4 py-4">
 			{
 				logo && (
 					<svg
@@ -104,54 +129,80 @@ const numStr = String(num).padStart(2, '0')
 					{desc}
 				</p>
 
-				<div class="flex items-center gap-4 pt-1 text-xs">
-					{
-						href && (
-							<a
-								href={href}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-foreground/80 hover:text-accent inline-flex items-center gap-1 font-medium underline transition-colors"
-							>
-								{L.visit}
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<path d="M7 7h10v10" />
-									<path d="M7 17 17 7" />
-								</svg>
-							</a>
-						)
-					}
-					{
-						repo && (
-							<a
-								href={repo}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-foreground/80 hover:text-accent inline-flex items-center gap-1 font-medium underline transition-colors"
-							>
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="currentColor"
-									aria-hidden="true"
-								>
-									<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-								</svg>
-								{L.source}
-							</a>
-						)
-					}
-				</div>
+				{
+					tech && tech.length > 0 && (
+						<div class="flex flex-col gap-1.5">
+							<span class="eyebrow-semibold text-foreground/50">{L.stack}</span>
+							<div class="flex flex-wrap gap-1.5">
+								{tech.map((t) => (
+									<span class="eyebrow-mono text-foreground/60 border-foreground/15 rounded-full border px-2 py-0.5">
+										{t}
+									</span>
+								))}
+							</div>
+						</div>
+					)
+				}
+
+				{
+					(href || repo) && (
+						<div class="flex flex-col gap-1.5">
+							<span class="eyebrow-semibold text-foreground/50">{L.links}</span>
+							<div class="flex flex-col gap-1.5">
+								{href && (
+									<div class="flex items-baseline gap-2 text-xs">
+										<a
+											href={href}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors"
+										>
+											{L.visit}
+											<svg
+												width="10"
+												height="10"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<path d="M7 7h10v10" />
+												<path d="M7 17 17 7" />
+											</svg>
+										</a>
+									</div>
+								)}
+								{repo && (
+									<div class="flex items-baseline gap-2 text-xs">
+										<a
+											href={repo}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors"
+										>
+											{L.source}
+											<svg
+												width="10"
+												height="10"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<path d="M7 7h10v10" />
+												<path d="M7 17 17 7" />
+											</svg>
+										</a>
+									</div>
+								)}
+							</div>
+						</div>
+					)
+				}
 			</div>
 		</div>
 	</Fragment>

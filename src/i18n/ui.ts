@@ -39,14 +39,15 @@ export const ui = {
 		'projects.description':
 			"Els projectes personals són el meu espai d'experimentació. Els faig servir per provar eines, millorar l'ofici i convertir la curiositat en prototips reals.",
 		'projects.subtitle.education': 'Educació',
-		'projects.visit': 'Visitar',
+		'projects.visit': 'Web',
 		'projects.source': 'Codi',
+		'projects.links': 'Enllaços',
 		'projects.rask.desc':
-			"Un escurçador d'URL de codi obert que prioritza la privacitat i la simplicitat a l'hora de crear enllaços curts.",
+			"Escurçador d'URL centrat en la privacitat i la simplicitat, construït amb repositoris separats per al client i l'API. Permet la creació, gestió i seguiment eficient d'enllaços curts dins d'una arquitectura full-stack lleugera.",
 		'projects.cookbook.desc':
-			'Un servei de codi obert per crear, organitzar i compartir receptes de manera senzilla.',
+			'Plataforma per compartir receptes amb autenticació, càrrega de fitxers multimèdia, correus electrònics transaccionals i entorns separats de staging i producció.',
 		'projects.roots.desc':
-			'Una aplicació de codi obert per crear, visualitzar i gestionar arbres familiars de manera col·laborativa i intuïtiva.',
+			"Una aplicació per crear i visualitzar arbres familiars de manera col·laborativa i intuïtiva. Permet convidar membres, afegir fotografies als perfils i ofereix una cronologia d'activitats, recordatoris de dates importants i un resum setmanal per correu.",
 		'projects.edu.bachelor.name': 'Grau en Enginyeria Informàtica',
 		'projects.edu.bachelor.location':
 			'Universitat Politècnica de Catalunya, Barcelona',
@@ -75,23 +76,31 @@ export const ui = {
 		'role.unilabs.role': 'Enginyer de Software',
 		'role.unilabs.period': '2025 - Actualitat',
 		'role.unilabs.description':
-			'Creació de plataformes orientades a radiòlegs i eines internes per a fluxos de treball clínics i educació mèdica. Desenvolupament de sistemes en producció amb especial atenció a una UX clara i a arquitectures mantenibles.',
+			"Desenvolupament d'eines digitals per a formació en radiologia en aplicacions mòbils, plataformes d'aprenentatge i millores contínues del producte. Enfocat en sistemes fiables, una UX clara i una iteració ben cuidada.",
 		'role.unilabs.responsibilities':
-			"Desenvolupament complet de funcionalitats frontend i backend | Lideratge del desenvolupament de Biomarkers4HCPs, una aplicació mòbil multiplataforma utilitzada per radiòlegs per a formació mèdica | Contribució al desenvolupament i manteniment de la plataforma d'e-learning Unilabs Academy | Col·laboració en la presa de decisions tècniques i en la millora contínua dels productes",
+			"Responsable del desenvolupament i l'evolució de l'aplicació mòbil multiplataforma d'e-learning Biomarkers4HCPs, incloent decisions d'arquitectura, la implementació de funcionalitats i el manteniment | Contribució a l'estabilitat i rendiment de la plataforma, reduint la taxa d'errors del frontend, disminuint els errors de l'API del 0,37% al 0,05% i millorant el LCP de 2,78s a 1,88s | Disseny i implementació de serveis i APIs amb Python i integració amb bases de dades PostgreSQL | Col·laboració en la presa de decisions tècniques i en la millora contínua dels productes",
 		'role.unilabs.project.biomarkers.desc':
 			'App mòbil de microlearning sobre biomarcadors',
 		'role.unilabs.project.academy.desc':
 			'Plataforma de formació online per a radiòlegs',
-		'role.owius.role': 'Desenvolupador Full-Stack',
+		'role.owius.role': 'Desenvolupador Full-Stack Jr.',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			"Desenvolupament d'aplicacions mòbils híbrides i sistemes per a diversos clients. Més de 10 aplicacions lliurades d'inici a fi, des del disseny fins al llançament.",
+			"Desenvolupament de productes per a clients en producció, en sistemes mòbils, web, backend i back-office. Enfocat en el lliurament, manteniment i evolució de productes en cicles curts d'iteració.",
 		'role.owius.responsibilities':
-			"Responsabilitat integral de productes iOS i Android | Provisionament i manteniment de servidors de producció per a diverses aplicacions | Planificació i execució de sprints curts amb desplegament continu | Integració de grans APIs de tercers i escalat de productes fins a milers d'usuaris actius diaris",
+			"Responsabilitat integral de productes iOS i Android | Desenvolupament i manteniment de múltiples aplicacions en producció en plataformes mòbils, backend i web | Disseny i desenvolupament d'Eatfity en sistemes mòbils, backend i de back-office, contribuint al creixement fins a arribar a gairebé 10.000 usuaris | Desenvolupament de Punto Limpio i els seus sistemes de suport backend, back-office i web per a operacions de gestió de residus | Desenvolupament de MusicAdders, amb responsabilitat sobre les versions d'Android i iOS i integració amb una API externa | Planificació, seguiment i execució de tasques en sprints curts i desplegaments continus",
+		'role.owius.project.eatfity.desc':
+			'App de fitness i nutrició amb plans personalitzats',
+		'role.owius.project.musicadders.desc':
+			'Plataforma de monetització musical i gestió de catàlegs',
+		'role.owius.project.puntolimpio.desc':
+			'Cercador geolocalitzat de punts de reciclatge de RAEE',
 		'role.tous.role': 'Pràctiques IT',
 		'role.tous.period': '2019',
 		'role.tous.description':
-			"Part del Departament d'IT. Manteniment del hardware de diversos sistemes i resolució d'incidències tècniques.",
+			"Pràctiques al departament d'IT donant suport a les operacions internes i a la fiabilitat dels sistemes.",
+		'role.tous.responsibilities':
+			"Manteniment de sistemes interns i hardware de treball | Diagnosi i resolució d'incidències tècniques per a usuaris interns",
 
 		'anchor.experience': 'experiencia',
 		'anchor.expertise': 'habilitats',
@@ -142,14 +151,15 @@ export const ui = {
 		'projects.description':
 			'Side projects are my space for experimentation. I use them to try out tools, improve my craft, and turn curiosity into real prototypes.',
 		'projects.subtitle.education': 'Education',
-		'projects.visit': 'Visit',
+		'projects.visit': 'Web',
 		'projects.source': 'Source',
+		'projects.links': 'Links',
 		'projects.rask.desc':
-			'An open-source URL shortener that prioritises privacy and simplicity when creating short links.',
+			'A URL shortener focused on privacy and simplicity, built with separate client and API repositories. It enables efficient creation, management, and tracking of short links across a lightweight full-stack architecture.',
 		'projects.cookbook.desc':
-			'An open-source service for creating, organising, and sharing recipes in a simple way.',
+			'A recipe sharing platform with authentication, media uploads, transactional emails, and separate staging/production environments.',
 		'projects.roots.desc':
-			'An open-source application for creating, visualising, and managing family trees in a collaborative and intuitive way.',
+			'An application to create and visualize family trees in a collaborative and intuitive way. It allows inviting members, adding photos to profiles, and provides an activity timeline, reminders for important dates, and a weekly email summary.',
 		'projects.edu.bachelor.name': 'Bachelor Degree in Computer Science',
 		'projects.edu.bachelor.location':
 			'Universitat Politècnica de Catalunya, Barcelona',
@@ -178,23 +188,31 @@ export const ui = {
 		'role.unilabs.role': 'Software Engineer',
 		'role.unilabs.period': '2025 - Now',
 		'role.unilabs.description':
-			'Building radiologist-facing platforms and supporting internal tools for clinical workflows and medical education. Delivered production-grade systems with a focus on clean UX and maintainable stacks.',
+			'Development of digital tools for radiology education across mobile applications, learning platforms, and ongoing product improvements. Focused on reliable systems, clear user experiences, and thoughtful iteration.',
 		'role.unilabs.responsibilities':
-			'End-to-end development of frontend and backend features | Led the development of Biomarkers4HCPs, a cross-platform mobile application used by radiologists for medical training | Contributed to the development and maintenance of the e-learning platform Unilabs Academy | Collaborated on technical decision-making and continuous product improvement',
+			'Led development and evolution of the cross-platform e-learning mobile application Biomarkers4HCPs, including architecture decisions, feature implementation, and maintenance | Contributed to platform stability and performance improvements by reducing frontend session error rates, lowering backend API error rate from 0.37% to 0.05%, and improving LCP from 2.78s to 1.88s | Designed and implemented production APIs and services in Python, integrated with PostgreSQL databases | Collaborated in technical decision-making and continuous product improvement',
 		'role.unilabs.project.biomarkers.desc':
 			'Mobile app for biomarkers microlearning',
 		'role.unilabs.project.academy.desc':
 			'Online learning platform for radiologists',
-		'role.owius.role': 'Full-Stack Developer',
+		'role.owius.role': 'Jr. Full-Stack Developer',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Building hybrid mobile apps and systems for multiple client products. Delivered 10+ apps end-to-end, from design to release.',
+			'Development of production client products across mobile, web, backend, and back-office systems. Focused on delivery, maintenance, and product evolution through short iteration cycles.',
 		'role.owius.responsibilities':
-			'Ownership of iOS and Android products | Provisioning and maintaining production servers for multiple apps | Planning and executing short sprints with continuous deployment | Integrating large third-party APIs and scaling products to thousands of daily active users',
+			'Ownership of iOS and Android products | Developed and maintained multiple production applications across mobile, backend, and web platforms | Designed and developed Eatfity across mobile, backend, and back-office systems, contributing to growth reaching nearly 10,000 users | Built Punto Limpio and its supporting backend, back-office, and web systems for waste management operations | Developed MusicAdders, with responsibility for Android and iOS versions and integration with a large external API | Planned, tracked, and executed tasks across short sprints and continuous deployments',
+		'role.owius.project.eatfity.desc':
+			'Fitness and nutrition app with personalised plans',
+		'role.owius.project.musicadders.desc':
+			'Music monetisation and catalogue management platform',
+		'role.owius.project.puntolimpio.desc':
+			'Geolocated recycling point finder for electronic waste',
 		'role.tous.role': 'IT Internship',
 		'role.tous.period': '2019',
 		'role.tous.description':
-			'Part of the IT Department. Kept several systems up to date and troubleshot technical issues.',
+			'IT department internship supporting internal operations and system reliability.',
+		'role.tous.responsibilities':
+			'Maintained internal systems and workplace hardware | Diagnosed and resolved technical issues for internal users',
 
 		'anchor.experience': 'experience',
 		'anchor.expertise': 'expertise',
@@ -245,14 +263,15 @@ export const ui = {
 		'projects.description':
 			'Los proyectos personales son mi espacio de experimentación. Los utilizo para probar herramientas, mejorar el oficio y convertir la curiosidad en prototipos reales.',
 		'projects.subtitle.education': 'Educación',
-		'projects.visit': 'Visitar',
+		'projects.visit': 'Web',
 		'projects.source': 'Código',
+		'projects.links': 'Enlaces',
 		'projects.rask.desc':
-			'Un acortador de URL de código abierto que prioriza la privacidad y la simplicidad a la hora de crear enlaces cortos.',
+			'Acortador de URL centrado en la privacidad y la simplicidad, construido con repositorios separados para el cliente y la API. Permite la creación, gestión y seguimiento eficiente de enlaces cortos en una arquitectura full-stack ligera.',
 		'projects.cookbook.desc':
-			'Un servicio de código abierto para crear, organizar y compartir recetas de forma sencilla.',
+			'Plataforma para compartir recetas con autenticación, carga de medios, correos electrónicos transaccionales y entornos separados de pruebas y producción.',
 		'projects.roots.desc':
-			'Una aplicación de código abierto para crear, visualizar y gestionar árboles familiares de manera colaborativa e intuitiva.',
+			'Una aplicación para crear y visualizar árboles familiares de forma colaborativa e intuitiva. Permite invitar a miembros, añadir fotografías a los perfiles y ofrece una cronología de actividad, recordatorios de fechas importantes y un resumen semanal por correo.',
 		'projects.edu.bachelor.name': 'Grado en Ingeniería Informática',
 		'projects.edu.bachelor.location':
 			'Universitat Politècnica de Catalunya, Barcelona',
@@ -282,23 +301,31 @@ export const ui = {
 		'role.unilabs.role': 'Ingeniero de Software',
 		'role.unilabs.period': '2025 - Actualidad',
 		'role.unilabs.description':
-			'Creación de plataformas orientadas a radiólogos y herramientas internas para flujos de trabajo clínicos y educación médica. Desarrollo de sistemas en producción con especial atención a una UX clara y a arquitecturas mantenibles.',
+			'Desarrollo de herramientas digitales para formación en radiología en aplicaciones móviles, plataformas de aprendizaje y mejoras continuas del producto. Enfocado en sistemas fiables, una UX clara y una iteración cuidada.',
 		'role.unilabs.responsibilities':
-			'Desarrollo completo de funcionalidades frontend y backend | Liderazgo del desarrollo de Biomarkers4HCPs, una aplicación móvil multiplataforma utilizada por radiólogos para formación médica | Contribución al desarrollo y mantenimiento de la plataforma de e-learning Unilabs Academy | Colaboración en la toma de decisiones técnicas y en la mejora continua de los productos',
+			'Responsable del desarrollo y evolución de la aplicación móvil multiplataforma de e-learning Biomarkers4HCPs, incluyendo decisiones de arquitectura, implementación de funcionalidades y mantenimiento | Contribución a la estabilidad y rendimiento de la plataforma mediante la reducción de errores en frontend, la disminución de la tasa de error de la API backend del 0,37% al 0,05% y la mejora del LCP de 2,78s a 1,88s | Diseño e implementación de APIs y servicios en producción con Python, integrados con bases de datos PostgreSQL | Colaboración en la toma de decisiones técnicas y en la mejora continua del producto',
 		'role.unilabs.project.biomarkers.desc':
 			'App móvil de microlearning sobre biomarcadores',
 		'role.unilabs.project.academy.desc':
 			'Plataforma de formación online para radiólogos',
-		'role.owius.role': 'Desarrollador Full-Stack',
+		'role.owius.role': 'Desarrollador Full-Stack Jr.',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Desarrollo de aplicaciones móviles híbridas y sistemas para diversos clientes. Más de 10 aplicaciones entregadas de inicio a fin, desde el diseño hasta el lanzamiento.',
+			'Desarrollo de productos para clientes en producción, en sistemas móviles, web, backend y back-office. Enfocado en la entrega, mantenimiento y evolución de productos en ciclos cortos de iteración.',
 		'role.owius.responsibilities':
-			'Responsabilidad de productos iOS y Android | Aprovisionamiento y mantenimiento de servidores de producción para múltiples aplicaciones | Planificación y ejecución de sprints cortos con despliegue continuo | Integración de grandes APIs de terceros y escalado de productos hasta miles de usuarios activos diarios',
+			'Responsabilidad de productos iOS y Android | Desarrollo y mantenimiento de múltiples aplicaciones en producción en plataformas móviles, backend y web | Diseño y desarrollo de Eatfity en sistemas móviles, backend y de back-office, contribuyendo al crecimiento hasta alcanzar casi 10.000 usuarios | Desarrollo de Punto Limpio y de sus sistemas de soporte backend, back-office y web para operaciones de gestión de residuos | Desarrollo de MusicAdders, con responsabilidad sobre las versiones de Android y iOS e integración con una API externa de gran tamaño | Planificación, seguimiento y ejecución de tareas en sprints cortos y despliegues continuos',
+		'role.owius.project.eatfity.desc':
+			'App de fitness y nutrición con planes personalizados',
+		'role.owius.project.musicadders.desc':
+			'Plataforma de monetización musical y gestión de catálogos',
+		'role.owius.project.puntolimpio.desc':
+			'Buscador geolocalizado de puntos de reciclaje de RAEE',
 		'role.tous.role': 'Prácticas IT',
 		'role.tous.period': '2019',
 		'role.tous.description':
-			'Parte del Departamento de IT. Mantenimiento del hardware de varios sistemas y resolución de incidencias técnicas.',
+			'Prácticas en el departamento de IT dando soporte a las operaciones internas y a la fiabilidad de los sistemas.',
+		'role.tous.responsibilities':
+			'Mantenimiento de sistemas internos y hardware de trabajo | Diagnóstico y resolución de incidencias técnicas para usuarios internos',
 
 		'anchor.experience': 'experiencia',
 		'anchor.expertise': 'especialidades',
@@ -349,14 +376,15 @@ export const ui = {
 		'projects.description':
 			'Personlige prosjekter er mitt rom for eksperimentering. Jeg bruker dem til å teste verktøy, forbedre håndverket og gjøre nysgjerrighet om til reelle prototyper.',
 		'projects.subtitle.education': 'Utdanning',
-		'projects.visit': 'Besøk',
+		'projects.visit': 'Nettside',
 		'projects.source': 'Kildekode',
+		'projects.links': 'Lenker',
 		'projects.rask.desc':
-			'En URL-forkorter med åpen kildekode som prioriterer personvern og enkelhet ved opprettelse av korte lenker.',
+			'URL-forkorter med fokus på personvern og enkelhet, bygget med separate klient- og API-repositorier. Den muliggjør effektiv opprettelse, administrasjon og sporing av korte lenker i en lettvekts full-stack-arkitektur.',
 		'projects.cookbook.desc':
-			'En tjeneste med åpen kildekode for å opprette, organisere og dele oppskrifter på en enkel måte.',
+			'Plattform for deling av oppskrifter med autentisering, medieopplasting, transaksjonelle e-poster og separate test- og produksjonsmiljøer.',
 		'projects.roots.desc':
-			'En applikasjon med åpen kildekode for å opprette, visualisere og administrere slektstrær på en samarbeidende og intuitiv måte.',
+			'En åpen applikasjon for å opprette og visualisere familietrær på en samarbeidende og intuitiv måte. Den lar deg invitere medlemmer, legge til bilder i profiler og tilbyr en aktivitetslogg, påminnelser om viktige datoer og en ukentlig oppsummering via e-post.',
 		'projects.edu.bachelor.name': 'Bachelor i datavitenskap',
 		'projects.edu.bachelor.location':
 			'Universitat Politècnica de Catalunya, Barcelona',
@@ -385,23 +413,31 @@ export const ui = {
 		'role.unilabs.role': 'Programvareutvikler',
 		'role.unilabs.period': '2025 - Nå',
 		'role.unilabs.description':
-			'Utvikling av radiologifokuserte plattformer og interne verktøy for kliniske arbeidsflyter og medisinsk utdanning. Levering av produksjonssystemer med særlig fokus på tydelig UX og vedlikeholdbare arkitekturer.',
+			'Utvikling av digitale verktøy for radiologiutdanning på tvers av mobilapplikasjoner, læringsplattformer og løpende produktforbedringer. Fokus på pålitelige systemer, tydelige brukeropplevelser og gjennomtenkt iterasjon.',
 		'role.unilabs.responsibilities':
-			'Full utvikling av frontend- og backend-funksjonalitet | Ledet utviklingen av Biomarkers4HCPs, en tverrplattform mobilapplikasjon brukt av radiologer til medisinsk opplæring | Bidro til utvikling og vedlikehold av e-læringsplattformen Unilabs Academy | Samarbeidet om tekniske beslutninger og kontinuerlig produktforbedring',
+			'Ansvarlig for utvikling og videreutvikling av den plattformuavhengige mobilapplikasjonen for e-læring, Biomarkers4HCPs, inkludert arkitekturvalg, implementering av funksjonalitet og vedlikehold | Bidrag til stabilitet og ytelse i plattformen ved å redusere feil i frontend relatert til sesjoner, redusere backend API-feilrate fra 0,37 % til 0,05 % og forbedre LCP fra 2,78s til 1,88s | Design og implementering av produksjons-API-er og tjenester i Python, integrert med PostgreSQL-databaser | Samarbeid i tekniske beslutninger og kontinuerlig produktforbedring',
 		'role.unilabs.project.biomarkers.desc':
 			'Mobilapp for microlearning om biomarkører',
 		'role.unilabs.project.academy.desc':
 			'Nettbasert læringsplattform for radiologer',
-		'role.owius.role': 'Full-Stack-utvikler',
+		'role.owius.role': 'Jr. Full-Stack-utvikler',
 		'role.owius.period': '2022 - 2024',
 		'role.owius.description':
-			'Utvikling av hybride mobilapper og systemer for ulike kunder. Over 10 apper levert fra start til slutt, fra design til lansering.',
+			'Utvikling av produksjonsprodukter for kunder på tvers av mobil-, web-, backend- og backoffice-systemer. Fokus på levering, vedlikehold og videreutvikling gjennom korte iterasjonssykluser.',
 		'role.owius.responsibilities':
-			'Ansvar for iOS- og Android-produkter | Oppsett og vedlikehold av produksjonsservere for flere apper | Planlegging og gjennomføring av korte sprinter med kontinuerlig utrulling | Integrasjon av store tredjeparts-API-er og skalering av produkter til tusenvis av daglige aktive brukere',
+			'Ansvar for iOS- og Android-produkter | Utviklet og vedlikeholdt flere produksjonsapplikasjoner på tvers av mobil-, backend- og webplattformer | Designet og utviklet Eatfity på tvers av mobil-, backend- og backoffice-systemer, og bidro til vekst til nærmere 10 000 brukere | Bygget Punto Limpio og tilhørende backend-, backoffice- og websystemer for avfallshåndteringsoperasjoner | Utviklet MusicAdders, med ansvar for Android- og iOS-versjoner og integrasjon med et omfattende eksternt API | Planlegging, oppfølging og gjennomføring av oppgaver i korte sprinter og kontinuerlige utrullinger',
+		'role.owius.project.eatfity.desc':
+			'Trenings- og ernæringsapp med personlige planer',
+		'role.owius.project.musicadders.desc':
+			'Plattform for musikkmonetisering og kataloghåndtering',
+		'role.owius.project.puntolimpio.desc':
+			'Geolokalisert søker for resirkuleringspunkter for EE-avfall',
 		'role.tous.role': 'IT-praksisplass',
 		'role.tous.period': '2019',
 		'role.tous.description':
-			'Del av IT-avdelingen. Vedlikehold av hardware for flere systemer og løsning av tekniske problemer.',
+			'Praksisplass i IT-avdelingen med støtte til interne operasjoner og systempålitelighet.',
+		'role.tous.responsibilities':
+			'Vedlikehold av interne systemer og arbeidsutstyr | Diagnostisering og løsning av tekniske problemer for interne brukere',
 
 		'anchor.experience': 'erfaring',
 		'anchor.expertise': 'ekspertise',
