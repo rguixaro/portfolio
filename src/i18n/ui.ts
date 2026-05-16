@@ -5,7 +5,7 @@ export const ui = {
 		'seo.title': 'Ricard Guixaró · Enginyer de Software',
 		'seo.jobTitle': 'Enginyer de Software',
 		'seo.description':
-			"Enginyer de software a Unilabs. M'encarrego de construir aplicacions de principi a fi, amb atenció al detall i al producte final.",
+			"Enginyer de software a Unilabs. Desenvolupo productes full-stack i aplicacions mòbils fiables, cuidant l'arquitectura, el rendiment i l'experiència d'usuari.",
 		'section.experience': 'Experiència i Educació',
 		'section.expertise': 'Especialitats',
 		'section.projects': 'Projectes personals',
@@ -71,7 +71,7 @@ export const ui = {
 		'contact.footer.status.label': 'Estat',
 
 		'hero.bio':
-			"Enginyer de software a Unilabs. M'encarrego de construir aplicacions de principi a fi, amb atenció al detall i al producte final.",
+			"Enginyer de software a {company}. Desenvolupo productes full-stack i aplicacions mòbils fiables, cuidant l'arquitectura, el rendiment i l'experiència d'usuari.",
 
 		'role.unilabs.role': 'Enginyer de Software',
 		'role.unilabs.period': '2025 - Actualitat',
@@ -117,7 +117,7 @@ export const ui = {
 		'seo.title': 'Ricard Guixaró · Software Engineer',
 		'seo.jobTitle': 'Software Engineer',
 		'seo.description':
-			'Software engineer based in Barcelona. I build applications from start to finish, with attention to detail and the final product.',
+			'Software engineer at Unilabs. I build reliable full-stack and mobile products with care for architecture, performance, and user experience.',
 		'section.experience': 'Experience and Education',
 		'section.expertise': 'Expertise',
 		'section.projects': 'Side projects',
@@ -183,7 +183,7 @@ export const ui = {
 		'contact.footer.status.label': 'Status',
 
 		'hero.bio':
-			'Software engineer at Unilabs. I build applications from start to finish, with attention to detail and the final product.',
+			'Software engineer at {company}. I build reliable full-stack and mobile products with care for architecture, performance, and user experience.',
 
 		'role.unilabs.role': 'Software Engineer',
 		'role.unilabs.period': '2025 - Now',
@@ -229,7 +229,7 @@ export const ui = {
 		'seo.title': 'Ricard Guixaró · Ingeniero de Software',
 		'seo.jobTitle': 'Ingeniero de Software',
 		'seo.description':
-			'Ingeniero de software en Barcelona. Me encargo de construir aplicaciones de principio a fin, con atención al detalle y al producto final.',
+			'Ingeniero de software en Unilabs. Desarrollo productos full-stack y aplicaciones móviles fiables, cuidando la arquitectura, el rendimiento y la experiencia de usuario.',
 		'section.experience': 'Experiencia y Educación',
 		'section.expertise': 'Habilidades',
 		'section.projects': 'Proyectos personales',
@@ -296,7 +296,7 @@ export const ui = {
 		'contact.footer.status.label': 'Estado',
 
 		'hero.bio':
-			'Ingeniero de software en Unilabs. Me encargo de construir aplicaciones de principio a fin, con atención al detalle y al producto final.',
+			'Ingeniero de software en {company}. Desarrollo productos full-stack y aplicaciones móviles fiables, cuidando la arquitectura, el rendimiento y la experiencia de usuario.',
 
 		'role.unilabs.role': 'Ingeniero de Software',
 		'role.unilabs.period': '2025 - Actualidad',
@@ -342,7 +342,7 @@ export const ui = {
 		'seo.title': 'Ricard Guixaró · Programvareutvikler',
 		'seo.jobTitle': 'Programvareutvikler',
 		'seo.description':
-			'Softwareingeniør basert i Barcelona. Jeg bygger applikasjoner fra start til slutt, med fokus på detaljer og sluttproduktet.',
+			'Programvareingeniør hos Unilabs. Jeg utvikler pålitelige web- og mobilprodukter med vekt på arkitektur, ytelse og brukeropplevelse.',
 		'section.experience': 'Erfaring og Utdanning',
 		'section.expertise': 'Ekspertise',
 		'section.projects': 'Sideprosjekter',
@@ -408,7 +408,7 @@ export const ui = {
 		'contact.footer.status.label': 'Status',
 
 		'hero.bio':
-			'Programvareingeniør hos Unilabs. Jeg bygger applikasjoner fra start til slutt, med fokus på detaljer og sluttproduktet.',
+			'Programvareingeniør hos {company}. Jeg utvikler pålitelige web- og mobilprodukter med vekt på arkitektur, ytelse og brukeropplevelse.',
 
 		'role.unilabs.role': 'Programvareutvikler',
 		'role.unilabs.period': '2025 - Nå',
