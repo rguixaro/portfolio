@@ -21,6 +21,22 @@ import { STATUS_API_URL, STATUS_SLOW_MS } from '../lib/config'
 			return 'live'
 		}
 
+		const toClassified = (data) =>
+			data.map((entry) => ({
+				key: entry.key,
+				name: entry.name,
+				hostname: latestResult(entry)?.hostname,
+				level: classify(entry),
+			}))
+
+		const broadcast = (data) => {
+			const classified = toClassified(data)
+			window.__gatusStatuses = classified
+			document.dispatchEvent(
+				new CustomEvent('gatus:statuses', { detail: classified }),
+			)
+		}
+
 		if (window.__gatusStatuses) return
 		if (window.__gatusPromise) return
 
@@ -28,16 +44,7 @@ import { STATUS_API_URL, STATUS_SLOW_MS } from '../lib/config'
 			.then((r) => (r.ok ? r.json() : null))
 			.then((data) => {
 				if (!Array.isArray(data)) return
-				const classified = data.map((entry) => ({
-					key: entry.key,
-					name: entry.name,
-					hostname: latestResult(entry)?.hostname,
-					level: classify(entry),
-				}))
-				window.__gatusStatuses = classified
-				document.dispatchEvent(
-					new CustomEvent('gatus:statuses', { detail: classified }),
-				)
+				broadcast(data)
 			})
 			.catch(() => {})
 			.finally(() => {

@@ -45,26 +45,26 @@ const education = [
 ]
 ---
 
-<section id={t('anchor.experience')} class="relative overflow-hidden py-20">
+<section id={t('anchor.experience')} class='relative overflow-hidden py-20'>
 	<GridBackdrop />
-	<div class="relative mx-auto max-w-6xl px-6">
+	<div class='relative mx-auto max-w-6xl px-6'>
 		<SectionHeader label={t('section.experience')} />
 
-		<div class="grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0">
-			<div class="md:col-span-2 md:max-w-70 md:pr-16">
-				<p class="text-foreground/70 text-sm leading-relaxed">
+		<div class='grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0'>
+			<div class='md:col-span-2 md:max-w-70 md:pr-16'>
+				<p class='text-foreground/70 text-sm leading-relaxed'>
 					{t('experience.lead.building')}
-					<strong class="text-foreground font-semibold">
+					<strong class='text-foreground font-semibold'>
 						{t('experience.lead.range')}
 					</strong>
 					{t('experience.lead.usage')}
-					<strong class="text-foreground font-semibold">
+					<strong class='text-foreground font-semibold'>
 						{t('experience.lead.focus')}
 					</strong>
 				</p>
 			</div>
 
-			<div class="flex flex-col md:col-span-4 md:col-start-3">
+			<div class='flex flex-col md:col-span-4 md:col-start-3'>
 				{
 					localizedRoles.map((r) => (
 						<ExperienceRow
@@ -78,7 +78,9 @@ const education = [
 							tech={r.tech}
 							projects={r.projects}
 							labels={{
-								responsibilities: t('experience.panel.responsibilities'),
+								responsibilities: t(
+									'experience.panel.responsibilities',
+								),
 								stack: t('experience.panel.stack'),
 								projects: t('experience.panel.projects'),
 								toggle: t('aria.experience.toggle', {
@@ -91,47 +93,45 @@ const education = [
 			</div>
 		</div>
 
-		<div class="relative mt-16 grid grid-cols-1 gap-y-6 md:grid-cols-6">
-			<div class="md:col-span-2 md:pr-16">
-				<h3 class="eyebrow-mono text-foreground/50">
+		<div class='relative mt-16 grid grid-cols-1 gap-y-6 md:grid-cols-6'>
+			<div class='md:col-span-2 md:pr-16'>
+				<h3 class='eyebrow-mono text-foreground/50'>
 					{t('projects.subtitle.education')}
 				</h3>
 			</div>
 
-			<ul class="flex flex-col md:col-span-4 md:col-start-3">
+			<ul class='flex flex-col md:col-span-4 md:col-start-3'>
 				{
 					education.map((e) => (
 						<li>
 							<a
 								href={e.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group border-foreground/10 hover:border-foreground/30 flex items-baseline gap-6 border-t py-4 transition-colors"
-							>
-								<span class="text-foreground/50 w-24 shrink-0 font-mono text-[11px] tabular-nums">
+								target='_blank'
+								rel='noopener noreferrer'
+								class='group border-foreground/10 hover:border-foreground/30 flex items-baseline gap-6 border-t py-4 transition-colors'>
+								<span class='text-foreground/50 w-24 shrink-0 font-mono text-[11px] tabular-nums'>
 									{e.period}
 								</span>
-								<div class="min-w-0 flex-1">
-									<span class="text-foreground group-hover:text-accent block text-sm font-medium transition-colors">
+								<div class='min-w-0 flex-1'>
+									<span class='text-foreground group-hover:text-accent block text-sm font-medium transition-colors'>
 										{e.name}
 									</span>
-									<span class="text-foreground/50 mt-1 block font-mono text-[11px]">
+									<span class='text-foreground/50 mt-1 block font-mono text-[11px]'>
 										{e.location}
 									</span>
 								</div>
 								<svg
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="text-foreground/30 group-hover:text-accent shrink-0 transition-colors"
-								>
-									<path d="M7 7h10v10" />
-									<path d="M7 17 17 7" />
+									width='14'
+									height='14'
+									viewBox='0 0 24 24'
+									fill='none'
+									stroke='currentColor'
+									stroke-width='2'
+									stroke-linecap='round'
+									stroke-linejoin='round'
+									class='text-foreground/30 group-hover:text-accent shrink-0 transition-colors'>
+									<path d='M7 7h10v10' />
+									<path d='M7 17 17 7' />
 								</svg>
 							</a>
 						</li>
