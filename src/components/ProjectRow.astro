@@ -51,22 +51,22 @@ const numStr = String(num).padStart(2, '0')
 ---
 
 <Collapsible
-	groupName='project'
+	groupName="project"
 	toggleLabel={L.toggle}
-	rootClass='project-row'
-	headerClass='flex items-center gap-4'
+	rootClass="project-row"
+	headerClass="flex items-center gap-4"
 	dataAttrs={{ 'data-monitor': monitor }}
 >
-	<Fragment slot='header'>
-		<span class='text-foreground/50 w-6 shrink-0 font-mono text-xs'
+	<Fragment slot="header">
+		<span class="text-foreground/50 w-6 shrink-0 font-mono text-xs"
 			>{numStr}</span
 		>
 
-		<div class='flex min-w-0 flex-1 items-baseline gap-3'>
-			<span class='text-foreground truncate text-sm font-medium'>{name}</span>
+		<div class="flex min-w-0 flex-1 items-baseline gap-3">
+			<span class="text-foreground truncate text-sm font-medium">{name}</span>
 			{
 				codename && (
-					<span class='eyebrow-mono text-foreground/50 shrink-0 lowercase!'>
+					<span class="eyebrow-mono text-foreground/50 shrink-0 lowercase!">
 						[{codename}]
 					</span>
 				)
@@ -77,25 +77,27 @@ const numStr = String(num).padStart(2, '0')
 			monitor && (
 				<a
 					href={STATUS_PAGE_URL}
-					data-ready='false'
-					target='_blank'
-					rel='noopener noreferrer'
-					class='project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors'
-					style='display:none;'>
-					<span class='project-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full' />
-					<span class='project-status-label' />
+					data-ready="false"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors"
+					style="display:none;"
+				>
+					<span class="project-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full" />
+					<span class="project-status-label" />
 					<svg
-						width='10'
-						height='10'
-						viewBox='0 0 24 24'
-						fill='none'
-						stroke='currentColor'
-						stroke-width='2'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						aria-hidden='true'>
-						<path d='M7 7h10v10' />
-						<path d='M7 17 17 7' />
+						width="10"
+						height="10"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M7 7h10v10" />
+						<path d="M7 17 17 7" />
 					</svg>
 				</a>
 			)
@@ -103,38 +105,37 @@ const numStr = String(num).padStart(2, '0')
 
 		{
 			wip && (
-				<span class='text-accent border-accent/40 shrink-0 rounded-full border px-2 py-0.5 text-[10px] tracking-widest uppercase'>
+				<span class="text-accent border-accent/40 shrink-0 rounded-full border px-2 py-0.5 text-[10px] tracking-widest uppercase">
 					{L.wip}
 				</span>
 			)
 		}
 	</Fragment>
 
-	<Fragment slot='body'>
-		<div class='flex items-start gap-4 px-4 py-4'>
+	<Fragment slot="body">
+		<div class="flex items-start gap-4 px-4 py-4">
 			{
 				logo && (
 					<svg
-						class='project-logo text-foreground/80 h-12 w-12 shrink-0'
-						aria-hidden='true'>
+						class="project-logo text-foreground/80 h-12 w-12 shrink-0"
+						aria-hidden="true"
+					>
 						<use href={logo} />
 					</svg>
 				)
 			}
-			<div class='flex min-w-0 flex-1 flex-col gap-3'>
-				<p class='text-foreground/80 text-sm leading-relaxed'>
+			<div class="flex min-w-0 flex-1 flex-col gap-3">
+				<p class="text-foreground/80 text-sm leading-relaxed">
 					{desc}
 				</p>
 
 				{
 					tech && tech.length > 0 && (
-						<div class='flex flex-col gap-1.5'>
-							<span class='eyebrow-semibold text-foreground/50'>
-								{L.stack}
-							</span>
-							<div class='flex flex-wrap gap-1.5'>
+						<div class="flex flex-col gap-1.5">
+							<span class="eyebrow-semibold text-foreground/50">{L.stack}</span>
+							<div class="flex flex-wrap gap-1.5">
 								{tech.map((t) => (
-									<span class='eyebrow-mono text-foreground/60 border-foreground/15 rounded-full border px-2 py-0.5'>
+									<span class="eyebrow-mono text-foreground/60 border-foreground/15 rounded-full border px-2 py-0.5">
 										{t}
 									</span>
 								))}
@@ -145,53 +146,55 @@ const numStr = String(num).padStart(2, '0')
 
 				{
 					(href || repo) && (
-						<div class='flex flex-col gap-1.5'>
-							<span class='eyebrow-semibold text-foreground/50'>
-								{L.links}
-							</span>
-							<div class='flex flex-col gap-1.5'>
+						<div class="flex flex-col gap-1.5">
+							<span class="eyebrow-semibold text-foreground/50">{L.links}</span>
+							<div class="flex flex-col gap-1.5">
 								{href && (
-									<div class='flex items-baseline gap-2 text-xs'>
+									<div class="flex items-baseline gap-2 text-xs">
 										<a
 											href={href}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors'>
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors"
+										>
 											{L.visit}
 											<svg
-												width='10'
-												height='10'
-												viewBox='0 0 24 24'
-												fill='none'
-												stroke='currentColor'
-												stroke-width='2'
-												stroke-linecap='round'
-												stroke-linejoin='round'>
-												<path d='M7 7h10v10' />
-												<path d='M7 17 17 7' />
+												width="10"
+												height="10"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<path d="M7 7h10v10" />
+												<path d="M7 17 17 7" />
 											</svg>
 										</a>
 									</div>
 								)}
 								{repo && (
-									<div class='flex items-baseline gap-2 text-xs'>
+									<div class="flex items-baseline gap-2 text-xs">
 										<a
 											href={repo}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors'>
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground/80 hover:text-accent inline-flex shrink-0 items-center gap-1 font-medium underline transition-colors"
+										>
 											{L.source}
 											<svg
-												width='10'
-												height='10'
-												viewBox='0 0 24 24'
-												fill='none'
-												stroke='currentColor'
-												stroke-width='2'
-												stroke-linecap='round'
-												stroke-linejoin='round'>
-												<path d='M7 7h10v10' />
-												<path d='M7 17 17 7' />
+												width="10"
+												height="10"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<path d="M7 7h10v10" />
+												<path d="M7 17 17 7" />
 											</svg>
 										</a>
 									</div>

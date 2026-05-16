@@ -18,57 +18,57 @@ const socials = [
 
 <section
 	id={t('anchor.contact')}
-	class='contact-section relative overflow-hidden py-20'
+	class="contact-section relative overflow-hidden py-20"
 >
 	<GridBackdrop />
-	<div class='relative mx-auto max-w-6xl px-6'>
+	<div class="relative mx-auto max-w-6xl px-6">
 		<SectionHeader label={t('section.contact')} />
 
-		<div class='grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0'>
-			<div class='md:col-span-2 md:max-w-70 md:pr-16'>
-				<p class='text-foreground/70 text-sm leading-relaxed'>
+		<div class="grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0">
+			<div class="md:col-span-2 md:max-w-70 md:pr-16">
+				<p class="text-foreground/70 text-sm leading-relaxed">
 					{t('contact.description', { location })}
 				</p>
 			</div>
 
-			<div class='flex flex-col gap-8 md:col-span-1'>
+			<div class="flex flex-col gap-8 md:col-span-1">
 				<div
-					class='contact-headline text-foreground/70 space-y-4 text-3xl leading-relaxed select-none'
+					class="contact-headline text-foreground/70 space-y-4 text-3xl leading-relaxed select-none"
 				>
-					<div class='flex justify-start'>
+					<div class="flex justify-start">
 						<span
-							class='text-accent rounded-sm box-decoration-clone px-1'
-							style='background-color: color-mix(in oklab, var(--accent) 18%, transparent);'
+							class="text-accent rounded-sm box-decoration-clone px-1"
+							style="background-color: color-mix(in oklab, var(--accent) 18%, transparent);"
 							>{t('contact.sayHi')}</span
 						>
 					</div>
-					<div class='flex justify-end'>
+					<div class="flex justify-end">
 						<a
 							href={`mailto:${email}`}
-							class='contact-link inline-flex items-center gap-1 rounded-sm box-decoration-clone px-1'
-							style='background-color: color-mix(in oklab, var(--foreground) 15%, transparent);'
+							class="contact-link inline-flex items-center gap-1 rounded-sm box-decoration-clone px-1"
+							style="background-color: color-mix(in oklab, var(--foreground) 15%, transparent);"
 						>
 							{t('contact.letsTalk')}
 							<svg
-								width='0.7em'
-								height='0.7em'
-								viewBox='0 0 18 18'
-								fill='none'
-								class='shrink-0'
+								width="0.7em"
+								height="0.7em"
+								viewBox="0 0 18 18"
+								fill="none"
+								class="shrink-0"
 							>
 								<path
-									d='M3 15L15 3M15 3H5M15 3V13'
-									stroke='currentColor'
-									stroke-width='2'
-									stroke-linecap='round'
-									stroke-linejoin='round'></path>
+									d="M3 15L15 3M15 3H5M15 3V13"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path>
 							</svg>
 						</a>
 					</div>
 				</div>
 			</div>
 			<div
-				class='flex flex-col justify-center gap-2 md:col-span-2 md:col-start-5'
+				class="flex flex-col justify-center gap-2 md:col-span-2 md:col-start-5"
 			>
 				{
 					socials.map((s) => (
@@ -76,11 +76,10 @@ const socials = [
 							href={s.href}
 							target={s.href.startsWith('http') ? '_blank' : undefined}
 							rel={
-								s.href.startsWith('http')
-									? 'me noopener noreferrer'
-									: undefined
+								s.href.startsWith('http') ? 'me noopener noreferrer' : undefined
 							}
-							class='text-foreground/50 hover:text-foreground text-right text-[11px] tracking-widest uppercase transition-colors'>
+							class="text-foreground/50 hover:text-foreground text-right text-[11px] tracking-widest uppercase transition-colors"
+						>
 							{s.label}
 						</a>
 					))
@@ -88,7 +87,7 @@ const socials = [
 				<a
 					href={`/docs/resume-ricard-guixaró-[${lang}].pdf`}
 					download
-					class='text-foreground/50 hover:text-foreground text-right text-[11px] tracking-widest uppercase transition-colors'
+					class="text-foreground/50 hover:text-foreground text-right text-[11px] tracking-widest uppercase transition-colors"
 				>
 					{t('cv.download')}
 				</a>
@@ -97,40 +96,39 @@ const socials = [
 	</div>
 
 	<div
-		class='border-foreground/10 mt-16 flex flex-col items-center gap-3 border-t pt-6'
+		class="border-foreground/10 mt-16 flex flex-col items-center gap-3 border-t pt-6"
 	>
 		<a
-			id='overall-status-link'
+			id="overall-status-link"
 			href={STATUS_PAGE_URL}
-			target='_blank'
-			rel='noopener noreferrer'
-			class='eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors'
-			style='display:none;'
-			data-ready='false'
+			target="_blank"
+			rel="noopener noreferrer"
+			class="eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors"
+			style="display:none;"
+			data-ready="false"
 		>
-			<span
-				class='overall-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full'
+			<span class="overall-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full"
 			></span>
-			<span class='overall-status-label'
+			<span class="overall-status-label"
 				>{t('contact.footer.status.label')}</span
 			>
 			<svg
-				width='10'
-				height='10'
-				viewBox='0 0 24 24'
-				fill='none'
-				stroke='currentColor'
-				stroke-width='2'
-				stroke-linecap='round'
-				stroke-linejoin='round'
-				aria-hidden='true'
+				width="10"
+				height="10"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
 			>
-				<path d='M7 7h10v10'></path>
-				<path d='M7 17 17 7'></path>
+				<path d="M7 7h10v10"></path>
+				<path d="M7 17 17 7"></path>
 			</svg>
 		</a>
 
-		<p class='text-foreground/40 text-center text-[11px]'>
+		<p class="text-foreground/40 text-center text-[11px]">
 			{t('contact.footer.copyright', { year: new Date().getFullYear() })}
 		</p>
 	</div>

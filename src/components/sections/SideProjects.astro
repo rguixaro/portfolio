@@ -63,19 +63,19 @@ const projects = [
 ]
 ---
 
-<section id={t('anchor.projects')} class='relative py-20'>
+<section id={t('anchor.projects')} class="relative py-20">
 	<GridBackdrop />
-	<div class='relative mx-auto max-w-6xl px-6'>
+	<div class="relative mx-auto max-w-6xl px-6">
 		<SectionHeader label={t('section.projects')} />
 
-		<div class='grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0'>
-			<div class='md:col-span-2 md:max-w-70 md:pr-16'>
-				<p class='text-foreground/70 text-sm leading-relaxed'>
+		<div class="grid grid-cols-1 gap-y-8 md:grid-cols-6 md:gap-0">
+			<div class="md:col-span-2 md:max-w-70 md:pr-16">
+				<p class="text-foreground/70 text-sm leading-relaxed">
 					{t('projects.description')}
 				</p>
 			</div>
 
-			<div class='flex flex-col md:col-span-4 md:col-start-3'>
+			<div class="flex flex-col md:col-span-4 md:col-start-3">
 				{
 					projects.map((p, i) => (
 						<ProjectRow
@@ -132,9 +132,7 @@ const projects = [
 
 				const entry = data.find(
 					(e) =>
-						e.key === monitor ||
-						e.name === monitor ||
-						e.hostname === monitor,
+						e.key === monitor || e.name === monitor || e.hostname === monitor,
 				)
 				if (!entry || !entry.level) return
 
