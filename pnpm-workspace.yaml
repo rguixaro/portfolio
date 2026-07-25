@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: false
+  sharp: false
+
+overrides:
+  "yaml-language-server>yaml": "^2.8.3"
+  "astro>sharp": "-"
