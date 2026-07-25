@@ -80,7 +80,7 @@ const numStr = String(num).padStart(2, '0')
 					data-ready="false"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors"
+					class="project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 active:text-foreground hidden items-center gap-1.5 rounded-full border px-2.5 py-1 whitespace-nowrap transition-colors sm:inline-flex"
 					style="display:none;"
 				>
 					<span class="project-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full" />
@@ -201,6 +201,36 @@ const numStr = String(num).padStart(2, '0')
 								)}
 							</div>
 						</div>
+					)
+				}
+
+				{
+					monitor && (
+						<a
+							href={STATUS_PAGE_URL}
+							data-ready="false"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="project-status-link eyebrow-mono text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 active:text-foreground inline-flex items-center gap-1.5 self-start rounded-full border px-2.5 py-1 whitespace-nowrap transition-colors sm:hidden"
+							style="display:none;"
+						>
+							<span class="project-status-dot bg-foreground/30 h-1.5 w-1.5 rounded-full" />
+							<span class="project-status-label" />
+							<svg
+								width="10"
+								height="10"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<path d="M7 7h10v10" />
+								<path d="M7 17 17 7" />
+							</svg>
+						</a>
 					)
 				}
 			</div>

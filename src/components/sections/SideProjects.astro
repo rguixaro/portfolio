@@ -21,6 +21,16 @@ const projectLabels = {
 
 const projects = [
 	{
+		name: 'Weirwood Index',
+		codename: 'memoria',
+		desc: t('projects.weirwoodindex.desc'),
+		href: 'https://weirwoodindex.com',
+		repo: 'https://github.com/rguixaro/weirwood-index',
+		wip: false,
+		monitor: 'weirwoodindex.com',
+		tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'BGE-M3', 'BM25'],
+	},
+	{
 		name: 'roots',
 		codename: 'atrium',
 		desc: t('projects.roots.desc'),
@@ -139,22 +149,22 @@ const projects = [
 				const sc = STATUS_CONFIG[entry.level]
 				if (!sc) return
 
-				const link = row.querySelector('.project-status-link')
-				if (!link) return
+				const links = row.querySelectorAll('.project-status-link')
+				if (!links.length) return
 
-				const dot = link.querySelector('.project-status-dot')
-				const label = link.querySelector('.project-status-label')
+				links.forEach((link) => {
+					const dot = link.querySelector('.project-status-dot')
+					const label = link.querySelector('.project-status-label')
 
-				if (dot) {
-					dot.style.backgroundColor = sc.color
-					dot.style.boxShadow = `0 0 6px ${sc.color}80`
-				}
-				if (label) label.textContent = sc.label
-				if (link) {
+					if (dot) {
+						dot.style.backgroundColor = sc.color
+						dot.style.boxShadow = `0 0 6px ${sc.color}80`
+					}
+					if (label) label.textContent = sc.label
 					link.setAttribute('title', `${statusLabelWord}: ${sc.label}`)
 					link.setAttribute('data-ready', 'true')
 					link.style.display = ''
-				}
+				})
 			})
 		}
 

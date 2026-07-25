@@ -42,6 +42,8 @@ export const ui = {
 		'projects.visit': 'Web',
 		'projects.source': 'Codi',
 		'projects.links': 'Enllaços',
+		'projects.weirwoodindex.desc':
+			'Un motor de cerca de passatges de codi obert per a la saga literària A Song of Ice and Fire. Combina BM25 i models semàntics locals per trobar escenes a partir de descripcions, cites o termes recordats.',
 		'projects.rask.desc':
 			"Escurçador d'URL centrat en la privacitat i la simplicitat, construït amb repositoris separats per al client i l'API. Permet la creació, gestió i seguiment eficient d'enllaços curts dins d'una arquitectura full-stack lleugera.",
 		'projects.cookbook.desc':
@@ -154,6 +156,8 @@ export const ui = {
 		'projects.visit': 'Web',
 		'projects.source': 'Source',
 		'projects.links': 'Links',
+		'projects.weirwoodindex.desc':
+			'An open-source passage search engine for the A Song of Ice and Fire book series. It combines BM25 and local semantic models to find scenes from descriptions, quotations, or remembered terms.',
 		'projects.rask.desc':
 			'A URL shortener focused on privacy and simplicity, built with separate client and API repositories. It enables efficient creation, management, and tracking of short links across a lightweight full-stack architecture.',
 		'projects.cookbook.desc':
@@ -266,6 +270,8 @@ export const ui = {
 		'projects.visit': 'Web',
 		'projects.source': 'Código',
 		'projects.links': 'Enlaces',
+		'projects.weirwoodindex.desc':
+			'Un motor de búsqueda de pasajes de código abierto para la saga literaria A Song of Ice and Fire. Combina BM25 y modelos semánticos locales para encontrar escenas a partir de descripciones, citas o términos recordados.',
 		'projects.rask.desc':
 			'Acortador de URL centrado en la privacidad y la simplicidad, construido con repositorios separados para el cliente y la API. Permite la creación, gestión y seguimiento eficiente de enlaces cortos en una arquitectura full-stack ligera.',
 		'projects.cookbook.desc':
@@ -379,6 +385,8 @@ export const ui = {
 		'projects.visit': 'Nettside',
 		'projects.source': 'Kildekode',
 		'projects.links': 'Lenker',
+		'projects.weirwoodindex.desc':
+			'En søkemotor med åpen kildekode for tekstutdrag fra bokserien A Song of Ice and Fire. Den kombinerer BM25 og lokale semantiske modeller for å finne scener ut fra beskrivelser, sitater eller ord du husker.',
 		'projects.rask.desc':
 			'URL-forkorter med fokus på personvern og enkelhet, bygget med separate klient- og API-repositorier. Den muliggjør effektiv opprettelse, administrasjon og sporing av korte lenker i en lettvekts full-stack-arkitektur.',
 		'projects.cookbook.desc':
